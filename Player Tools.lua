@@ -513,7 +513,7 @@ imgui.ShowCursor = main_window_state.v
 				imgui.CheckboxPlus(u8"�������� ������", jlock)
                 imgui.SameLine()
 				imgui.TextQuestion(u8"��� ���������� ������ JL �� ��������/�������� ���� ����������� ���������")
-				imgui.CheckboxPlus(u8"����� ����� (��)", scar)
+				imgui.CheckboxPlus(u8"����� ����� ���� (��)", scar)
                 imgui.SameLine()
 				imgui.TextQuestion(u8"��� ������� ������� ������� O �� ������� ����� ���� ������ ����������")
 				imgui.CheckboxPlus(u8"��������� ����",shar)
