@@ -1,8 +1,8 @@
-script_version('2.0')
+script_version('1.0')
 script_author("Tinkoff Bank")
 
 local nalogovaya = 0
-local delay_vipresend = 1 -- Секунды
+local delay_vipresend = 1 -- РЎРµРєСѓРЅРґС‹
 local version = script.this.version
 
 local checking = false
@@ -85,8 +85,6 @@ autoad = false,
 vip_resend = false,
 fastrep = false,
 sctime_toggle = false,
-carskill_speed = false,
-anticarskill = true,
 chatsms = "",
 rtsms = "",
 famsms = "",
@@ -151,7 +149,6 @@ newfont_fonttypeini = "5",
 newfont_colorini = "1"
 }
 }, "Player ToolsE")
-
 
 local bf = imgui.ImBuffer
 local darktheme = imgui.ImBool(mainIni.config.darktheme)
@@ -287,7 +284,7 @@ local blocker = imgui.WindowFlags.NoBringToFrontOnFocus
 local autinfo = imgui.ImBool(false)
 local blockbutton_timer = 0
 local blockbutton_info = 0
-local atoch_status = u8"Включите автозаточку..."
+local atoch_status = u8"Р’РєР»СЋС‡РёС‚Рµ Р°РІС‚РѕР·Р°С‚РѕС‡РєСѓ..."
 --local selected = imgui.ImInt(0)
 
 local KeyB = {"NumPad0",
@@ -387,21 +384,21 @@ imgui.ShowCursor = main_window_state.v
 			imgui.SetNextWindowPos(imgui.ImVec2(ScreenX / 2 , ScreenY / 2), imgui.Cond.FirsUseEver, imgui.ImVec2(0.5, 0.5))
 		end
 	  imgui.Begin('Player Tools 1.0 | by Tinkoff Bank', main_window_state, imgui.WindowFlags.NoResize + imgui.WindowFlags.NoCollapse + imgui.WindowFlags.NoScrollbar + blocker)		  	
-		imgui.BeginChild("##команды", imgui.ImVec2(1050, 35), true, imgui.WindowFlags.NoScrollbar)
+		imgui.BeginChild("##РєРѕРјР°РЅРґС‹", imgui.ImVec2(1050, 35), true, imgui.WindowFlags.NoScrollbar)
 			imgui.SetCursorPos(imgui.ImVec2(109, 10))
-				imgui.Text(u8"Команды скрипта: /pmenu | /update | /cmds | /calc |")
-				imgui.TextWithQuestionColored(u8'Стили: \nИмеется всего два стиля\n1. Светлый\n2. Темный ', imgui.ImVec4(0.0, 0.5, 1.0, 1.0), u8'Нажмите на кнопку, чтобы изменить стиль >>', imgui.SameLine())
+				imgui.Text(u8"РЎРѕРєСЂР°С‰РµРЅРЅС‹Рµ РєРѕРјР°РЅРґС‹: /findihouse - /fh, /findibiz - /fbiz, /house - /h, /fammenu - /fmn |")
+				imgui.TextWithQuestionColored(u8'РџСЂРёРјРµСЂС‹: \n/calc 2*2 - РЈРјРЅРѕР¶РµРЅРёРµ\n/calc 2/2 - Р”РµР»РµРЅРёРµ\n/calc 2-2 - Р’С‹С‡РёС‚Р°РЅРёРµ\n/calc 2+2 - РЎР»РѕР¶РµРЅРёРµ ', imgui.ImVec4(0.0, 0.5, 1.0, 1.0), u8'РљР°Р»СЊРєСѓР»СЏС‚РѕСЂ: /calc *РїСЂРёРјРµСЂ*', imgui.SameLine())
 			imgui.SetCursorPos(imgui.ImVec2(880, 10))
-			    imgui.TextColored(imgui.ImVec4(0.43, 0.43, 0.50, 0.50), u8'Версия:')
+			    imgui.TextColored(imgui.ImVec4(0.43, 0.43, 0.50, 0.50), u8'Р’РµСЂСЃРёСЏ:')
 				imgui.SameLine()
 			imgui.SetCursorPos(imgui.ImVec2(825, 5))	
 				if darktheme.v then					
-					if imgui.Button(u8"Темн.## DTActive", imgui.ImVec2(50, 25)) then 
+					if imgui.Button(u8"РўРµРјРЅ.## DTActive", imgui.ImVec2(50, 25)) then 
 						darktheme.v = false
 						apply_custom_style()						
 					end				
 				elseif not darktheme.v then								  
-					if imgui.Button(u8"Светл.## DTunActive", imgui.ImVec2(50, 25)) then 
+					if imgui.Button(u8"РЎРІРµС‚Р».## DTunActive", imgui.ImVec2(50, 25)) then 
 						darktheme.v = true
 						apply_custom_style()
 					end	
@@ -416,203 +413,203 @@ imgui.ShowCursor = main_window_state.v
                 imgui.PushStyleColor(imgui.Col.ButtonActive, imgui.ImVec4(0.85, 1.00, 0.41, 1.00))
 				imgui.PushStyleColor(imgui.Col.Text, imgui.ImVec4(0.00, 0.00, 0.00, 1.00))
 				if imgui.Button(u8"TINKOFF", imgui.ImVec2(90, 25)) then
-				   sampAddChatMessage("РЕГЕСТРИРУЕМСЯ НА 02 ТУКСОН СЕРВЕРЕ ВВОДИМ НИК ПРИГЛАСИВШЕГО - {FFD700}Tinkoff_Bank. НА 6 ЛВЛ ПРОМО #samp EZ {00ff00}MONEY", -1)
+				   sampAddChatMessage("Р Р•Р“Р•РЎРўР РР РЈР•РњРЎРЇ РќРђ 02 РўРЈРљРЎРћРќ РЎР•Р Р’Р•Р Р• Р’Р’РћР”РРњ РќРРљ РџР РР“Р›РђРЎРР’РЁР•Р“Рћ - {FFD700}Tinkoff_Bank. РќРђ 6 Р›Р’Р› РџР РћРњРћ #samp EZ {00ff00}MONEY", -1)
 				end
 				imgui.PopStyleColor()
 				imgui.PopStyleColor()
 				imgui.PopStyleColor()
 				imgui.PopStyleColor()
 		imgui.EndChild()
-		imgui.BeginChild("##левый_верх", imgui.ImVec2(300, 120), true, imgui.WindowFlags.NoScrollbar)
-				imgui.Checkbox(u8"Показ скилов ближайшему игроку", lic)
+		imgui.BeginChild("##Р»РµРІС‹Р№_РІРµСЂС…", imgui.ImVec2(300, 120), true, imgui.WindowFlags.NoScrollbar)
+				imgui.Checkbox(u8"РџРѕРєР°Р· СЃРєРёР»РѕРІ Р±Р»РёР¶Р°Р№С€РµРјСѓ РёРіСЂРѕРєСѓ", lic)
 				imgui.SameLine()
-				imgui.TextQuestion(u8'При нажатии клавиш ALT + 1 вы покажите лицензии ближайшему игроку')
-				imgui.Checkbox(u8"Торговля ближайшему игроку", trade)
+				imgui.TextQuestion(u8'РџСЂРё РЅР°Р¶Р°С‚РёРё РєР»Р°РІРёС€ ALT + 1 РІС‹ РїРѕРєР°Р¶РёС‚Рµ Р»РёС†РµРЅР·РёРё Р±Р»РёР¶Р°Р№С€РµРјСѓ РёРіСЂРѕРєСѓ')
+				imgui.Checkbox(u8"РўРѕСЂРіРѕРІР»СЏ Р±Р»РёР¶Р°Р№С€РµРјСѓ РёРіСЂРѕРєСѓ", trade)
 				imgui.SameLine()
-				imgui.TextQuestion(u8'При нажатии клавиш ALT + 2 вы предложите торговлю ближайшему игроку')
-				imgui.Checkbox(u8"Телефон", tlf)
+				imgui.TextQuestion(u8'РџСЂРё РЅР°Р¶Р°С‚РёРё РєР»Р°РІРёС€ ALT + 2 РІС‹ РїСЂРµРґР»РѕР¶РёС‚Рµ С‚РѕСЂРіРѕРІР»СЋ Р±Р»РёР¶Р°Р№С€РµРјСѓ РёРіСЂРѕРєСѓ')
+				imgui.Checkbox(u8"РўРµР»РµС„РѕРЅ", tlf)
 				imgui.SameLine()
-				imgui.TextQuestion(u8"При нажатии на клавишу P у вас откроется телефон со скипом дилога,\nесли у вас более 2-х устройств в инвентаре." )
+				imgui.TextQuestion(u8"РџСЂРё РЅР°Р¶Р°С‚РёРё РЅР° РєР»Р°РІРёС€Сѓ P Сѓ РІР°СЃ РѕС‚РєСЂРѕРµС‚СЃСЏ С‚РµР»РµС„РѕРЅ СЃРѕ СЃРєРёРїРѕРј РґРёР»РѕРіР°,\nРµСЃР»Рё Сѓ РІР°СЃ Р±РѕР»РµРµ 2-С… СѓСЃС‚СЂРѕР№СЃС‚РІ РІ РёРЅРІРµРЅС‚Р°СЂРµ." )
 				imgui.SameLine()
-				imgui.Checkbox(u8"Удаление мусора", flood)
+				imgui.Checkbox(u8"РЈРґР°Р»РµРЅРёРµ РјСѓСЃРѕСЂР°", flood)
 				imgui.SameLine()
-				imgui.TextQuestion(u8"Данная функция удалит из чата такие сообщения как: пригласите друга, со склада sf выехал матовоз и т.д" )
+				imgui.TextQuestion(u8"Р”Р°РЅРЅР°СЏ С„СѓРЅРєС†РёСЏ СѓРґР°Р»РёС‚ РёР· С‡Р°С‚Р° С‚Р°РєРёРµ СЃРѕРѕР±С‰РµРЅРёСЏ РєР°Рє: РїСЂРёРіР»Р°СЃРёС‚Рµ РґСЂСѓРіР°, СЃРѕ СЃРєР»Р°РґР° sf РІС‹РµС…Р°Р» РјР°С‚РѕРІРѕР· Рё С‚.Рґ" )
 	  	imgui.EndChild()
-	  	imgui.BeginChild("##левый_низ", imgui.ImVec2(300, 248), true, imgui.WindowFlags.AlwaysVerticalScrollbar)
-				imgui.CheckboxPlus(u8"Бронежилет", arm)
+	  	imgui.BeginChild("##Р»РµРІС‹Р№_РЅРёР·", imgui.ImVec2(300, 248), true, imgui.WindowFlags.AlwaysVerticalScrollbar)
+				imgui.CheckboxPlus(u8"Р‘СЂРѕРЅРµР¶РёР»РµС‚", arm)
 				imgui.SameLine()
-				imgui.TextQuestion(u8"При сочетании выбранных вами клавиш у вас появится бронежилет")	
+				imgui.TextQuestion(u8"РџСЂРё СЃРѕС‡РµС‚Р°РЅРёРё РІС‹Р±СЂР°РЅРЅС‹С… РІР°РјРё РєР»Р°РІРёС€ Сѓ РІР°СЃ РїРѕСЏРІРёС‚СЃСЏ Р±СЂРѕРЅРµР¶РёР»РµС‚")	
 				if arm.v then
 				imgui.SameLine()
 				CursorPos = imgui.GetCursorPos()
 				imgui.SetCursorPos(imgui.ImVec2(175, CursorPos.y))
-				 if imgui.CollapsingHeader(u8"Настройки##header_armour") then
+				 if imgui.CollapsingHeader(u8"РќР°СЃС‚СЂРѕР№РєРё##header_armour") then
 				 imgui.PushItemWidth(100)
-				 imgui.InputText(u8"Активация брони", armkey)
+				 imgui.InputText(u8"РђРєС‚РёРІР°С†РёСЏ Р±СЂРѕРЅРё", armkey)
 				 imgui.SameLine()
-				 imgui.TextQuestion(u8"Введите чит-код, который будет активировать бронежилет (По умолчанию - кнопка '=' (равно))")
+				 imgui.TextQuestion(u8"Р’РІРµРґРёС‚Рµ С‡РёС‚-РєРѕРґ, РєРѕС‚РѕСЂС‹Р№ Р±СѓРґРµС‚ Р°РєС‚РёРІРёСЂРѕРІР°С‚СЊ Р±СЂРѕРЅРµР¶РёР»РµС‚ (РџРѕ СѓРјРѕР»С‡Р°РЅРёСЋ - РєРЅРѕРїРєР° '=' (СЂР°РІРЅРѕ))")
 				 imgui.Separator()
 				 end
 				end
-				imgui.CheckboxPlus(u8"Маска", msk)
+				imgui.CheckboxPlus(u8"РњР°СЃРєР°", msk)
 				imgui.SameLine()
-				imgui.TextQuestion(u8"При сочетании выбранных вами клавиш у вас появится маска")
+				imgui.TextQuestion(u8"РџСЂРё СЃРѕС‡РµС‚Р°РЅРёРё РІС‹Р±СЂР°РЅРЅС‹С… РІР°РјРё РєР»Р°РІРёС€ Сѓ РІР°СЃ РїРѕСЏРІРёС‚СЃСЏ РјР°СЃРєР°")
 				if msk.v then
 				imgui.SameLine()
 				CursorPos = imgui.GetCursorPos()
 				imgui.SetCursorPos(imgui.ImVec2(175, CursorPos.y))
-				 if imgui.CollapsingHeader(u8"Настройки##header_mask") then
+				 if imgui.CollapsingHeader(u8"РќР°СЃС‚СЂРѕР№РєРё##header_mask") then
 				 imgui.PushItemWidth(100)
-				 imgui.InputText(u8"Активация маски", maskkey)
+				 imgui.InputText(u8"РђРєС‚РёРІР°С†РёСЏ РјР°СЃРєРё", maskkey)
 				 imgui.SameLine()
-				 imgui.TextQuestion(u8"Введите чит-код, который будет активировать маску (По умолчанию - кнопка '-' (минус))")
+				 imgui.TextQuestion(u8"Р’РІРµРґРёС‚Рµ С‡РёС‚-РєРѕРґ, РєРѕС‚РѕСЂС‹Р№ Р±СѓРґРµС‚ Р°РєС‚РёРІРёСЂРѕРІР°С‚СЊ РјР°СЃРєСѓ (РџРѕ СѓРјРѕР»С‡Р°РЅРёСЋ - РєРЅРѕРїРєР° '-' (РјРёРЅСѓСЃ))")
 				 imgui.Separator()
 				 end
 				end
-				imgui.CheckboxPlus(u8"Сигарета", smk)
+				imgui.CheckboxPlus(u8"РЎРёРіР°СЂРµС‚Р°", smk)
 				imgui.SameLine()
-				imgui.TextQuestion(u8"При сочетании клавиш SMK у вас появится сигарета")
-				imgui.CheckboxPlus(u8"Наркотики", drugs)
+				imgui.TextQuestion(u8"РџСЂРё СЃРѕС‡РµС‚Р°РЅРёРё РєР»Р°РІРёС€ SMK Сѓ РІР°СЃ РїРѕСЏРІРёС‚СЃСЏ СЃРёРіР°СЂРµС‚Р°")
+				imgui.CheckboxPlus(u8"РќР°СЂРєРѕС‚РёРєРё", drugs)
 				imgui.SameLine()
-				imgui.TextQuestion(u8"При сочетании клавиш alt + 1/2/3 (нумпад = кол-во) вы используете наркотики")
-				imgui.CheckboxPlus(u8"Реакция на покупку VIP", vip)
+				imgui.TextQuestion(u8"РџСЂРё СЃРѕС‡РµС‚Р°РЅРёРё РєР»Р°РІРёС€ alt + 1/2/3 (РЅСѓРјРїР°Рґ = РєРѕР»-РІРѕ) РІС‹ РёСЃРїРѕР»СЊР·СѓРµС‚Рµ РЅР°СЂРєРѕС‚РёРєРё")
+				imgui.CheckboxPlus(u8"Р РµР°РєС†РёСЏ РЅР° РїРѕРєСѓРїРєСѓ VIP", vip)
 				imgui.SameLine()
-				imgui.TextQuestion(u8"Как только какой то игрок купит Титан или Премиум Вип - скрипт отправит в ВИП чат это сообщение")
+				imgui.TextQuestion(u8"РљР°Рє С‚РѕР»СЊРєРѕ РєР°РєРѕР№ С‚Рѕ РёРіСЂРѕРє РєСѓРїРёС‚ РўРёС‚Р°РЅ РёР»Рё РџСЂРµРјРёСѓРј Р’РёРї - СЃРєСЂРёРїС‚ РѕС‚РїСЂР°РІРёС‚ РІ Р’РРџ С‡Р°С‚ СЌС‚Рѕ СЃРѕРѕР±С‰РµРЅРёРµ")
 				if vip.v then
 				imgui.SameLine()
 				CursorPos = imgui.GetCursorPos()
 				imgui.SetCursorPos(imgui.ImVec2(175, CursorPos.y))
-				 if imgui.CollapsingHeader(u8"Настройки##header_vipr") then
+				 if imgui.CollapsingHeader(u8"РќР°СЃС‚СЂРѕР№РєРё##header_vipr") then
 				 imgui.PushItemWidth(172)
-				 imgui.InputText(u8"Если Titan", smsvip)
+				 imgui.InputText(u8"Р•СЃР»Рё Titan", smsvip)
 				 imgui.PushItemWidth(172)
-				 imgui.InputText(u8"Если Premium", smsvippr)
+				 imgui.InputText(u8"Р•СЃР»Рё Premium", smsvippr)
 				 imgui.Separator()
 				 end
 				end
-				imgui.CheckboxPlus(u8"Часы", cctime)
+				imgui.CheckboxPlus(u8"Р§Р°СЃС‹", cctime)
 				imgui.SameLine()
-				imgui.TextQuestion(u8"При нажатии выбранных вами клавиш вы посмотрите на часы с вашей отыгровкой.")
+				imgui.TextQuestion(u8"РџСЂРё РЅР°Р¶Р°С‚РёРё РІС‹Р±СЂР°РЅРЅС‹С… РІР°РјРё РєР»Р°РІРёС€ РІС‹ РїРѕСЃРјРѕС‚СЂРёС‚Рµ РЅР° С‡Р°СЃС‹ СЃ РІР°С€РµР№ РѕС‚С‹РіСЂРѕРІРєРѕР№.")
 				if cctime.v then
 				imgui.SameLine()
 				CursorPos = imgui.GetCursorPos()
 				imgui.SetCursorPos(imgui.ImVec2(175, CursorPos.y))
-				 if imgui.CollapsingHeader(u8"Настройки##header_time") then
+				 if imgui.CollapsingHeader(u8"РќР°СЃС‚СЂРѕР№РєРё##header_time") then
 				 imgui.PushItemWidth(100)
-				 imgui.InputText(u8"Активация часов", tkey)
+				 imgui.InputText(u8"РђРєС‚РёРІР°С†РёСЏ С‡Р°СЃРѕРІ", tkey)
 				 imgui.SameLine()
-				 imgui.TextQuestion(u8"Введите чит-код, который будет активировать отыгровку (По умолчанию - 'XX' англ.)")
+				 imgui.TextQuestion(u8"Р’РІРµРґРёС‚Рµ С‡РёС‚-РєРѕРґ, РєРѕС‚РѕСЂС‹Р№ Р±СѓРґРµС‚ Р°РєС‚РёРІРёСЂРѕРІР°С‚СЊ РѕС‚С‹РіСЂРѕРІРєСѓ (РџРѕ СѓРјРѕР»С‡Р°РЅРёСЋ - 'XX' Р°РЅРіР».)")
 				 imgui.PushItemWidth(185)
-				 imgui.InputText(u8"Отыгровка", chasi)
+				 imgui.InputText(u8"РћС‚С‹РіСЂРѕРІРєР°", chasi)
 				 imgui.Separator()
 				 end
 				end
-				imgui.CheckboxPlus(u8"Закрытие транспорта", lock)
+				imgui.CheckboxPlus(u8"Р—Р°РєСЂС‹С‚РёРµ С‚СЂР°РЅСЃРїРѕСЂС‚Р°", lock)
 				imgui.SameLine()
-				imgui.TextQuestion(u8"При нажатии на клавишу LK вы закроете/откроете свой транспорт")
-				imgui.CheckboxPlus(u8"Закрытие аренды", jlock)
+				imgui.TextQuestion(u8"РџСЂРё РЅР°Р¶Р°С‚РёРё РЅР° РєР»Р°РІРёС€Сѓ L РІС‹ Р·Р°РєСЂРѕРµС‚Рµ/РѕС‚РєСЂРѕРµС‚Рµ СЃРІРѕР№ С‚СЂР°РЅСЃРїРѕСЂС‚")
+				imgui.CheckboxPlus(u8"Р—Р°РєСЂС‹С‚РёРµ Р°СЂРµРЅРґС‹", jlock)
                 imgui.SameLine()
-				imgui.TextQuestion(u8"При комбинации клавиш JL вы закроете/откроете свой арендванный транспорт")
-				imgui.CheckboxPlus(u8"Смена стиля (ТТ)", scar)
+				imgui.TextQuestion(u8"РџСЂРё РєРѕРјР±РёРЅР°С†РёРё РєР»Р°РІРёС€ JL РІС‹ Р·Р°РєСЂРѕРµС‚Рµ/РѕС‚РєСЂРѕРµС‚Рµ СЃРІРѕР№ Р°СЂРµРЅРґРІР°РЅРЅС‹Р№ С‚СЂР°РЅСЃРїРѕСЂС‚")
+				imgui.CheckboxPlus(u8"РЎРјРµРЅР° СЃС‚РёР»СЏ (РўРў)", scar)
                 imgui.SameLine()
-				imgui.TextQuestion(u8"При двойном нажатии клавиши O вы смените стиль езды вашего автомобиля")
-				imgui.CheckboxPlus(u8"Установка шара",shar)
+				imgui.TextQuestion(u8"РџСЂРё РґРІРѕР№РЅРѕРј РЅР°Р¶Р°С‚РёРё РєР»Р°РІРёС€Рё O РІС‹ СЃРјРµРЅРёС‚Рµ СЃС‚РёР»СЊ РµР·РґС‹ РІР°С€РµРіРѕ Р°РІС‚РѕРјРѕР±РёР»СЏ")
+				imgui.CheckboxPlus(u8"РЈСЃС‚Р°РЅРѕРІРєР° С€Р°СЂР°",shar)
 				imgui.SameLine()
-				imgui.TextQuestion(u8"Установка а/с Воздушный Шар при введении заданного вами Чит-Кода.")
-				imgui.CheckboxPlus(u8"Чипсы", cheeps)
+				imgui.TextQuestion(u8"РЈСЃС‚Р°РЅРѕРІРєР° Р°/СЃ Р’РѕР·РґСѓС€РЅС‹Р№ РЁР°СЂ РїСЂРё РІРІРµРґРµРЅРёРё Р·Р°РґР°РЅРЅРѕРіРѕ РІР°РјРё Р§РёС‚-РљРѕРґР°.")
+				imgui.CheckboxPlus(u8"Р§РёРїСЃС‹", cheeps)
                 imgui.SameLine()
-				imgui.TextQuestion(u8"При двойном нажатии на CH персонаж съедает пачку чипсов")
+				imgui.TextQuestion(u8"РџСЂРё РґРІРѕР№РЅРѕРј РЅР°Р¶Р°С‚РёРё РЅР° CH РїРµСЂСЃРѕРЅР°Р¶ СЃСЉРµРґР°РµС‚ РїР°С‡РєСѓ С‡РёРїСЃРѕРІ")
 				if shar.v then
 				imgui.SameLine()
 				CursorPos = imgui.GetCursorPos()
 				imgui.SetCursorPos(imgui.ImVec2(175, CursorPos.y))
-				 if imgui.CollapsingHeader(u8"Настройки##header_shar") then
+				 if imgui.CollapsingHeader(u8"РќР°СЃС‚СЂРѕР№РєРё##header_shar") then
 				 imgui.PushItemWidth(100)
-				 imgui.InputText(u8"Активация шара", sharkey)
+				 imgui.InputText(u8"РђРєС‚РёРІР°С†РёСЏ С€Р°СЂР°", sharkey)
 				 imgui.SameLine()
-				 imgui.TextQuestion(u8"Введите чит-код, который будет ставить а/с Воздушный Шар\n(По умолчанию BB (англ.))")
+				 imgui.TextQuestion(u8"Р’РІРµРґРёС‚Рµ С‡РёС‚-РєРѕРґ, РєРѕС‚РѕСЂС‹Р№ Р±СѓРґРµС‚ СЃС‚Р°РІРёС‚СЊ Р°/СЃ Р’РѕР·РґСѓС€РЅС‹Р№ РЁР°СЂ\n(РџРѕ СѓРјРѕР»С‡Р°РЅРёСЋ BB (Р°РЅРіР».))")
 				 imgui.Separator()
 				 end
 				end
 				if aut.v then
 				 imgui.CheckboxPlus("", ashar)
-				 imgui.TextColored(imgui.ImVec4(1.0, 0.5, 0.0, 1.0), u8'Автосборка шара', imgui.SameLine())
+				 imgui.TextColored(imgui.ImVec4(1.0, 0.5, 0.0, 1.0), u8'РђРІС‚РѕСЃР±РѕСЂРєР° С€Р°СЂР°', imgui.SameLine())
 				 imgui.SameLine()
-				 imgui.TextQuestion(u8"Автосборка а/с Воздушный шар (Вам нужно только нажать ALT на шаре)")
-				 imgui.CheckboxPlus(" ", cure)
-				 imgui.TextColored(imgui.ImVec4(1.0, 0.5, 0.0, 1.0), u8'Адреналин (Возрождение)', imgui.SameLine())
+				 imgui.TextQuestion(u8"РђРІС‚РѕСЃР±РѕСЂРєР° Р°/СЃ Р’РѕР·РґСѓС€РЅС‹Р№ С€Р°СЂ (Р’Р°Рј РЅСѓР¶РЅРѕ С‚РѕР»СЊРєРѕ РЅР°Р¶Р°С‚СЊ ALT РЅР° С€Р°СЂРµ)")
+				 imgui.CheckboxPlus("", cure)
+				 imgui.TextColored(imgui.ImVec4(1.0, 0.5, 0.0, 1.0), u8'РђРґСЂРµРЅР°Р»РёРЅ (Р’РѕР·СЂРѕР¶РґРµРЅРёРµ)', imgui.SameLine())
 				 imgui.SameLine()
-				 imgui.TextQuestion(u8"При нажатии клавиш ALT + 4 вы поднимите ближайшего игрока в стадии смерти\n(Нужен адреналин в инвентаре)")
+				 imgui.TextQuestion(u8"РџСЂРё РЅР°Р¶Р°С‚РёРё РєР»Р°РІРёС€ ALT + 4 РІС‹ РїРѕРґРЅРёРјРёС‚Рµ Р±Р»РёР¶Р°Р№С€РµРіРѕ РёРіСЂРѕРєР° РІ СЃС‚Р°РґРёРё СЃРјРµСЂС‚Рё\n(РќСѓР¶РµРЅ Р°РґСЂРµРЅР°Р»РёРЅ РІ РёРЅРІРµРЅС‚Р°СЂРµ)")
 				else
-				 imgui.LockedParam(u8"Активируйте спорные функции\n          для разблокировки## Блок_Левый", imgui.ImVec2(266, 60))
+				 imgui.LockedParam(u8"РђРєС‚РёРІРёСЂСѓР№С‚Рµ СЃРїРѕСЂРЅС‹Рµ С„СѓРЅРєС†РёРё\n          РґР»СЏ СЂР°Р·Р±Р»РѕРєРёСЂРѕРІРєРё## Р‘Р»РѕРє_Р›РµРІС‹Р№", imgui.ImVec2(266, 60))
 				end			
 		imgui.EndChild()
-		if imgui.Button(u8'Сохранить настройки',imgui.ImVec2(145,58)) then 
+		if imgui.Button(u8'РЎРѕС…СЂР°РЅРёС‚СЊ РЅР°СЃС‚СЂРѕР№РєРё',imgui.ImVec2(145,58)) then 
            saverconfig()		   
 		end
 		imgui.SetCursorPos(imgui.ImVec2(325, 82))
-		imgui.BeginChild("##середина_верх_левый", imgui.ImVec2(178, 120), true, imgui.WindowFlags.NoScrollbar)
-				imgui.Checkbox(u8"Заправить авто", fcar)
+		imgui.BeginChild("##СЃРµСЂРµРґРёРЅР°_РІРµСЂС…_Р»РµРІС‹Р№", imgui.ImVec2(178, 120), true, imgui.WindowFlags.NoScrollbar)
+				imgui.Checkbox(u8"Р—Р°РїСЂР°РІРёС‚СЊ Р°РІС‚Рѕ", fcar)
 				imgui.SameLine()
-				imgui.TextQuestion(u8"При сочетании клавиш KK вы заправите транспорт используя канистру (Только вне авто)")
-				imgui.Checkbox(u8"Починить авто", recar)
+				imgui.TextQuestion(u8"РџСЂРё СЃРѕС‡РµС‚Р°РЅРёРё РєР»Р°РІРёС€ KK РІС‹ Р·Р°РїСЂР°РІРёС‚Рµ С‚СЂР°РЅСЃРїРѕСЂС‚ РёСЃРїРѕР»СЊР·СѓСЏ РєР°РЅРёСЃС‚СЂСѓ (РўРѕР»СЊРєРѕ РІРЅРµ Р°РІС‚Рѕ)")
+				imgui.Checkbox(u8"РџРѕС‡РёРЅРёС‚СЊ Р°РІС‚Рѕ", recar)
 				imgui.SameLine()
-				imgui.TextQuestion(u8"При сочетании клавиш RR вы почините транспорт используя ремкомплект")
-				imgui.Checkbox(u8"Ключи от авто", key)
+				imgui.TextQuestion(u8"РџСЂРё СЃРѕС‡РµС‚Р°РЅРёРё РєР»Р°РІРёС€ RR РІС‹ РїРѕС‡РёРЅРёС‚Рµ С‚СЂР°РЅСЃРїРѕСЂС‚ РёСЃРїРѕР»СЊР·СѓСЏ СЂРµРјРєРѕРјРїР»РµРєС‚")
+				imgui.Checkbox(u8"РљР»СЋС‡Рё РѕС‚ Р°РІС‚Рѕ", key)
 				imgui.SameLine()
-				imgui.TextQuestion(u8"При нажатии на кнопку K вы вставите/заберете ключи (Только внутри авто)")
+				imgui.TextQuestion(u8"РџСЂРё РЅР°Р¶Р°С‚РёРё РЅР° РєРЅРѕРїРєСѓ K РІС‹ РІСЃС‚Р°РІРёС‚Рµ/Р·Р°Р±РµСЂРµС‚Рµ РєР»СЋС‡Рё (РўРѕР»СЊРєРѕ РІРЅСѓС‚СЂРё Р°РІС‚Рѕ)")
 	  	imgui.EndChild()
         imgui.SetCursorPos(imgui.ImVec2(512, 82))
-		imgui.BeginChild("##середина_верх_правый", imgui.ImVec2(178, 120), true, imgui.WindowFlags.NoScrollbar)
+		imgui.BeginChild("##СЃРµСЂРµРґРёРЅР°_РІРµСЂС…_РїСЂР°РІС‹Р№", imgui.ImVec2(178, 120), true, imgui.WindowFlags.NoScrollbar)
 				if aut.v then
 					imgui.Checkbox(u8"AntiAFK", lafk)
 					imgui.SameLine()
-					imgui.TextQuestion(u8"При двойном нажатии на LA активируется AntiAFK")
+					imgui.TextQuestion(u8"РџСЂРё РґРІРѕР№РЅРѕРј РЅР°Р¶Р°С‚РёРё РЅР° LA Р°РєС‚РёРІРёСЂСѓРµС‚СЃСЏ AntiAFK")
 					imgui.Checkbox(u8"AntiCarSkill", cskill)
 					imgui.SameLine()
-					imgui.TextQuestion(u8"При двойном нажатии CK откроется меню с активацией AntiCarSkill")
+					imgui.TextQuestion(u8"РџСЂРё РґРІРѕР№РЅРѕРј РЅР°Р¶Р°С‚РёРё CK РѕС‚РєСЂРѕРµС‚СЃСЏ РјРµРЅСЋ СЃ Р°РєС‚РёРІР°С†РёРµР№ AntiCarSkill")
 				else
-				    imgui.LockedParam(u8"Активируйте спорные\n           функции## Блок_Скипы", imgui.ImVec2(158, 60))
+				    imgui.LockedParam(u8"РђРєС‚РёРІРёСЂСѓР№С‚Рµ СЃРїРѕСЂРЅС‹Рµ\n           С„СѓРЅРєС†РёРё## Р‘Р»РѕРє_РЎРєРёРїС‹", imgui.ImVec2(158, 60))
 				end
-				imgui.Checkbox(u8"Закрытие орг т/с", olock)
+				imgui.Checkbox(u8"Р—Р°РєСЂС‹С‚РёРµ РѕСЂРі С‚/СЃ", olock)
 				imgui.SameLine()
-				imgui.TextQuestion(u8"При сочитании клавиш OL вы откроете/закроете организационный транспорт")
+				imgui.TextQuestion(u8"РџСЂРё СЃРѕС‡РёС‚Р°РЅРёРё РєР»Р°РІРёС€ OL РІС‹ РѕС‚РєСЂРѕРµС‚Рµ/Р·Р°РєСЂРѕРµС‚Рµ РѕСЂРіР°РЅРёР·Р°С†РёРѕРЅРЅС‹Р№ С‚СЂР°РЅСЃРїРѕСЂС‚")
 	  	imgui.EndChild()
 		imgui.SetCursorPos(imgui.ImVec2(700, 277))
-		imgui.BeginChild("##правый_средний", imgui.ImVec2(365, 150), true, ImGuiWindowFlags_AlwaysVerticalScrollbar)
-				imgui.Checkbox(u8"Переводить секунды в минуты в деморгане",dmg)
+		imgui.BeginChild("##РїСЂР°РІС‹Р№_СЃСЂРµРґРЅРёР№", imgui.ImVec2(365, 150), true, ImGuiWindowFlags_AlwaysVerticalScrollbar)
+				imgui.Checkbox(u8"РџРµСЂРµРІРѕРґРёС‚СЊ СЃРµРєСѓРЅРґС‹ РІ РјРёРЅСѓС‚С‹ РІ РґРµРјРѕСЂРіР°РЅРµ",dmg)
 				imgui.SameLine()
-				imgui.TextQuestion(u8"Вместо секунд теперь в деморгане будут показыватся минуты")
-				imgui.Checkbox(u8"Спавн транспорта на клавишу",spawncara)
+				imgui.TextQuestion(u8"Р’РјРµСЃС‚Рѕ СЃРµРєСѓРЅРґ С‚РµРїРµСЂСЊ РІ РґРµРјРѕСЂРіР°РЅРµ Р±СѓРґСѓС‚ РїРѕРєР°Р·С‹РІР°С‚СЃСЏ РјРёРЅСѓС‚С‹")
+				imgui.Checkbox(u8"РЎРїР°РІРЅ С‚СЂР°РЅСЃРїРѕСЂС‚Р° РЅР° РєР»Р°РІРёС€Сѓ",spawncara)
 				imgui.SameLine()
-				imgui.TextQuestion(u8"При нажатии колесика мыши будет спавнится авто в котором вы сидите (нужно иметь титан випку)")
-				imgui.Checkbox(u8"Быстрый репорт", fastrep)
+				imgui.TextQuestion(u8"РџСЂРё РЅР°Р¶Р°С‚РёРё РєРѕР»РµСЃРёРєР° РјС‹С€Рё Р±СѓРґРµС‚ СЃРїР°РІРЅРёС‚СЃСЏ Р°РІС‚Рѕ РІ РєРѕС‚РѕСЂРѕРј РІС‹ СЃРёРґРёС‚Рµ (РЅСѓР¶РЅРѕ РёРјРµС‚СЊ С‚РёС‚Р°РЅ РІРёРїРєСѓ)")
+				imgui.Checkbox(u8"Р‘С‹СЃС‚СЂС‹Р№ СЂРµРїРѕСЂС‚", fastrep)
 				imgui.SameLine()
-				imgui.TextQuestion(u8'Быстро отправляет ваш репорт без вывода диалога\nПример: "/rep АБ разносят!!!"')
-				imgui.Checkbox(u8"Счетчик денег в налоговой",nalog)
+				imgui.TextQuestion(u8'Р‘С‹СЃС‚СЂРѕ РѕС‚РїСЂР°РІР»СЏРµС‚ РІР°С€ СЂРµРїРѕСЂС‚ Р±РµР· РІС‹РІРѕРґР° РґРёР°Р»РѕРіР°\nРџСЂРёРјРµСЂ: "/rep РђР‘ СЂР°Р·РЅРѕСЃСЏС‚!!!"')
+				imgui.Checkbox(u8"РЎС‡РµС‚С‡РёРє РґРµРЅРµРі РІ РЅР°Р»РѕРіРѕРІРѕР№",nalog)
 		        imgui.SameLine()
-		        imgui.TextQuestion(u8"Считает сколько вы получили уже денег работая в налоговой")
-				imgui.Checkbox(u8"Налоговая без диалога", nalogi)
+		        imgui.TextQuestion(u8"РЎС‡РёС‚Р°РµС‚ СЃРєРѕР»СЊРєРѕ РІС‹ РїРѕР»СѓС‡РёР»Рё СѓР¶Рµ РґРµРЅРµРі СЂР°Р±РѕС‚Р°СЏ РІ РЅР°Р»РѕРіРѕРІРѕР№")
+				imgui.Checkbox(u8"РќР°Р»РѕРіРѕРІР°СЏ Р±РµР· РґРёР°Р»РѕРіР°", nalogi)
 				imgui.SameLine()
-				imgui.TextQuestion(u8"Данная функция заменяет диалог о получении чека за налоги сообщением в чат")
+				imgui.TextQuestion(u8"Р”Р°РЅРЅР°СЏ С„СѓРЅРєС†РёСЏ Р·Р°РјРµРЅСЏРµС‚ РґРёР°Р»РѕРі Рѕ РїРѕР»СѓС‡РµРЅРёРё С‡РµРєР° Р·Р° РЅР°Р»РѕРіРё СЃРѕРѕР±С‰РµРЅРёРµРј РІ С‡Р°С‚")
 				--if imgui.Combo(u8'ComboBox Test', selected, KeyB, 4) then
-                   -- sampAddChatMessage('Выбрано: '..selected.v,-1)
+                   -- sampAddChatMessage('Р’С‹Р±СЂР°РЅРѕ: '..selected.v,-1)
 				--end
                 imgui.NewLine()
 				if aut.v then
 				 imgui.NewLine()
 				 imgui.PushStyleColor(imgui.Col.Header, imgui.ImVec4(1.00, 0.50, 0.00, 1.00))	
-				 if imgui.CollapsingHeader(u8"Дополнительно:") then
+				 if imgui.CollapsingHeader(u8"Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅРѕ:") then
 				 imgui.Checkbox(u8"",aeda)
-				 imgui.TextColored(imgui.ImVec4(1.0, 0.5, 0.0, 1.0), u8'Автоеда (Оленина)', imgui.SameLine())
+				 imgui.TextColored(imgui.ImVec4(1.0, 0.5, 0.0, 1.0), u8'РђРІС‚РѕРµРґР° (РћР»РµРЅРёРЅР°)', imgui.SameLine())
 				 imgui.SameLine()
-				 imgui.TextQuestion(u8"При появлении надписи You are very hungry автоматически съдает одну оленину.\nПримечание: Следите за кол-вом оленины в инвентаре! (Расход примерно 1шт/3часа)")
+				 imgui.TextQuestion(u8"РџСЂРё РїРѕСЏРІР»РµРЅРёРё РЅР°РґРїРёСЃРё You are very hungry Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРё СЃСЉРґР°РµС‚ РѕРґРЅСѓ РѕР»РµРЅРёРЅСѓ.\nРџСЂРёРјРµС‡Р°РЅРёРµ: РЎР»РµРґРёС‚Рµ Р·Р° РєРѕР»-РІРѕРј РѕР»РµРЅРёРЅС‹ РІ РёРЅРІРµРЅС‚Р°СЂРµ! (Р Р°СЃС…РѕРґ РїСЂРёРјРµСЂРЅРѕ 1С€С‚/3С‡Р°СЃР°)")
 		         end
 				 imgui.PopStyleColor()
 				end
 		imgui.EndChild()
         imgui.SetCursorPos(imgui.ImVec2(700, 436))
-        imgui.BeginChild("##правый_низ", imgui.ImVec2(365, 50), true, imgui.WindowFlags.NoScrollbar)
+        imgui.BeginChild("##РїСЂР°РІС‹Р№_РЅРёР·", imgui.ImVec2(365, 50), true, imgui.WindowFlags.NoScrollbar)
 				if imgui.ToggleButton(u8"", autinfo) then
 				    if not aut.v then
 					    alert_window_state.v = true
@@ -624,12 +621,12 @@ imgui.ShowCursor = main_window_state.v
 					    aut.v = false
                     end					
 				end
-				imgui.TextColored(imgui.ImVec4(1.0, 0.5, 0.0, 1.0), u8'Активация спорных функций', imgui.SameLine(55))
+				imgui.TextColored(imgui.ImVec4(1.0, 0.5, 0.0, 1.0), u8'РђРєС‚РёРІР°С†РёСЏ СЃРїРѕСЂРЅС‹С… С„СѓРЅРєС†РёР№', imgui.SameLine(55))
 				imgui.SameLine()
-				imgui.TextQuestion(u8"Включает функции, которые могут быть запрещены правилами вашего сервера.")
+				imgui.TextQuestion(u8"Р’РєР»СЋС‡Р°РµС‚ С„СѓРЅРєС†РёРё, РєРѕС‚РѕСЂС‹Рµ РјРѕРіСѓС‚ Р±С‹С‚СЊ Р·Р°РїСЂРµС‰РµРЅС‹ РїСЂР°РІРёР»Р°РјРё РІР°С€РµРіРѕ СЃРµСЂРІРµСЂР°.")
         imgui.EndChild()
 		imgui.SetCursorPos(imgui.ImVec2(700, 495))
-		    	if imgui.Button(u8"Очистить чат", imgui.ImVec2(365,28)) then
+		    	if imgui.Button(u8"РћС‡РёСЃС‚РёС‚СЊ С‡Р°С‚", imgui.ImVec2(365,28)) then
 		    		sampAddChatMessage(" ", -1)
 					sampAddChatMessage(" ", -1)
 					sampAddChatMessage(" ", -1)
@@ -644,15 +641,15 @@ imgui.ShowCursor = main_window_state.v
 					sampAddChatMessage(" ", -1)
 					sampAddChatMessage(" ", -1)
 					sampAddChatMessage(" ", -1)
-					sampAddChatMessage("Чат был очищен {00ff00}успешно{ffffff}!", -1)
+					sampAddChatMessage("Р§Р°С‚ Р±С‹Р» РѕС‡РёС‰РµРЅ {00ff00}СѓСЃРїРµС€РЅРѕ{ffffff}!", -1)
 					
 				end
 		imgui.SetCursorPos(imgui.ImVec2(170, 466))
-		    	if imgui.Button(u8"Перезагрузить скрипт", imgui.ImVec2(145,58)) then
+		    	if imgui.Button(u8"РџРµСЂРµР·Р°РіСЂСѓР·РёС‚СЊ СЃРєСЂРёРїС‚", imgui.ImVec2(145,58)) then
 		    		thisScript():reload()
 				end
 				
-				--[Вызов функций новых интерфейсов]
+				--[Р’С‹Р·РѕРІ С„СѓРЅРєС†РёР№ РЅРѕРІС‹С… РёРЅС‚РµСЂС„РµР№СЃРѕРІ]
 				newinterface()
 	    	    centerinterface()
 				--
@@ -676,14 +673,14 @@ imgui.ShowCursor = main_window_state.v
 	blockbutton_info = string.format("%.0f", blockbutton_timer - os.clock())
 		imgui.SetNextWindowSize(imgui.ImVec2(400, 260), imgui.Cond.FirstUseEver)
 		imgui.SetNextWindowPos(imgui.ImVec2(ScreenX / 2 , ScreenY / 2), imgui.Cond.FirsUseEver, imgui.ImVec2(0.5, 0.5))
-		imgui.Begin(u8'                                           ВНИМАНИЕ!', nil, imgui.WindowFlags.NoResize + imgui.WindowFlags.NoCollapse + imgui.WindowFlags.NoScrollbar)
-		imgui.BeginChild("##Алерт", imgui.ImVec2(370, 170), true, imgui.WindowFlags.NoScrollbar)
-			imgui.CenterText(u8'Включая данную функцию вы можете')
-			imgui.CenterText(u8'нарушить правила конкретно вашего сервера,')
-			imgui.CenterText(u8'что может привести к блокировке!')
+		imgui.Begin(u8'                                           Р’РќРРњРђРќРР•!', nil, imgui.WindowFlags.NoResize + imgui.WindowFlags.NoCollapse + imgui.WindowFlags.NoScrollbar)
+		imgui.BeginChild("##РђР»РµСЂС‚", imgui.ImVec2(370, 170), true, imgui.WindowFlags.NoScrollbar)
+			imgui.CenterText(u8'Р’РєР»СЋС‡Р°СЏ РґР°РЅРЅСѓСЋ С„СѓРЅРєС†РёСЋ РІС‹ РјРѕР¶РµС‚Рµ')
+			imgui.CenterText(u8'РЅР°СЂСѓС€РёС‚СЊ РїСЂР°РІРёР»Р° РєРѕРЅРєСЂРµС‚РЅРѕ РІР°С€РµРіРѕ СЃРµСЂРІРµСЂР°,')
+			imgui.CenterText(u8'С‡С‚Рѕ РјРѕР¶РµС‚ РїСЂРёРІРµСЃС‚Рё Рє Р±Р»РѕРєРёСЂРѕРІРєРµ!')
 			imgui.NewLine()
-			imgui.CenterText(u8'Перед активацией ознакомьтесь с')
-			imgui.CenterText(u8'правилами вашего сервера!')
+			imgui.CenterText(u8'РџРµСЂРµРґ Р°РєС‚РёРІР°С†РёРµР№ РѕР·РЅР°РєРѕРјСЊС‚РµСЃСЊ СЃ')
+			imgui.CenterText(u8'РїСЂР°РІРёР»Р°РјРё РІР°С€РµРіРѕ СЃРµСЂРІРµСЂР°!')
         imgui.EndChild()
 		imgui.NewLine()
 		imgui.SameLine(43)
@@ -691,20 +688,20 @@ imgui.ShowCursor = main_window_state.v
 			imgui.PushStyleColor(imgui.Col.Button, imgui.ImVec4(0.60, 0.60, 0.60, 0.65))
 			imgui.PushStyleColor(imgui.Col.ButtonActive, imgui.ImVec4(0.60, 0.60, 0.60, 0.65))
 			imgui.PushStyleColor(imgui.Col.ButtonHovered, imgui.ImVec4(0.60, 0.60, 0.60, 0.65))		    
-			if imgui.Button(u8'Подтвердить ('..blockbutton_info..')', imgui.ImVec2(150, 30)) then
+			if imgui.Button(u8'РџРѕРґС‚РІРµСЂРґРёС‚СЊ ('..blockbutton_info..')', imgui.ImVec2(150, 30)) then
 			end
             imgui.PopStyleColor()
             imgui.PopStyleColor()			
             imgui.PopStyleColor()		    
 		else
-			if imgui.Button(u8'Подтвердить', imgui.ImVec2(150, 30)) then
+			if imgui.Button(u8'РџРѕРґС‚РІРµСЂРґРёС‚СЊ', imgui.ImVec2(150, 30)) then
 				black_window_state.v = false
 				alert_window_state.v = false
 				aut.v = true
 			end
 		end
         imgui.SameLine(205)
-        if imgui.Button(u8'Отклонить', imgui.ImVec2(150, 30)) then
+        if imgui.Button(u8'РћС‚РєР»РѕРЅРёС‚СЊ', imgui.ImVec2(150, 30)) then
 			black_window_state.v = false
 			alert_window_state.v = false
 			aut.v = false
@@ -715,32 +712,32 @@ end
 
 function newinterface()
 			imgui.SetCursorPos(imgui.ImVec2(700, 82))
-			    imgui.BeginChild("##правый_верх_вкладки", imgui.ImVec2(365, 50), true, imgui.WindowFlags.NoScrollbar)
+			    imgui.BeginChild("##РїСЂР°РІС‹Р№_РІРµСЂС…_РІРєР»Р°РґРєРё", imgui.ImVec2(365, 50), true, imgui.WindowFlags.NoScrollbar)
 					if imgui.ButtonActivated(tab2=="one", u8"AutoAD## Tab2 1", imgui.ImVec2(103, 25)) then tab2 = "one" end imgui.SameLine()
             		if imgui.ButtonActivated(tab2=="two", u8"Family Helper## Tab2 2", imgui.ImVec2(104, 25)) then tab2 = "two" end imgui.SameLine()
-					if imgui.ButtonActivated(tab2=="three", u8"Отображение## Tab2 3", imgui.ImVec2(103, 25)) then tab2 = "three" end
+					if imgui.ButtonActivated(tab2=="three", u8"РћС‚РѕР±СЂР°Р¶РµРЅРёРµ## Tab2 3", imgui.ImVec2(103, 25)) then tab2 = "three" end
 				imgui.EndChild()
 				imgui.PushStyleColor(imgui.Col.Border, imgui.ImVec4(0.28, 0.56, 1.00, 1.00))
 				imgui.SetCursorPos(imgui.ImVec2(700, 116))
-			    imgui.BeginChild("##правый_верх_окно", imgui.ImVec2(365, 151), true, ImGuiWindowFlags_AlwaysVerticalScrollbar)
+			    imgui.BeginChild("##РїСЂР°РІС‹Р№_РІРµСЂС…_РѕРєРЅРѕ", imgui.ImVec2(365, 151), true, ImGuiWindowFlags_AlwaysVerticalScrollbar)
 				if tab2 == "one" then
 			   		imgui.SetCursorPos(imgui.ImVec2(15, 15))
-                        if imgui.ButtonActivated(autoad.v==false, u8"ВЫКЛ## Autoad 1", imgui.ImVec2(57, 25)) then autoad.v = false end imgui.SameLine()
+                        if imgui.ButtonActivated(autoad.v==false, u8"Р’Р«РљР›## Autoad 1", imgui.ImVec2(57, 25)) then autoad.v = false end imgui.SameLine()
 						imgui.SetCursorPos(imgui.ImVec2(62, 15))
-					    if imgui.ButtonActivated(autoad.v==true, u8"ВКЛ## Autoad 2", imgui.ImVec2(57, 25)) then autoad.v = true end imgui.SameLine()
-						imgui.Text(u8'Авто Объявление')
+					    if imgui.ButtonActivated(autoad.v==true, u8"Р’РљР›## Autoad 2", imgui.ImVec2(57, 25)) then autoad.v = true end imgui.SameLine()
+						imgui.Text(u8'РђРІС‚Рѕ РћР±СЉСЏРІР»РµРЅРёРµ')
 						imgui.SameLine()
-				        imgui.TextQuestion(u8"Автоматическая отправка объявления без диалога с заранее выбранными настройками")
+				        imgui.TextQuestion(u8"РђРІС‚РѕРјР°С‚РёС‡РµСЃРєР°СЏ РѕС‚РїСЂР°РІРєР° РѕР±СЉСЏРІР»РµРЅРёСЏ Р±РµР· РґРёР°Р»РѕРіР° СЃ Р·Р°СЂР°РЅРµРµ РІС‹Р±СЂР°РЅРЅС‹РјРё РЅР°СЃС‚СЂРѕР№РєР°РјРё")
 						imgui.SetCursorPos(imgui.ImVec2(15, 55))
 						if autoad.v then
-						    if imgui.CollapsingHeader(u8"Настройки Авто Объявления", true, imgui.TreeNodeFlags.DefaultOpen) then
+						    if imgui.CollapsingHeader(u8"РќР°СЃС‚СЂРѕР№РєРё РђРІС‚Рѕ РћР±СЉСЏРІР»РµРЅРёСЏ", true, imgui.TreeNodeFlags.DefaultOpen) then
 							    imgui.SetCursorPos(imgui.ImVec2(175, 95))
-								imgui.Text(u8'- Тип')
+								imgui.Text(u8'- РўРёРї')
 						        imgui.SameLine()
-								imgui.TextQuestion(u8"Выберите тип объявления")
+								imgui.TextQuestion(u8"Р’С‹Р±РµСЂРёС‚Рµ С‚РёРї РѕР±СЉСЏРІР»РµРЅРёСЏ")
 								imgui.SameLine()
 								imgui.SetCursorPos(imgui.ImVec2(15, 91))
-				                if imgui.ButtonActivated(autoad_id_type.v=="1", u8"Обычное## Autoad_id_type 1", imgui.ImVec2(68, 25)) then autoad_id_type.v = "1" end imgui.SameLine()
+				                if imgui.ButtonActivated(autoad_id_type.v=="1", u8"РћР±С‹С‡РЅРѕРµ## Autoad_id_type 1", imgui.ImVec2(68, 25)) then autoad_id_type.v = "1" end imgui.SameLine()
 								if imgui.ButtonActivated(autoad_id_type.v=="2", u8"VIP## Autoad_id_type 2", imgui.ImVec2(68, 25)) then autoad_id_type.v = "2" end
 							end
 						else
@@ -748,33 +745,33 @@ function newinterface()
 						end
 				end
 				if tab2 == "two" then
-					if imgui.CollapsingHeader(u8"Настройки для FAMILY Helper'a:", true, imgui.TreeNodeFlags.DefaultOpen) then
-				 		imgui.Checkbox(u8"Запись имен принятых в текстовик", famnames)
+					if imgui.CollapsingHeader(u8"РќР°СЃС‚СЂРѕР№РєРё РґР»СЏ FAMILY Helper'a:", true, imgui.TreeNodeFlags.DefaultOpen) then
+				 		imgui.Checkbox(u8"Р—Р°РїРёСЃСЊ РёРјРµРЅ РїСЂРёРЅСЏС‚С‹С… РІ С‚РµРєСЃС‚РѕРІРёРє", famnames)
                  		imgui.SameLine()
-				 		imgui.TextQuestion(u8"После принятия игрока в семью его ник и время записываются в FamInvites.txt в папке moonloader")
-	  	         		imgui.Checkbox(u8"Инвайт ближайшего игрока", invf)
+				 		imgui.TextQuestion(u8"РџРѕСЃР»Рµ РїСЂРёРЅСЏС‚РёСЏ РёРіСЂРѕРєР° РІ СЃРµРјСЊСЋ РµРіРѕ РЅРёРє Рё РІСЂРµРјСЏ Р·Р°РїРёСЃС‹РІР°СЋС‚СЃСЏ РІ FamInvites.txt РІ РїР°РїРєРµ moonloader")
+	  	         		imgui.Checkbox(u8"РРЅРІР°Р№С‚ Р±Р»РёР¶Р°Р№С€РµРіРѕ РёРіСЂРѕРєР°", invf)
 				 		imgui.SameLine()
-				 		imgui.TextQuestion(u8'При нажатии клавиш ALT + 3 вы предложите вступить в семью ближайшему игроку')
-				 		imgui.Checkbox(u8"Проверка VIP - Статуса", vipcheck)
+				 		imgui.TextQuestion(u8'РџСЂРё РЅР°Р¶Р°С‚РёРё РєР»Р°РІРёС€ ALT + 3 РІС‹ РїСЂРµРґР»РѕР¶РёС‚Рµ РІСЃС‚СѓРїРёС‚СЊ РІ СЃРµРјСЊСЋ Р±Р»РёР¶Р°Р№С€РµРјСѓ РёРіСЂРѕРєСѓ')
+				 		imgui.Checkbox(u8"РџСЂРѕРІРµСЂРєР° VIP - РЎС‚Р°С‚СѓСЃР°", vipcheck)
 				 		imgui.SameLine()
-				 		imgui.TextQuestion(u8'При введении команды "/vip (id)" вы проверите наличие VIP у игрока.')
+				 		imgui.TextQuestion(u8'РџСЂРё РІРІРµРґРµРЅРёРё РєРѕРјР°РЅРґС‹ "/vip (id)" РІС‹ РїСЂРѕРІРµСЂРёС‚Рµ РЅР°Р»РёС‡РёРµ VIP Сѓ РёРіСЂРѕРєР°.')
 					end
 				end
 				if tab2 == "three" then
 					if binder.v then
 					--[Binder Preset Info]
-						imgui.Checkbox(u8"Пресет биндера",infotextb)
+						imgui.Checkbox(u8"РџСЂРµСЃРµС‚ Р±РёРЅРґРµСЂР°",infotextb)
 						imgui.SameLine()
-						imgui.TextQuestion(u8"При включении появится отображение текущего выбранного пресета биндера.")			         
+						imgui.TextQuestion(u8"РџСЂРё РІРєР»СЋС‡РµРЅРёРё РїРѕСЏРІРёС‚СЃСЏ РѕС‚РѕР±СЂР°Р¶РµРЅРёРµ С‚РµРєСѓС‰РµРіРѕ РІС‹Р±СЂР°РЅРЅРѕРіРѕ РїСЂРµСЃРµС‚Р° Р±РёРЅРґРµСЂР°.")			         
 						if infotextb.v then
 						imgui.SameLine()				
-							if imgui.Button(u8"Изменить положение", imgui.ImVec2(163, 25)) then
+							if imgui.Button(u8"РР·РјРµРЅРёС‚СЊ РїРѕР»РѕР¶РµРЅРёРµ", imgui.ImVec2(163, 25)) then
 								checkpos = true
 								main_window_state.v = false
 							end
 						end
 					else
-						imgui.LockedParam(u8"Включите биндер для открытия## Блок1", imgui.ImVec2(345, 32))
+						imgui.LockedParam(u8"Р’РєР»СЋС‡РёС‚Рµ Р±РёРЅРґРµСЂ РґР»СЏ РѕС‚РєСЂС‹С‚РёСЏ## Р‘Р»РѕРє1", imgui.ImVec2(345, 32))
 					end
 					
 					--[VIP RESEND]
@@ -785,72 +782,37 @@ function newinterface()
 					imgui.TextColored(imgui.ImVec4(0.20, 0.25, 0.29, 1.00), u8'byCosmo')
 					imgui.SameLine()
 					imgui.SetCursorPos(imgui.ImVec2(161, 50))
-					imgui.TextQuestion(u8"Скрипт который упросит отправку сообщений в VIP-чат\nВам не придётся тысячу раз пытаться отправить своё сообщение из-за КД в 3 секунды,\nотошлите сообщение в /vr один раз и сообщение будет в очереди на отправку.")
+					imgui.TextQuestion(u8"РЎРєСЂРёРїС‚ РєРѕС‚РѕСЂС‹Р№ СѓРїСЂРѕСЃРёС‚ РѕС‚РїСЂР°РІРєСѓ СЃРѕРѕР±С‰РµРЅРёР№ РІ VIP-С‡Р°С‚\nР’Р°Рј РЅРµ РїСЂРёРґС‘С‚СЃСЏ С‚С‹СЃСЏС‡Сѓ СЂР°Р· РїС‹С‚Р°С‚СЊСЃСЏ РѕС‚РїСЂР°РІРёС‚СЊ СЃРІРѕС‘ СЃРѕРѕР±С‰РµРЅРёРµ РёР·-Р·Р° РљР” РІ 3 СЃРµРєСѓРЅРґС‹,\nРѕС‚РѕС€Р»РёС‚Рµ СЃРѕРѕР±С‰РµРЅРёРµ РІ /vr РѕРґРёРЅ СЂР°Р· Рё СЃРѕРѕР±С‰РµРЅРёРµ Р±СѓРґРµС‚ РІ РѕС‡РµСЂРµРґРё РЅР° РѕС‚РїСЂР°РІРєСѓ.")
 					if vip_resend.v then
 					imgui.SameLine()
 					imgui.SetCursorPos(imgui.ImVec2(178, 50))
-						if imgui.Button(u8"Положение", imgui.ImVec2(80, 25)) then
+						if imgui.Button(u8"РџРѕР»РѕР¶РµРЅРёРµ", imgui.ImVec2(80, 25)) then
 							checkpos_vr = true
 							main_window_state.v = false
 						end
 						imgui.SameLine(262)
-						if imgui.Button(u8"Сброс", imgui.ImVec2(80, 25)) then
+						if imgui.Button(u8"РЎР±СЂРѕСЃ", imgui.ImVec2(80, 25)) then
 							checkpos_vr_default = true
 						end
 					end
 				   
-					--[AntiCarSkill: Команда]
-					function onSendRpc(id, bs)
-						if id == 50 then
-							local cmd_len = raknetBitStreamReadInt32(bs)
-							local cmd_text = raknetBitStreamReadString(bs, cmd_len)
-							if cmd_text == '/anticarskill' then
-								callDialog()
-								return false
-							end
-						elseif id == 106 and acssettings.anticarskill then
-							return false
-						end
-					end
-
-					function callDialog()
-						ini.main.carskill_speed = acssettings.carskill_speed
-						ini.main.anticarskill = acssettings.anticarskill
-						inicfg.save(ini, directIni)
-						sampShowDialog(812, 'AntiCarSkill by {ff004d}chapo', 'Блокировать изменение скорости: '..(acssettings.carskill_speed and '{64bf43}включено' or '{ff004d}выключено')..'\nБлокировать падение карскилла: '..(settings.anticarskill and '{64bf43}включено' or '{ff004d}выключено'), 'Выбрать', 'Закрыть', 4)
-					end
-
-					function onReceiveRpc(id, bs)
-						--INCOMING_RPCS[RPC.SETVEHICLEVELOCITY]         = {'onSetVehicleVelocity', {turn = 'bool8'}, {velocity = 'vector3d'}}
-						if id == 91 and acssettings.carskill_speed then
-							local MINIMUM_VALUE = 0.05
-							local turn = raknetBitStreamReadBool(bs)
-							local x = raknetBitStreamReadFloat(bs)
-							local y = raknetBitStreamReadFloat(bs)
-							local z = raknetBitStreamReadFloat(bs)
-							--if x < MINIMUM_VALUE or y < MINIMUM_VALUE or z < MINIMUM_VALUE then 
-								return false 
-							--end
-						end
-					end
-
-					--[Toch Info]
+				   --[Toch Info]
 					if toch.v == "active" and aut.v then
-						imgui.Checkbox(u8"Интерфейс Автозаточки",infotexttoch)
+						imgui.Checkbox(u8"РРЅС‚РµСЂС„РµР№СЃ РђРІС‚РѕР·Р°С‚РѕС‡РєРё",infotexttoch)
 						imgui.SameLine()
-						imgui.TextQuestion(u8"Включает интерфейс с информацией об автозаточке при открытии меню заточки.")
+						imgui.TextQuestion(u8"Р’РєР»СЋС‡Р°РµС‚ РёРЅС‚РµСЂС„РµР№СЃ СЃ РёРЅС„РѕСЂРјР°С†РёРµР№ РѕР± Р°РІС‚РѕР·Р°С‚РѕС‡РєРµ РїСЂРё РѕС‚РєСЂС‹С‚РёРё РјРµРЅСЋ Р·Р°С‚РѕС‡РєРё.")
 					else
-						imgui.LockedParam(u8"Включите Автозаточку для открытия## Блок2", imgui.ImVec2(345, 32))
+						imgui.LockedParam(u8"Р’РєР»СЋС‡РёС‚Рµ РђРІС‚РѕР·Р°С‚РѕС‡РєСѓ РґР»СЏ РѕС‚РєСЂС‹С‚РёСЏ## Р‘Р»РѕРє2", imgui.ImVec2(345, 32))
 					end
 					
 					--[SC Time]
-					imgui.Checkbox(u8"Время на экране",sctime_toggle)
+					imgui.Checkbox(u8"Р’СЂРµРјСЏ РЅР° СЌРєСЂР°РЅРµ",sctime_toggle)
 					imgui.SameLine()
-					imgui.TextQuestion(u8"Включает отображение серверного времени на экране.\nДля сихронизации времени позвоните по номеру 060 с телефона.")
+					imgui.TextQuestion(u8"Р’РєР»СЋС‡Р°РµС‚ РѕС‚РѕР±СЂР°Р¶РµРЅРёРµ СЃРµСЂРІРµСЂРЅРѕРіРѕ РІСЂРµРјРµРЅРё РЅР° СЌРєСЂР°РЅРµ.\nР”Р»СЏ СЃРёС…СЂРѕРЅРёР·Р°С†РёРё РІСЂРµРјРµРЅРё РїРѕР·РІРѕРЅРёС‚Рµ РїРѕ РЅРѕРјРµСЂСѓ 060 СЃ С‚РµР»РµС„РѕРЅР°.")
 					if sctime_toggle.v then
 					imgui.SameLine()
 					imgui.SetCursorPos(imgui.ImVec2(178, 115))
-						if imgui.Button(u8"Положение## SC", imgui.ImVec2(80, 25)) then
+						if imgui.Button(u8"РџРѕР»РѕР¶РµРЅРёРµ## SC", imgui.ImVec2(80, 25)) then
 							sctime_position = true
 							main_window_state.v = false
 						end
@@ -858,7 +820,7 @@ function newinterface()
 							imgui.SameLine(262)
 							imgui.PushStyleColor(imgui.Col.ButtonActive, imgui.ImVec4(0.68, 0.30, 0.22, 0.80))
 							imgui.PushStyleColor(imgui.Col.Button, imgui.ImVec4(0.68, 0.30, 0.22, 0.90))							
-							if imgui.Button(u8"ЗАКРЫТЬ## SC", imgui.ImVec2(80, 25)) then
+							if imgui.Button(u8"Р—РђРљР Р«РўР¬## SC", imgui.ImVec2(80, 25)) then
 								sc_settings = false
 							end
                             imgui.PopStyleColor()
@@ -882,7 +844,7 @@ function newinterface()
 									newfont_update()
 								end
 								imgui.SameLine(162)
-								imgui.Text(u8'Тип шрифта')	
+								imgui.Text(u8'РўРёРї С€СЂРёС„С‚Р°')	
 								imgui.SameLine(250)
 								if imgui.Button(u8"<## SC2", imgui.ImVec2(25, 25)) then
 								    newfont_fonttype.v = newfont_fonttype.v - 1
@@ -896,7 +858,7 @@ function newinterface()
 									newfont_update()
 								end  								
 								imgui.PushItemWidth(140)
-                                if imgui.SliderInt(u8"Размер шрифта", newfont_fontsize, 5, 80, "%.0f")	then
+                                if imgui.SliderInt(u8"Р Р°Р·РјРµСЂ С€СЂРёС„С‚Р°", newfont_fontsize, 5, 80, "%.0f")	then
                                     newfont_update()
                                 end	
 								
@@ -907,7 +869,7 @@ function newinterface()
 									newfont_update()
 								end
 								imgui.SameLine()
-                                imgui.Text(u8'Цвет часов')	
+                                imgui.Text(u8'Р¦РІРµС‚ С‡Р°СЃРѕРІ')	
                                 imgui.SameLine(130)								
 								if imgui.Button(u8">## SC33Col", imgui.ImVec2(25, 25)) then
 								    if newfont_color.v < #FColorTable then
@@ -919,7 +881,7 @@ function newinterface()
                             imgui.PopStyleColor()																			
 						else											
 							imgui.SameLine(262)
-							if imgui.Button(u8"Настройки## SC", imgui.ImVec2(80, 25)) then
+							if imgui.Button(u8"РќР°СЃС‚СЂРѕР№РєРё## SC", imgui.ImVec2(80, 25)) then
 								sc_settings = true
 							end	
 					    end
@@ -932,22 +894,22 @@ end
 
 function centerinterface()
 		    imgui.SetCursorPos(imgui.ImVec2(325, 210))
-				imgui.BeginChild("##середина_центр_вкладки", imgui.ImVec2(365, 50), true, imgui.WindowFlags.NoScrollbar)
-					if imgui.ButtonActivated(tab=="one", u8"Пиар## Tab 1", imgui.ImVec2(75, 25)) then tab = "one" end imgui.SameLine()
-            		if imgui.ButtonActivated(tab=="two", u8"Ловля## Tab 2", imgui.ImVec2(75, 25)) then tab = "two" end imgui.SameLine()
-					if imgui.ButtonActivated(tab=="three", u8"Заточка## Tab 3", imgui.ImVec2(75, 25)) then tab = "three" end imgui.SameLine()
-					if imgui.ButtonActivated(tab=="four", u8"Биндер## Tab 4", imgui.ImVec2(75, 25)) then tab = "four" end
+				imgui.BeginChild("##СЃРµСЂРµРґРёРЅР°_С†РµРЅС‚СЂ_РІРєР»Р°РґРєРё", imgui.ImVec2(365, 50), true, imgui.WindowFlags.NoScrollbar)
+					if imgui.ButtonActivated(tab=="one", u8"РџРёР°СЂ## Tab 1", imgui.ImVec2(75, 25)) then tab = "one" end imgui.SameLine()
+            		if imgui.ButtonActivated(tab=="two", u8"Р›РѕРІР»СЏ## Tab 2", imgui.ImVec2(75, 25)) then tab = "two" end imgui.SameLine()
+					if imgui.ButtonActivated(tab=="three", u8"Р—Р°С‚РѕС‡РєР°## Tab 3", imgui.ImVec2(75, 25)) then tab = "three" end imgui.SameLine()
+					if imgui.ButtonActivated(tab=="four", u8"Р‘РёРЅРґРµСЂ## Tab 4", imgui.ImVec2(75, 25)) then tab = "four" end
 				imgui.EndChild()
 		        imgui.PushStyleColor(imgui.Col.Border, imgui.ImVec4(0.28, 0.56, 1.00, 1.00))
 	        imgui.SetCursorPos(imgui.ImVec2(325, 244))
-	  	        imgui.BeginChild("##середина_центр_окно", imgui.ImVec2(365, 280), true, ImGuiWindowFlags_AlwaysVerticalScrollbar)
+	  	        imgui.BeginChild("##СЃРµСЂРµРґРёРЅР°_С†РµРЅС‚СЂ_РѕРєРЅРѕ", imgui.ImVec2(365, 280), true, ImGuiWindowFlags_AlwaysVerticalScrollbar)
 					if tab == "one" then			 
 						if aut.v then
 						    autinfo = imgui.ImBool(true)
 						    if not piarcheck.v then
 			   				    imgui.SetCursorPos(imgui.ImVec2(64, 25))
 			                    imgui.PushStyleColor(imgui.Col.Button, imgui.ImVec4(1.00, 1.00, 1.00, 0.65))
-			                        if imgui.Button(u8"Пиар ВЫКЛЮЧЕН## Unactive", imgui.ImVec2(233, 35)) then 
+			                        if imgui.Button(u8"РџРёР°СЂ Р’Р«РљР›Р®Р§Р•Рќ## Unactive", imgui.ImVec2(233, 35)) then 
 			                            piarbutton = "active" 
 			                            piarcheck.v = true								
 									end
@@ -956,82 +918,82 @@ function centerinterface()
 			                if piarcheck.v then
 			   					imgui.SetCursorPos(imgui.ImVec2(64, 25))
                					imgui.PushStyleColor(imgui.Col.Button, imgui.ImVec4(1.00, 0.50, 0.00, 1.00))			  
-			    					if imgui.Button(u8"Пиар ВКЛЮЧЕН## Active", imgui.ImVec2(233, 35)) then 
+			    					if imgui.Button(u8"РџРёР°СЂ Р’РљР›Р®Р§Р•Рќ## Active", imgui.ImVec2(233, 35)) then 
 			      						piarbutton = "unactive"
 				  						piarcheck.v = false
 									end
 			   					imgui.PopStyleColor()
 			  				end
 				            imgui.SameLine()
-				            imgui.TextQuestion(u8"Включает пиар в /vr и /j чаты.")
-							-- [Настройка автопиара]
+				            imgui.TextQuestion(u8"Р’РєР»СЋС‡Р°РµС‚ РїРёР°СЂ РІ /vr Рё /j С‡Р°С‚С‹.")
+							-- [РќР°СЃС‚СЂРѕР№РєР° Р°РІС‚РѕРїРёР°СЂР°]
 							if piarcheck.v then
 							    imgui.SetCursorPos(imgui.ImVec2(79, 64))
 								imgui.LockedParam(u8"", imgui.ImVec2(213, 25))
 								imgui.SetCursorPos(imgui.ImVec2(87, 65))
-				                imgui.Text(u8"Активация автопиара: /piar")
+				                imgui.Text(u8"РђРєС‚РёРІР°С†РёСЏ Р°РІС‚РѕРїРёР°СЂР°: /piar")
                                 imgui.SameLine()
-				                imgui.TextQuestion(u8"Включает автоотправку сообщений с определенной задержкой")
+				                imgui.TextQuestion(u8"Р’РєР»СЋС‡Р°РµС‚ Р°РІС‚РѕРѕС‚РїСЂР°РІРєСѓ СЃРѕРѕР±С‰РµРЅРёР№ СЃ РѕРїСЂРµРґРµР»РµРЅРЅРѕР№ Р·Р°РґРµСЂР¶РєРѕР№")
 								imgui.NewLine()
-				                imgui.SliderInt(u8"Задержка (С)", slider, 15, 1200, u8"%.0fc")
-				                imgui.NewInputText(u8'Реклама #1', chatsms, 237, u8'Пример: /vr Куплю гараж', 1)
+				                imgui.SliderInt(u8"Р—Р°РґРµСЂР¶РєР° (РЎ)", slider, 15, 1200, u8"%.0fc")
+				                imgui.NewInputText(u8'Р РµРєР»Р°РјР° #1', chatsms, 237, u8'РџСЂРёРјРµСЂ: /vr РљСѓРїР»СЋ РіР°СЂР°Р¶', 1)
 								imgui.NewLine()
-				                imgui.NewInputText(u8'        Реклама #2', famsms, 207, u8'Пример: /ad Продам гараж', 1)
+				                imgui.NewInputText(u8'        Р РµРєР»Р°РјР° #2', famsms, 207, u8'РџСЂРёРјРµСЂ: /ad РџСЂРѕРґР°Рј РіР°СЂР°Р¶', 1)
 				                imgui.SetCursorPos(imgui.ImVec2(228, 195))
 								imgui.Checkbox(u8"                 ", doppiar)
 								imgui.SameLine()
-				                imgui.TextQuestion(u8'Отправка вместе с "Реклама №1" с промежутком в 6 сек')
+				                imgui.TextQuestion(u8'РћС‚РїСЂР°РІРєР° РІРјРµСЃС‚Рµ СЃ "Р РµРєР»Р°РјР° в„–1" СЃ РїСЂРѕРјРµР¶СѓС‚РєРѕРј РІ 6 СЃРµРє')
 								    imgui.SetCursorPos(imgui.ImVec2(15, 240))
                                         if imgui.ButtonActivated(infotextp.v==false, u8"OFF## InfoPiar 1", imgui.ImVec2(51, 25)) then infotextp.v = false end imgui.SameLine()
 						            imgui.SetCursorPos(imgui.ImVec2(55, 240))
 					                    if imgui.ButtonActivated(infotextp.v==true and infotextpdelay.v==false, u8"ON## InfoPiar 2", imgui.ImVec2(51, 25)) then infotextp.v = true infotextpdelay.v = false end imgui.SameLine()
 									imgui.SetCursorPos(imgui.ImVec2(95, 240))	
 									    if imgui.ButtonActivated(infotextp.v==true and infotextpdelay.v==true, u8"ON++## InfoPiar 3", imgui.ImVec2(51, 25)) then infotextp.v = true infotextpdelay.v = true end imgui.SameLine()
-						            imgui.Text(u8'Индикатор')
+						            imgui.Text(u8'РРЅРґРёРєР°С‚РѕСЂ')
 						            imgui.SameLine()
 									imgui.SetCursorPos(imgui.ImVec2(239, 240))
-				                    imgui.TextQuestion(u8"Выводит индикатор работы автопиара на экран.\nСЕРЫЙ индикатор - Автопиар ВЫКЛ\nЗЕЛЕНЫЙ индикатор - Автопиар ВКЛ\n\nON++ Еще выводит таймер до отправки")
+				                    imgui.TextQuestion(u8"Р’С‹РІРѕРґРёС‚ РёРЅРґРёРєР°С‚РѕСЂ СЂР°Р±РѕС‚С‹ Р°РІС‚РѕРїРёР°СЂР° РЅР° СЌРєСЂР°РЅ.\nРЎР•Р Р«Р™ РёРЅРґРёРєР°С‚РѕСЂ - РђРІС‚РѕРїРёР°СЂ Р’Р«РљР›\nР—Р•Р›Р•РќР«Р™ РёРЅРґРёРєР°С‚РѕСЂ - РђРІС‚РѕРїРёР°СЂ Р’РљР›\n\nON++ Р•С‰Рµ РІС‹РІРѕРґРёС‚ С‚Р°Р№РјРµСЂ РґРѕ РѕС‚РїСЂР°РІРєРё")
 									imgui.SameLine()
 									if not infotextb.v or not binder.v then
 									imgui.SetCursorPos(imgui.ImVec2(260, 240))
-				                        if imgui.Button(u8"Положение## Пиар", imgui.ImVec2(77, 25)) then
+				                        if imgui.Button(u8"РџРѕР»РѕР¶РµРЅРёРµ## РџРёР°СЂ", imgui.ImVec2(77, 25)) then
 				                            checkpos = true
 											main_window_state.v = false
 									    end
 									else
-									imgui.TextQuestion(u8'Настройка положения в меню "Отображение" > Положение отображения пресета биндера')
+									imgui.TextQuestion(u8'РќР°СЃС‚СЂРѕР№РєР° РїРѕР»РѕР¶РµРЅРёСЏ РІ РјРµРЅСЋ "РћС‚РѕР±СЂР°Р¶РµРЅРёРµ" > РџРѕР»РѕР¶РµРЅРёРµ РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ РїСЂРµСЃРµС‚Р° Р±РёРЅРґРµСЂР°')
 									end
 							else
-                                imgui.LockedParam(u8"Включите Пиар для открытия настроек## Блок_Пиар_Кнопка", imgui.ImVec2(345, 32))
+                                imgui.LockedParam(u8"Р’РєР»СЋС‡РёС‚Рµ РџРёР°СЂ РґР»СЏ РѕС‚РєСЂС‹С‚РёСЏ РЅР°СЃС‚СЂРѕРµРє## Р‘Р»РѕРє_РџРёР°СЂ_РљРЅРѕРїРєР°", imgui.ImVec2(345, 32))
 				            end
 				        else
 						    autinfo = imgui.ImBool(false)
-				            imgui.LockedParam(u8"Активируйте спорные функции для разблокировки## Блок_Пиар", imgui.ImVec2(345, 60))
+				            imgui.LockedParam(u8"РђРєС‚РёРІРёСЂСѓР№С‚Рµ СЃРїРѕСЂРЅС‹Рµ С„СѓРЅРєС†РёРё РґР»СЏ СЂР°Р·Р±Р»РѕРєРёСЂРѕРІРєРё## Р‘Р»РѕРє_РџРёР°СЂ", imgui.ImVec2(345, 60))
 				        end
 			 		elseif tab == "two" then
 							if aut.v then
-								imgui.Checkbox(u8"Таймер ловли",timer)
+								imgui.Checkbox(u8"РўР°Р№РјРµСЂ Р»РѕРІР»Рё",timer)
 								imgui.SameLine()
-								imgui.TextQuestion(u8"Пишет в чат капчу и время за сколько вы ввели")							
-									  if imgui.CollapsingHeader(u8"Настройки ловли", true, imgui.TreeNodeFlags.DefaultOpen) then
-				  						imgui.Checkbox(u8"Авто закрытие дверей авто", acd)
+								imgui.TextQuestion(u8"РџРёС€РµС‚ РІ С‡Р°С‚ РєР°РїС‡Сѓ Рё РІСЂРµРјСЏ Р·Р° СЃРєРѕР»СЊРєРѕ РІС‹ РІРІРµР»Рё")							
+									  if imgui.CollapsingHeader(u8"РќР°СЃС‚СЂРѕР№РєРё Р»РѕРІР»Рё", true, imgui.TreeNodeFlags.DefaultOpen) then
+				  						imgui.Checkbox(u8"РђРІС‚Рѕ Р·Р°РєСЂС‹С‚РёРµ РґРІРµСЂРµР№ Р°РІС‚Рѕ", acd)
 				  						imgui.SameLine()
-				  						imgui.TextQuestion(u8"Как только скрипт увидит что вы словили авто по госсу он автоматически закроет двери авто")
-				  						imgui.Checkbox(u8"Автоматический спавн кара",asc)
+				  						imgui.TextQuestion(u8"РљР°Рє С‚РѕР»СЊРєРѕ СЃРєСЂРёРїС‚ СѓРІРёРґРёС‚ С‡С‚Рѕ РІС‹ СЃР»РѕРІРёР»Рё Р°РІС‚Рѕ РїРѕ РіРѕСЃСЃСѓ РѕРЅ Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРё Р·Р°РєСЂРѕРµС‚ РґРІРµСЂРё Р°РІС‚Рѕ")
+				  						imgui.Checkbox(u8"РђРІС‚РѕРјР°С‚РёС‡РµСЃРєРёР№ СЃРїР°РІРЅ РєР°СЂР°",asc)
 			    						imgui.SameLine()
-			    						imgui.TextQuestion(u8"После того как вы словите кар, скрипт заспавнит его")
-										imgui.Checkbox(u8"Сообщение после ловли", mbc)
+			    						imgui.TextQuestion(u8"РџРѕСЃР»Рµ С‚РѕРіРѕ РєР°Рє РІС‹ СЃР»РѕРІРёС‚Рµ РєР°СЂ, СЃРєСЂРёРїС‚ Р·Р°СЃРїР°РІРЅРёС‚ РµРіРѕ")
+										imgui.Checkbox(u8"РЎРѕРѕР±С‰РµРЅРёРµ РїРѕСЃР»Рµ Р»РѕРІР»Рё", mbc)
 				  						imgui.SameLine()
-				 						imgui.TextQuestion(u8"Это сообщение отправится после ловли")
-				  						imgui.InputText(u8"Сообщение", smsbc)
-				  						imgui.Checkbox(u8"Авто тайм после ловли", at)
+				 						imgui.TextQuestion(u8"Р­С‚Рѕ СЃРѕРѕР±С‰РµРЅРёРµ РѕС‚РїСЂР°РІРёС‚СЃСЏ РїРѕСЃР»Рµ Р»РѕРІР»Рё")
+				  						imgui.InputText(u8"РЎРѕРѕР±С‰РµРЅРёРµ", smsbc)
+				  						imgui.Checkbox(u8"РђРІС‚Рѕ С‚Р°Р№Рј РїРѕСЃР»Рµ Р»РѕРІР»Рё", at)
 				  						imgui.SameLine()
-				  						imgui.TextQuestion(u8"После удачной ловли скрипт сам пропишет /time с отыгровкой")
+				  						imgui.TextQuestion(u8"РџРѕСЃР»Рµ СѓРґР°С‡РЅРѕР№ Р»РѕРІР»Рё СЃРєСЂРёРїС‚ СЃР°Рј РїСЂРѕРїРёС€РµС‚ /time СЃ РѕС‚С‹РіСЂРѕРІРєРѕР№")
 				 					  end
 							else
-							imgui.LockedParam(u8"Активируйте спорные функции для разблокировки## Блок_Ловля", imgui.ImVec2(345, 60))
+							imgui.LockedParam(u8"РђРєС‚РёРІРёСЂСѓР№С‚Рµ СЃРїРѕСЂРЅС‹Рµ С„СѓРЅРєС†РёРё РґР»СЏ СЂР°Р·Р±Р»РѕРєРёСЂРѕРІРєРё## Р‘Р»РѕРє_Р›РѕРІР»СЏ", imgui.ImVec2(345, 60))
 							end
-					-- [Автозаточка интерфейс]
+					-- [РђРІС‚РѕР·Р°С‚РѕС‡РєР° РёРЅС‚РµСЂС„РµР№СЃ]
 			 		elseif tab == "three" then
 						if aut.v then	
 							imgui.SetCursorPos(imgui.ImVec2(15, 5))
@@ -1039,56 +1001,56 @@ function centerinterface()
 							imgui.SetCursorPos(imgui.ImVec2(105, 5))
 							imgui.LockedParam(u8"", imgui.ImVec2(166, 25))
 							imgui.SetCursorPos(imgui.ImVec2(126, 5))
-							imgui.Text(u8'Активация: /atoch')
+							imgui.Text(u8'РђРєС‚РёРІР°С†РёСЏ: /atoch')
 							if toch.v == "unactive" then
 								imgui.SetCursorPos(imgui.ImVec2(64, 25))
 								imgui.PushStyleColor(imgui.Col.Button, imgui.ImVec4(1.00, 1.00, 1.00, 0.65))
-									if imgui.Button(u8"Автозаточка ВЫКЛЮЧЕНА## ATUnactive", imgui.ImVec2(233, 35)) then 
+									if imgui.Button(u8"РђРІС‚РѕР·Р°С‚РѕС‡РєР° Р’Р«РљР›Р®Р§Р•РќРђ## ATUnactive", imgui.ImVec2(233, 35)) then 
 										toch.v = "active"									                            										
 									end
 								imgui.PopStyleColor()
 							elseif toch.v == "active" then
 								imgui.SetCursorPos(imgui.ImVec2(64, 25))
 								imgui.PushStyleColor(imgui.Col.Button, imgui.ImVec4(1.00, 0.50, 0.00, 1.00))			  
-									if imgui.Button(u8"Автозаточка ВКЛЮЧЕНА## ATActive", imgui.ImVec2(233, 35)) then 
+									if imgui.Button(u8"РђРІС‚РѕР·Р°С‚РѕС‡РєР° Р’РљР›Р®Р§Р•РќРђ## ATActive", imgui.ImVec2(233, 35)) then 
 										toch.v = "unactive"
 									end
 								imgui.PopStyleColor()
 							end
 							if toch.v == "active" then
 								imgui.SameLine()
-								imgui.TextQuestion(u8"Включение автоматической заточки аксессуаров.\nИнструкция:\n1. Выберите, на сколько хотите точить аксессуар\n2. Выберите чем точить\n3. Введите команду /atoch и скрипт сам будет вставлять точилки,\nпока не достигнет требуемой заточки или не кончатся точилки.")
+								imgui.TextQuestion(u8"Р’РєР»СЋС‡РµРЅРёРµ Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРѕР№ Р·Р°С‚РѕС‡РєРё Р°РєСЃРµСЃСЃСѓР°СЂРѕРІ.\nРРЅСЃС‚СЂСѓРєС†РёСЏ:\n1. Р’С‹Р±РµСЂРёС‚Рµ, РЅР° СЃРєРѕР»СЊРєРѕ С…РѕС‚РёС‚Рµ С‚РѕС‡РёС‚СЊ Р°РєСЃРµСЃСЃСѓР°СЂ\n2. Р’С‹Р±РµСЂРёС‚Рµ С‡РµРј С‚РѕС‡РёС‚СЊ\n3. Р’РІРµРґРёС‚Рµ РєРѕРјР°РЅРґСѓ /atoch Рё СЃРєСЂРёРїС‚ СЃР°Рј Р±СѓРґРµС‚ РІСЃС‚Р°РІР»СЏС‚СЊ С‚РѕС‡РёР»РєРё,\nРїРѕРєР° РЅРµ РґРѕСЃС‚РёРіРЅРµС‚ С‚СЂРµР±СѓРµРјРѕР№ Р·Р°С‚РѕС‡РєРё РёР»Рё РЅРµ РєРѕРЅС‡Р°С‚СЃСЏ С‚РѕС‡РёР»РєРё.")
 								imgui.NewLine()
 								imgui.SetCursorPos(imgui.ImVec2(55, 67))
-								imgui.BeginChild("##середина_центр_окно_заточка_1", imgui.ImVec2(250, 75), true, imgui.WindowFlags.NoScrollbar)
+								imgui.BeginChild("##СЃРµСЂРµРґРёРЅР°_С†РµРЅС‚СЂ_РѕРєРЅРѕ_Р·Р°С‚РѕС‡РєР°_1", imgui.ImVec2(250, 75), true, imgui.WindowFlags.NoScrollbar)
 									imgui.SetCursorPos(imgui.ImVec2(38, 10))
-									imgui.Text(u8'Выберите требуемую заточку:')
+									imgui.Text(u8'Р’С‹Р±РµСЂРёС‚Рµ С‚СЂРµР±СѓРµРјСѓСЋ Р·Р°С‚РѕС‡РєСѓ:')
 									imgui.SetCursorPos(imgui.ImVec2(44, 37))
 									imgui.SliderInt(u8"", checked_radio, 1, 12, "+%.0f")
 								imgui.EndChild()
 								imgui.SetCursorPos(imgui.ImVec2(55, 149))
-								imgui.BeginChild("##середина_центр_окно_заточка_2", imgui.ImVec2(250, 75), true, imgui.WindowFlags.NoScrollbar)
+								imgui.BeginChild("##СЃРµСЂРµРґРёРЅР°_С†РµРЅС‚СЂ_РѕРєРЅРѕ_Р·Р°С‚РѕС‡РєР°_2", imgui.ImVec2(250, 75), true, imgui.WindowFlags.NoScrollbar)
 									imgui.SetCursorPos(imgui.ImVec2(61, 10))
-									imgui.Text(u8'Выберите, чем точить:')
+									imgui.Text(u8'Р’С‹Р±РµСЂРёС‚Рµ, С‡РµРј С‚РѕС‡РёС‚СЊ:')
 									imgui.SetCursorPos(imgui.ImVec2(15, 35))
 										imgui.SetCursorPos(imgui.ImVec2(15, 35))
-											if imgui.ButtonActivated(setmodelID==1615, u8"Амулеты## InfoToch 1", imgui.ImVec2(105, 25)) then setmodelID = 1615 end imgui.SameLine()
+											if imgui.ButtonActivated(setmodelID==1615, u8"РђРјСѓР»РµС‚С‹## InfoToch 1", imgui.ImVec2(105, 25)) then setmodelID = 1615 end imgui.SameLine()
 										imgui.SetCursorPos(imgui.ImVec2(130, 35))
-											if imgui.ButtonActivated(setmodelID==16112, u8"Камни## InfoToch 2", imgui.ImVec2(105, 25)) then setmodelID = 16112 end							
+											if imgui.ButtonActivated(setmodelID==16112, u8"РљР°РјРЅРё## InfoToch 2", imgui.ImVec2(105, 25)) then setmodelID = 16112 end							
 								imgui.EndChild()
 								imgui.SetCursorPos(imgui.ImVec2(70, 243))
 									if setmodelID == 16112 then
-										imgui.Text(u8'Поиск Камней АВТОМАТИЧЕСКИЙ')
+										imgui.Text(u8'РџРѕРёСЃРє РљР°РјРЅРµР№ РђР’РўРћРњРђРўРР§Р•РЎРљРР™')
 									else
-										imgui.Text(u8'Поиск Амулетов АВТОМАТИЧЕСКИЙ')
+										imgui.Text(u8'РџРѕРёСЃРє РђРјСѓР»РµС‚РѕРІ РђР’РўРћРњРђРўРР§Р•РЎРљРР™')
 									end
 								imgui.SameLine()
-								imgui.TextQuestion(u8"Поиск будет идти автоматически в вашем инвентаре. Если точилки кончатся, то скрипт еще 15 секунд будет искать их, листая инвентарь.")
+								imgui.TextQuestion(u8"РџРѕРёСЃРє Р±СѓРґРµС‚ РёРґС‚Рё Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРё РІ РІР°С€РµРј РёРЅРІРµРЅС‚Р°СЂРµ. Р•СЃР»Рё С‚РѕС‡РёР»РєРё РєРѕРЅС‡Р°С‚СЃСЏ, С‚Рѕ СЃРєСЂРёРїС‚ РµС‰Рµ 15 СЃРµРєСѓРЅРґ Р±СѓРґРµС‚ РёСЃРєР°С‚СЊ РёС…, Р»РёСЃС‚Р°СЏ РёРЅРІРµРЅС‚Р°СЂСЊ.")
 							else
-								imgui.LockedParam(u8"Активируйте автозаточку для открытия настроек## Блок_Заточка_Кнопка", imgui.ImVec2(345, 32))
+								imgui.LockedParam(u8"РђРєС‚РёРІРёСЂСѓР№С‚Рµ Р°РІС‚РѕР·Р°С‚РѕС‡РєСѓ РґР»СЏ РѕС‚РєСЂС‹С‚РёСЏ РЅР°СЃС‚СЂРѕРµРє## Р‘Р»РѕРє_Р—Р°С‚РѕС‡РєР°_РљРЅРѕРїРєР°", imgui.ImVec2(345, 32))
 							end
 						else
-                            imgui.LockedParam(u8"Активируйте спорные функции для разблокировки## Блок_Заточка", imgui.ImVec2(345, 60))
+                            imgui.LockedParam(u8"РђРєС‚РёРІРёСЂСѓР№С‚Рµ СЃРїРѕСЂРЅС‹Рµ С„СѓРЅРєС†РёРё РґР»СЏ СЂР°Р·Р±Р»РѕРєРёСЂРѕРІРєРё## Р‘Р»РѕРє_Р—Р°С‚РѕС‡РєР°", imgui.ImVec2(345, 60))
 						end
 					elseif tab == "four" then
 					    bindersettings()
@@ -1098,14 +1060,14 @@ function centerinterface()
 end					
 					
 					
-function bindersettings() -- [Биндер интерфейс]					
+function bindersettings() -- [Р‘РёРЅРґРµСЂ РёРЅС‚РµСЂС„РµР№СЃ]					
     imgui.PushStyleColor(imgui.Col.Border, imgui.ImVec4(0.28, 0.56, 1.00, 1.00))
-		imgui.Checkbox(u8"Включить биндер",binder)
+		imgui.Checkbox(u8"Р’РєР»СЋС‡РёС‚СЊ Р±РёРЅРґРµСЂ",binder)
 		imgui.SameLine()
-		imgui.TextQuestion(u8"Включает простейший биндер, который завязан на клавишах NumPad от 0 до 9.")
+		imgui.TextQuestion(u8"Р’РєР»СЋС‡Р°РµС‚ РїСЂРѕСЃС‚РµР№С€РёР№ Р±РёРЅРґРµСЂ, РєРѕС‚РѕСЂС‹Р№ Р·Р°РІСЏР·Р°РЅ РЅР° РєР»Р°РІРёС€Р°С… NumPad РѕС‚ 0 РґРѕ 9.")
 					if binder.v then
 						    imgui.SameLine()
-							imgui.TextWithQuestion(u8'Нажмите для смены раскладки на NumPad или Ctrl (Если у вас нет NumPad клавиш)\n*Примечание: (Ctrl+ -) Это нажатие клавиш Ctrl и клавиши - (минус)',u8'Смена пресета -')
+							imgui.TextWithQuestion(u8'РќР°Р¶РјРёС‚Рµ РґР»СЏ СЃРјРµРЅС‹ СЂР°СЃРєР»Р°РґРєРё РЅР° NumPad РёР»Рё Ctrl (Р•СЃР»Рё Сѓ РІР°СЃ РЅРµС‚ NumPad РєР»Р°РІРёС€)\n*РџСЂРёРјРµС‡Р°РЅРёРµ: (Ctrl+ -) Р­С‚Рѕ РЅР°Р¶Р°С‚РёРµ РєР»Р°РІРёС€ Ctrl Рё РєР»Р°РІРёС€Рё - (РјРёРЅСѓСЃ)',u8'РЎРјРµРЅР° РїСЂРµСЃРµС‚Р° -')
 					        imgui.PushStyleColor(imgui.Col.Button, imgui.ImVec4(0.68, 0.30, 0.22, 0.50))
 							imgui.PushStyleColor(imgui.Col.ButtonActive, imgui.ImVec4(0.68, 0.30, 0.22, 0.30))
 							imgui.PushStyleColor(imgui.Col.ButtonHovered, imgui.ImVec4(0.68, 0.30, 0.22, 0.40))
@@ -1126,15 +1088,15 @@ function bindersettings() -- [Биндер интерфейс]
 							imgui.PushStyleColor(imgui.Col.CheckMark, imgui.ImVec4(0.68, 0.30, 0.22, 1.00))
 							imgui.PushStyleColor(imgui.Col.ButtonActive, imgui.ImVec4(0.68, 0.30, 0.22, 0.80))
 							imgui.PushStyleColor(imgui.Col.ButtonHovered, imgui.ImVec4(0.68, 0.30, 0.22, 0.90))
-								if imgui.ButtonActivated(bindtab.v==1, u8"Пресет 1## BindTab_1", imgui.ImVec2(104, 25)) then 
+								if imgui.ButtonActivated(bindtab.v==1, u8"РџСЂРµСЃРµС‚ 1## BindTab_1", imgui.ImVec2(104, 25)) then 
 					 				bindtab.v = 1
 								end 
 								imgui.SameLine()
-            					if imgui.ButtonActivated(bindtab.v==2, u8"Пресет 2## BindTab_2", imgui.ImVec2(104, 25)) then 
+            					if imgui.ButtonActivated(bindtab.v==2, u8"РџСЂРµСЃРµС‚ 2## BindTab_2", imgui.ImVec2(104, 25)) then 
 									bindtab.v = 2 
 								end 
 								imgui.SameLine()
-								if imgui.ButtonActivated(bindtab.v==3, u8"Пресет 3## BindTab_3", imgui.ImVec2(104, 25)) then 
+								if imgui.ButtonActivated(bindtab.v==3, u8"РџСЂРµСЃРµС‚ 3## BindTab_3", imgui.ImVec2(104, 25)) then 
 					 				bindtab.v = 3 
 								end
 							imgui.PopStyleColor()
@@ -1147,40 +1109,40 @@ function bindersettings() -- [Биндер интерфейс]
 							else
 							    imgui.PushStyleColor(imgui.Col.ChildWindowBg, imgui.ImVec4(0.65, 0.65, 0.65, 1.00))
 							end
-				 			imgui.BeginChild("##середина_центр_окно_биндер", imgui.ImVec2(351, 206), true, ImGuiWindowFlags_AlwaysVerticalScrollbar)
+				 			imgui.BeginChild("##СЃРµСЂРµРґРёРЅР°_С†РµРЅС‚СЂ_РѕРєРЅРѕ_Р±РёРЅРґРµСЂ", imgui.ImVec2(351, 206), true, ImGuiWindowFlags_AlwaysVerticalScrollbar)
 				 			if bindtab.v == 1 then
 					 				binderset1.v = true
 				     				binderset2.v = false
 				     				binderset3.v = false 
                                     for b = 1, 10 do									
-				   					    imgui.NewInputText(''..KeyB[b], bindt[b], 245, u8'Текст бинда', 1)
+				   					    imgui.NewInputText(''..KeyB[b], bindt[b], 245, u8'РўРµРєСЃС‚ Р±РёРЅРґР°', 1)
 			    			        end
 				   			elseif bindtab.v == 2 then
 									binderset1.v = false
 				    				binderset2.v = true
 				    				binderset3.v = false 							
                                     for b = 1, 10 do									
-				   					    imgui.NewInputText(''..KeyB[b], bindt[(10 + b)], 245, u8'Текст бинда', 1)
+				   					    imgui.NewInputText(''..KeyB[b], bindt[(10 + b)], 245, u8'РўРµРєСЃС‚ Р±РёРЅРґР°', 1)
 			    			        end			    			
 				   			elseif bindtab.v == 3 then
 					 				binderset1.v = false
 				     				binderset2.v = false
 				     				binderset3.v = true 							
                                     for b = 1, 10 do									
-				   					    imgui.NewInputText(''..KeyB[b], bindt[(20 + b)], 245, u8'Текст бинда', 1)
+				   					    imgui.NewInputText(''..KeyB[b], bindt[(20 + b)], 245, u8'РўРµРєСЃС‚ Р±РёРЅРґР°', 1)
 			    			        end			    			
 				   			end
 							imgui.EndChild()
 				        imgui.PopStyleColor() 
 						imgui.PopStyleColor() 
 					else
-					imgui.LockedParam(u8"Активируйте биндер для открытия настроек## Блок_Биндер", imgui.ImVec2(345, 60))
+					imgui.LockedParam(u8"РђРєС‚РёРІРёСЂСѓР№С‚Рµ Р±РёРЅРґРµСЂ РґР»СЏ РѕС‚РєСЂС‹С‚РёСЏ РЅР°СЃС‚СЂРѕРµРє## Р‘Р»РѕРє_Р‘РёРЅРґРµСЂ", imgui.ImVec2(345, 60))
 					end	    
     imgui.PopStyleColor()   		
 end
 
--- [Функция сохранения]
-function saverconfigNew() -- Сюда новые переменные
+-- [Р¤СѓРЅРєС†РёСЏ СЃРѕС…СЂР°РЅРµРЅРёСЏ]
+function saverconfigNew() -- РЎСЋРґР° РЅРѕРІС‹Рµ РїРµСЂРµРјРµРЅРЅС‹Рµ
 				mainIni.config.ashar = ashar.v
 				mainIni.config.shar = shar.v
 				mainIni.config.sharkey = sharkey.v
@@ -1233,8 +1195,8 @@ function saverconfigNew() -- Сюда новые переменные
 				mainIni.config.newfont_colorini = newfont_color.v
 end
 
-function saverconfig() -- Переполнены Upvalues!!!
-		   saverconfigNew() -- Загрузка новых переменных
+function saverconfig() -- РџРµСЂРµРїРѕР»РЅРµРЅС‹ Upvalues!!!
+		   saverconfigNew() -- Р—Р°РіСЂСѓР·РєР° РЅРѕРІС‹С… РїРµСЂРµРјРµРЅРЅС‹С…
                 mainIni.config.lic = lic.v
 				mainIni.config.trade = trade.v
 				mainIni.config.tlf = tlf.v
@@ -1251,7 +1213,7 @@ function saverconfig() -- Переполнены Upvalues!!!
 				mainIni.config.scar = scar.v
 				mainIni.config.lafk = lafk.v
 				mainIni.config.cskill = cskill.v
-				mainIni.config.cheeps = cheeps.v
+				mainIni.config.test = test.v
 				mainIni.config.key = key.v
 				mainIni.config.aut = aut.v
 				mainIni.config.abc = abc.v
@@ -1294,17 +1256,16 @@ function saverconfig() -- Переполнены Upvalues!!!
 				mainIni.config.armkey = armkey.v
 				mainIni.config.maskkey = maskkey.v
 				if inicfg.save(mainIni, 'Player ToolsE.ini') then
-				 sampAddChatMessage("{FFD700}[Player Tools {ff0000}(BETA){FFD700}] {56d93f} Настройки успешно сохранены!", -1)
+				 sampAddChatMessage("{FFD700}[Player Tools {ff0000}(BETA){FFD700}] {56d93f} РќР°СЃС‚СЂРѕР№РєРё СѓСЃРїРµС€РЅРѕ СЃРѕС…СЂР°РЅРµРЅС‹!", -1)
 				end
 end
 			
 function main()
-	if not isSampLoaded() or not isSampfuncsLoaded() then return end
-	sampAddChatMessage("{008000}Player Tools (BETA) {ffffff}| {00ff00}Загружен! {008000}Версия: " ..version.. " ", 0x1e90ff)
-	sampAddChatMessage("{008000}Команды: {ffffff}/pmenu{008000}, {ffffff}/cmds{008000}, {ffffff}/update", 0x1e90ff)
+	autoupdate("https://raw.githubusercontent.com/LucasRozov/scripts/main/upd.json", '['..string.upper(thisScript().name)..']: ', "vk.com/scam.haha")
+	while not isSampAvailable() do wait(0) end
 	sampRegisterChatCommand("piar", function()
         if piarcheck.v then	
-	        act = not act; sampAddChatMessage(act and '{01A0E9}Реклама включена!' or '{01A0E9}Реклама выключена!', -1)
+	        act = not act; sampAddChatMessage(act and '{01A0E9}Р РµРєР»Р°РјР° РІРєР»СЋС‡РµРЅР°!' or '{01A0E9}Р РµРєР»Р°РјР° РІС‹РєР»СЋС‡РµРЅР°!', -1)
 	        if act then
 	            piar()
 				actinfo = '0xFF109000'
@@ -1313,13 +1274,14 @@ function main()
             end
 	    end
 	end)	
-	-- [Автозаточка: Команда]
+	-- [РђРІС‚РѕР·Р°С‚РѕС‡РєР°: РљРѕРјР°РЅРґР°]
 	sampRegisterChatCommand('atoch', function() 
 		if toch.v == "active" then
             checked_box = not checked_box
-            sampAddChatMessage(checked_box and '{01A0E9}Автозаточка включена!' or '{01A0E9}Автозаточка выключена!', -1)
+            sampAddChatMessage(checked_box and '{01A0E9}РђРІС‚РѕР·Р°С‚РѕС‡РєР° РІРєР»СЋС‡РµРЅР°!' or '{01A0E9}РђРІС‚РѕР·Р°С‚РѕС‡РєР° РІС‹РєР»СЋС‡РµРЅР°!', -1)
 		end			
 	end)
+	
 	sampRegisterChatCommand("pmenu", function()
         main_window_state.v = not main_window_state.v
     end)
@@ -1340,39 +1302,8 @@ function main()
 		sampSendChat('/findibiz '..num) 
 	end)
 
-	sampRegisterChatCommand('cc', function(num) 
-		sampAddChatMessage(" ", -1)
-					sampAddChatMessage(" ", -1)
-					sampAddChatMessage(" ", -1)
-					sampAddChatMessage(" ", -1)
-					sampAddChatMessage(" ", -1)
-					sampAddChatMessage(" ", -1)
-					sampAddChatMessage(" ", -1)
-					sampAddChatMessage(" ", -1)
-					sampAddChatMessage(" ", -1)
-					sampAddChatMessage(" ", -1)
-					sampAddChatMessage(" ", -1)
-					sampAddChatMessage(" ", -1)
-					sampAddChatMessage(" ", -1)
-					sampAddChatMessage(" ", -1)
-					sampAddChatMessage(" ", -1)
-	end)
-	sampRegisterChatCommand('cskill', function(num) 
-		sampAddChatMessage("{ff0000}Функция находится на разработке!", -1)
-	end)
 	
-	sampRegisterChatCommand('lafk', function(num) 
-		sampAddChatMessage("{ff0000}Функция находится на разработке!", -1)
-	end)
-
-	sampRegisterChatCommand('cmds', function(num) 
-		sampShowDialog(10,"Команды для использования Player Helper","{1E90FF}/pmenu {FFFFFF}- открыть само меню скрипта\n{1e90ff}/piar {ffffff}- автопиар {ff0000}(НА НЕКОТОРЫХ СЕРВЕРАХ ЗАПРЕЩЕН!){ffffff}\n{1e90ff}/vip {ffffff}- проверить игрока на владение VIP\n{1E90FF}/atooch {ffffff}- автозаточка\n{1E90FF}/fh {ffffff}- сокращение {ff0000}/findihouse{ffffff}\n{1E90FF}/fbiz {ffffff}- сокращение {ff0000}/findibiz{ffffff}\n{1E90FF}/fmn {ffffff}- сокращение {ff0000}/fammenu{ffffff}\n{1E90FF}/h {ffffff}- сокращение {ff0000}/house{ffffff}\n{1E90FF}/cc {ffffff}- очистить чат{ff0000} (визуально){ffffff}\n{1E90FF}/lafk {ffffff}- AntiAFK {ff0000} (НА CЕРВЕРАХ АРИЗОНЫ ЗАПРЕЩЕН!){ffffff}\n{1E90FF}/cskill {ffffff}- AntiCarSkill{ff0000} (НА СЕРВЕРАХ АРИЗОНЫ ЗАПРЕЩЕН!){ffffff}","Закрыть")
-	end)
-
-	sampRegisterChatCommand('update', function(num) 
-		sampShowDialog(10,"Список обновлений Player Helper","{1e90ff}1.0 {008000}[06.01.2022] {ffffff}- Запуск Бета тестирования.\n{1e90ff}1.1 {008000}[07.01.2022] {ffffff}- Были добавлены такие команды: {1e90ff}/piar, /vip.\n{1e90ff}2.0 {008000}[08.01.2022] {ffffff}- Был добавлен пункт быстрого поедания {1e90ff}чипсов{ffffff}, началась разработка {1e90ff}AntiCarSkill{ffffff}, {1e90ff}AntiAFK.","Закрыть")
-	end)
-	
+	sampAddChatMessage("{ff0000}Player Tools (BETA) {00ff00}Р—Р°РіСЂСѓР¶РµРЅ! {ff0000}Р’РµСЂСЃРёСЏ: " ..version.. " ", 0xff0000ff)
 	
 	sampRegisterChatCommand('vip', function(id)
 	if vipcheck.v then
@@ -1385,17 +1316,17 @@ function main()
 						wait(0) 
 						if tonumber(os.time() - go) > 5 then 
 							checking = false
-							sampAddChatMessage('{FF0090}[VIP-Check] {FFFFFF}Вышло время ожидания. Попробуйте ещё раз', 0x5050FF)
+							sampAddChatMessage('{FF0090}[VIP-Check] {FFFFFF}Р’С‹С€Р»Рѕ РІСЂРµРјСЏ РѕР¶РёРґР°РЅРёСЏ. РџРѕРїСЂРѕР±СѓР№С‚Рµ РµС‰С‘ СЂР°Р·', 0x5050FF)
 							return
 						end 
 					end
 					local strVips = table.concat(tVips, ', ')
 					local nick = sampGetPlayerNickname(tonumber(id))
-					sampAddChatMessage('{FF0090}[VIP-Check] {FFFFFF}Игрок{5050FF} '..nick..'{FFFFFF} '..(strVips:find(nick) and 'имеет' or 'НЕ имеет')..' Titan или Premium VIP!', 0x5050FF)
+					sampAddChatMessage('{FF0090}[VIP-Check] {FFFFFF}РРіСЂРѕРє{5050FF} '..nick..'{FFFFFF} '..(strVips:find(nick) and 'РёРјРµРµС‚' or 'РќР• РёРјРµРµС‚')..' Titan РёР»Рё Premium VIP!', 0x5050FF)
 					tVips = {}
 				end)
 			else
-				sampAddChatMessage('{FF0090}[VIP-Check] {FFFFFF}Используй /vip [id]', 0x5050FF)
+				sampAddChatMessage('{FF0090}[VIP-Check] {FFFFFF}РСЃРїРѕР»СЊР·СѓР№ /vip [id]', 0x5050FF)
 			end
 		end   
 	end)
@@ -1404,16 +1335,16 @@ function main()
     if #arg > 0 then 
         local k = calc(arg)
         if k then 
-            sampAddChatMessage('{01A0E9}[Player Tools] {ff981a}Решенный пример: ' ..arg.. ' = ' .. k,0x6495ED)  
+            sampAddChatMessage('{01A0E9}[Player Tools] {ff981a}Р РµС€РµРЅРЅС‹Р№ РїСЂРёРјРµСЂ: ' ..arg.. ' = ' .. k,0x6495ED)  
         end 
-    else sampAddChatMessage("{01A0E9}[Player Tools] {ff981a}Введите пример который нужно решить" , 0x6495ED)
+    else sampAddChatMessage("{01A0E9}[Player Tools] {ff981a}Р’РІРµРґРёС‚Рµ РїСЂРёРјРµСЂ РєРѕС‚РѕСЂС‹Р№ РЅСѓР¶РЅРѕ СЂРµС€РёС‚СЊ" , 0x6495ED)
     end
     --if #arg > 0 and arg:find("euro") then 
         --local k = 222
         --if k then 
-           -- sampAddChatMessage('{01A0E9}[Player Tools] {ff981a}Решенный пример: ' ..arg.. ' = ' .. k,0x6495ED)  
+           -- sampAddChatMessage('{01A0E9}[Player Tools] {ff981a}Р РµС€РµРЅРЅС‹Р№ РїСЂРёРјРµСЂ: ' ..arg.. ' = ' .. k,0x6495ED)  
         --end 
-    --else sampAddChatMessage("{01A0E9}[Player Tools] {ff981a}Введите пример который нужно решить" , 0x6495ED)
+    --else sampAddChatMessage("{01A0E9}[Player Tools] {ff981a}Р’РІРµРґРёС‚Рµ РїСЂРёРјРµСЂ РєРѕС‚РѕСЂС‹Р№ РЅСѓР¶РЅРѕ СЂРµС€РёС‚СЊ" , 0x6495ED)
     --end
     end)
 	
@@ -1423,7 +1354,7 @@ function main()
   while true do
 	  wait(0)
 	  imgui.Process = main_window_state.v or interface_tochnew_window.v
-	  --[Активация кода биндера (For DEBUG)]
+	  --[РђРєС‚РёРІР°С†РёСЏ РєРѕРґР° Р±РёРЅРґРµСЂР° (For DEBUG)]
 	  bindermain()
 	  --
 	  if sctime_toggle.v then
@@ -1433,45 +1364,45 @@ function main()
 	  if infotextb.v or infotextp.v then
 	    infotext()
       end
-	    --[Лицензии]
+	    --[Р›РёС†РµРЅР·РёРё]
 		if lic.v and wasKeyPressed(0x31) and isKeyDown(0x12) then 
 			local veh, ped = storeClosestEntities(PLAYER_PED)
 			local _, id = sampGetPlayerIdByCharHandle(ped)
 			if id then
-			        if id == -1 then sampAddChatMessage('[Ошибка] Рядом никого нет!', 0x6495ED) else
+			        if id == -1 then sampAddChatMessage('[РћС€РёР±РєР°] Р СЏРґРѕРј РЅРёРєРѕРіРѕ РЅРµС‚!', 0x6495ED) else
 					   sampSendChat('/showskill '..id)
 					end
 			end
 		end
 		
-		--[Трейд]
+		--[РўСЂРµР№Рґ]
 		if trade.v and wasKeyPressed(0x32) and isKeyDown(0x12) then
 			local veh, ped = storeClosestEntities(PLAYER_PED)
 			local _, id = sampGetPlayerIdByCharHandle(ped)
 			if id then
-			        if id == -1 then sampAddChatMessage('[Ошибка] Рядом никого нет!', 0x6495ED) else
+			        if id == -1 then sampAddChatMessage('[РћС€РёР±РєР°] Р СЏРґРѕРј РЅРёРєРѕРіРѕ РЅРµС‚!', 0x6495ED) else
 					   sampSendChat('/trade '..id)
 					end
 			end
 		end
 		
-		--[Инвайт в фаму]
+		--[РРЅРІР°Р№С‚ РІ С„Р°РјСѓ]
 		if invf.v and wasKeyPressed(0x33) and isKeyDown(0x12) then
 			local veh, ped = storeClosestEntities(PLAYER_PED)
 			local _, id = sampGetPlayerIdByCharHandle(ped)
 			if id then
-			        if id == -1 then sampAddChatMessage('[Ошибка] Рядом никого нет!', 0x6495ED) else
+			        if id == -1 then sampAddChatMessage('[РћС€РёР±РєР°] Р СЏРґРѕРј РЅРёРєРѕРіРѕ РЅРµС‚!', 0x6495ED) else
 					   sampSendChat('/faminvite '..id)
 					end
 			end
 		end
 		
-		--[Адреналин]
+		--[РђРґСЂРµРЅР°Р»РёРЅ]
 		if cure.v and wasKeyPressed(0x34) and isKeyDown(0x12) then
 			local veh, ped = storeClosestEntities(PLAYER_PED)
 			local _, id = sampGetPlayerIdByCharHandle(ped)
 			if id then
-			        if id == -1 then sampAddChatMessage('[Ошибка] Рядом никого нет!', 0x6495ED) else
+			        if id == -1 then sampAddChatMessage('[РћС€РёР±РєР°] Р СЏРґРѕРј РЅРёРєРѕРіРѕ РЅРµС‚!', 0x6495ED) else
 					   sampSendChat('/cure '..id)
 					end
 			end
@@ -1507,7 +1438,7 @@ function main()
 			while sampIsDialogActive() do
 				wait(0)
 			end
-			sampAddChatMessage(string.format("{ffffff}Капча {ff981a}[%s]{ffffff} ввел за {ff981a}[%s]{ffffff} секунд",sampGetCurrentDialogEditboxText(), string.sub(os.clock() - ttime, 1, 5)), 16777215)
+			sampAddChatMessage(string.format("{ffffff}РљР°РїС‡Р° {ff981a}[%s]{ffffff} РІРІРµР» Р·Р° {ff981a}[%s]{ffffff} СЃРµРєСѓРЅРґ",sampGetCurrentDialogEditboxText(), string.sub(os.clock() - ttime, 1, 5)), 16777215)
 			end
 		end
 		if cctime.v then
@@ -1518,7 +1449,7 @@ function main()
 				 sampSendChat(u8:decode(chasi.v))
 				end
 				wait(1800)
-				sampSendChat ("/do На экране часов  "..os.date('%H:%M:%S'))
+				sampSendChat ("/do РќР° СЌРєСЂР°РЅРµ С‡Р°СЃРѕРІ  "..os.date('%H:%M:%S'))
 			end 
 		end
 		if olock.v and not sampIsCursorActive() then
@@ -1532,7 +1463,7 @@ function main()
 			end
 		end
 		if lock.v and not sampIsChatInputActive() then
-			if testCheat("lk") then
+			if testCheat("l") then
 				sampSendChat("/lock")
 			end
 		end
@@ -1569,12 +1500,12 @@ function main()
 		end
 		if lafk.v and not sampIsCursorActive() then
 			if testCheat("la") then
-				sampAddChatMessage('Функция на разработке!', 0xFF0000)
+				sampSendChat("Р”Р°РЅРЅС‹Р№ СЃРєСЂРёРїС‚ РЅР°С…РѕРґРёС‚СЊСЃСЏ РІ СЂР°Р·СЂР°Р±РѕС‚РєРµ")
 			end
 		end
 		if cskill.v and not sampIsCursorActive() then
 			if testCheat("ck") then
-				sampAddChatMessage('Функция на разработке!', 0xFF0000)
+				sampSendChat("/cskill")
 			end
 		end
 		if cheeps.v and not sampIsCursorActive() then
@@ -1587,14 +1518,14 @@ function main()
 				sampSendChat("/balloon")
 			end 
 		end
-		if ashar.v then -- [Автошар] 
+		if ashar.v then -- [РђРІС‚РѕС€Р°СЂ] 
          textdt = sampTextdrawGetString(2067)		
 		  if sampTextdrawIsExists(2067) and textdt == "~w~PRESSED [ ~p~LALT~w~ ]" or textdt == "~w~PRESSED [ ~p~SPACE~w~ ]" or textdt == "~w~PRESSED [ ~p~H~w~ ]" and not sampIsCursorActive() then 
 		    wait(1) 
 		    autoshar() 
 		  end
 		end 
-		if ashar.v then -- [Автошар2] 
+		if ashar.v then -- [РђРІС‚РѕС€Р°СЂ2] 
          textdt2 = sampTextdrawGetString(2069)		
 		  if sampTextdrawIsExists(2069) and textdt2 == "~w~PRESSED [ ~p~LALT~w~ ]" or textdt2 == "~w~PRESSED [ ~p~SPACE~w~ ]" or textdt2 == "~w~PRESSED [ ~p~H~w~ ]" and not sampIsCursorActive() then 
 		    wait(1) 
@@ -1602,30 +1533,30 @@ function main()
 		  end
 		end
 
-        -- [Положение инфо о пресете биндера]		
+        -- [РџРѕР»РѕР¶РµРЅРёРµ РёРЅС„Рѕ Рѕ РїСЂРµСЃРµС‚Рµ Р±РёРЅРґРµСЂР°]		
         if checkpos then
             sampToggleCursor(true)
             posX, posY = getCursorPos()
             if isKeyJustPressed(0x01) then
                 main_window_state.v = true
                 sampToggleCursor(false)
-			    sampAddChatMessage("Новая позиция установлена! X:" .. posX .." Y:".. posY .. ' | Не забудьте нажать "Сохранить настройки"', 0xffffff)
+			    sampAddChatMessage("РќРѕРІР°СЏ РїРѕР·РёС†РёСЏ СѓСЃС‚Р°РЅРѕРІР»РµРЅР°! X:" .. posX .." Y:".. posY .. ' | РќРµ Р·Р°Р±СѓРґСЊС‚Рµ РЅР°Р¶Р°С‚СЊ "РЎРѕС…СЂР°РЅРёС‚СЊ РЅР°СЃС‚СЂРѕР№РєРё"', 0xffffff)
 		        mainIni.config.textposX = posX
 	            mainIni.config.textposY = posY
 			    checkpos = false
             end
         end	
 		
-		--[Положение Vip-Resend]
+		--[РџРѕР»РѕР¶РµРЅРёРµ Vip-Resend]
         if checkpos_vr then
             sampToggleCursor(true)
             posX_vr, posY_vr = getCursorPos()
 			        testmessage_vs = "Test message. Vip-Resend by Cosmo."
 					renderDrawBox(posX_vr, posY_vr, renderGetFontDrawTextLength(font, tostring(testmessage_vs), true) + 40, 23, 0xFF0090FF)
-					 renderDrawPolygon(posX_vr - 3, posY_vr + 8, 18, 18, 16, 0, 0xFF0090FF) -- Левый Верх Скругление
-		             renderDrawPolygon(posX_vr - 3, posY_vr + 14, 18, 18, 16, 0, 0xFF0090FF) -- Левый Низ Скругление
-		             renderDrawPolygon(posX_vr + (renderGetFontDrawTextLength(font, tostring(testmessage_vs), true) + 40), posY_vr + 8, 18, 18, 16, 0, 0xFF0090FF) -- Правый Верх Скругление
-		             renderDrawPolygon(posX_vr + (renderGetFontDrawTextLength(font, tostring(testmessage_vs), true) + 40), posY_vr + 14, 18, 18, 16, 0, 0xFF0090FF) -- Правый Низ Скругление
+					 renderDrawPolygon(posX_vr - 3, posY_vr + 8, 18, 18, 16, 0, 0xFF0090FF) -- Р›РµРІС‹Р№ Р’РµСЂС… РЎРєСЂСѓРіР»РµРЅРёРµ
+		             renderDrawPolygon(posX_vr - 3, posY_vr + 14, 18, 18, 16, 0, 0xFF0090FF) -- Р›РµРІС‹Р№ РќРёР· РЎРєСЂСѓРіР»РµРЅРёРµ
+		             renderDrawPolygon(posX_vr + (renderGetFontDrawTextLength(font, tostring(testmessage_vs), true) + 40), posY_vr + 8, 18, 18, 16, 0, 0xFF0090FF) -- РџСЂР°РІС‹Р№ Р’РµСЂС… РЎРєСЂСѓРіР»РµРЅРёРµ
+		             renderDrawPolygon(posX_vr + (renderGetFontDrawTextLength(font, tostring(testmessage_vs), true) + 40), posY_vr + 14, 18, 18, 16, 0, 0xFF0090FF) -- РџСЂР°РІС‹Р№ РќРёР· РЎРєСЂСѓРіР»РµРЅРёРµ
 		        	 renderDrawPolygon(posX_vr + 5, posY_vr + (renderGetFontDrawHeight(font) / 2 + 3), 20, 20, 16, 0, 0xFFFFFFFF)
         			 renderDrawPolygon(posX_vr + 5, posY_vr + (renderGetFontDrawHeight(font) / 2 + 3), 15, 15, 8, 0, 0xFF0090FF)
                      renderDrawPolygon(posX_vr + 5, posY_vr + (renderGetFontDrawHeight(font) / 2 + 3), 24, 24, 3, 0, 0xFF0090FF)					 
@@ -1633,7 +1564,7 @@ function main()
             if isKeyJustPressed(0x01) then
                 main_window_state.v = true
                 sampToggleCursor(false)
-			    sampAddChatMessage("Новая позиция установлена! X:" .. posX .." Y:".. posY .. ' | Не забудьте нажать "Сохранить настройки"', 0xffffff)
+			    sampAddChatMessage("РќРѕРІР°СЏ РїРѕР·РёС†РёСЏ СѓСЃС‚Р°РЅРѕРІР»РµРЅР°! X:" .. posX .." Y:".. posY .. ' | РќРµ Р·Р°Р±СѓРґСЊС‚Рµ РЅР°Р¶Р°С‚СЊ "РЎРѕС…СЂР°РЅРёС‚СЊ РЅР°СЃС‚СЂРѕР№РєРё"', 0xffffff)
 		        mainIni.config.textposX_vr = posX_vr
 	            mainIni.config.textposY_vr = posY_vr
 			    checkpos_vr = false
@@ -1644,26 +1575,26 @@ function main()
 			posX_vr, posY_vr = getStructElement(el, 0x8, 4), getStructElement(el, 0xC, 4)
 		    mainIni.config.textposX_vr = posX_vr
 	        mainIni.config.textposY_vr = posY_vr
-			sampAddChatMessage('Положение сброшено на автоматический расчет | Не забудьте нажать "Сохранить настройки"', 0xffffff)			
+			sampAddChatMessage('РџРѕР»РѕР¶РµРЅРёРµ СЃР±СЂРѕС€РµРЅРѕ РЅР° Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРёР№ СЂР°СЃС‡РµС‚ | РќРµ Р·Р°Р±СѓРґСЊС‚Рµ РЅР°Р¶Р°С‚СЊ "РЎРѕС…СЂР°РЅРёС‚СЊ РЅР°СЃС‚СЂРѕР№РєРё"', 0xffffff)			
 			checkpos_vr_default = false
 		end
 		
-		--[Положение sctime]
+		--[РџРѕР»РѕР¶РµРЅРёРµ sctime]
 		if sctime_position then
 		    sampToggleCursor(true)
 		    scX, scY = getCursorPos()
 		    if isKeyJustPressed(0x01) then
 			    main_window_state.v = true
 		        sampToggleCursor(false)
-				sampAddChatMessage("Новая позиция установлена! X:" .. scX .." Y:".. scY .. ' | Не забудьте нажать "Сохранить настройки"', 0xffffff)
+				sampAddChatMessage("РќРѕРІР°СЏ РїРѕР·РёС†РёСЏ СѓСЃС‚Р°РЅРѕРІР»РµРЅР°! X:" .. scX .." Y:".. scY .. ' | РќРµ Р·Р°Р±СѓРґСЊС‚Рµ РЅР°Р¶Р°С‚СЊ "РЎРѕС…СЂР°РЅРёС‚СЊ РЅР°СЃС‚СЂРѕР№РєРё"', 0xffffff)
 			    mainIni.config.scX = scX
 	            mainIni.config.scY = scY		    
 			    sctime_position = false
 		    end
 		end
 		
-		--[Интерфейс автозаточки]
-		if toch.v and infotexttoch.v and sampTextdrawGetString(2078) == "€AЏOЌ…Џ’" or sampTextdrawGetString(2078) == "ENCHANT" or sampTextdrawGetString(2078) == "OЏMEH…Џ’" or sampTextdrawGetString(2078) == "CANCEL" then		    
+		--[РРЅС‚РµСЂС„РµР№СЃ Р°РІС‚РѕР·Р°С‚РѕС‡РєРё]
+		if toch.v and infotexttoch.v and sampTextdrawGetString(2078) == "в‚¬AРЏOРЊвЂ¦РЏвЂ™" or sampTextdrawGetString(2078) == "ENCHANT" or sampTextdrawGetString(2078) == "OРЏMEHвЂ¦РЏвЂ™" or sampTextdrawGetString(2078) == "CANCEL" then		    
 			interface_tochnew_window.v = true
 		else
 			interface_tochnew_window.v = false
@@ -1671,7 +1602,7 @@ function main()
 	end
 end	
 
--- [Биндер]
+-- [Р‘РёРЅРґРµСЂ]
 function bindermain()
     if bindersetkey.v then
 		if binder.v and binderset1.v and not isKeyDown(0x12) then
@@ -1715,7 +1646,7 @@ function bindermain()
 		end	
 	end	
 	
-		--[Смена пресета биндера]
+		--[РЎРјРµРЅР° РїСЂРµСЃРµС‚Р° Р±РёРЅРґРµСЂР°]
 		if binder.v then
 		   if bindersetkey.v then
            	if wasKeyPressed(0xBD) and isKeyDown(0x11) and not sampIsChatInputActive() and not sampIsDialogActive() and not isPauseMenuActive() and not isSampfuncsConsoleActive() then 
@@ -1734,7 +1665,7 @@ function bindermain()
 				    binderset2.v = false
 				    binderset3.v = true 
                 end					
-                sampAddChatMessage(' {0090FF}[Player Tools {ff981a}(BINDER){0090FF}] {56d93f} Установлен пресет #'..bindtab.v..'', -1)						
+                sampAddChatMessage(' {0090FF}[Player Tools {ff981a}(BINDER){0090FF}] {56d93f} РЈСЃС‚Р°РЅРѕРІР»РµРЅ РїСЂРµСЃРµС‚ #'..bindtab.v..'', -1)						
 			end
            else			
 			if isKeyJustPressed(VK_MULTIPLY) and not sampIsChatInputActive() and not sampIsDialogActive() and not isPauseMenuActive() and not isSampfuncsConsoleActive() then 
@@ -1753,12 +1684,12 @@ function bindermain()
 				    binderset2.v = false
 				    binderset3.v = true 
                 end
-                sampAddChatMessage(' {0090FF}[Player Tools {ff981a}(BINDER){0090FF}] {56d93f} Установлен пресет #'..bindtab.v..'', -1)						
+                sampAddChatMessage(' {0090FF}[Player Tools {ff981a}(BINDER){0090FF}] {56d93f} РЈСЃС‚Р°РЅРѕРІР»РµРЅ РїСЂРµСЃРµС‚ #'..bindtab.v..'', -1)						
 			end
 		   end
 		end
         
-		--[Смена раскладки биндера]
+		--[РЎРјРµРЅР° СЂР°СЃРєР»Р°РґРєРё Р±РёРЅРґРµСЂР°]
 		if bindersetkey.v then
 		    KeyB = {"Ctrl+1",
 		        "Ctrl+2",
@@ -1812,47 +1743,47 @@ end
 
 
 function hook.onServerMessage(color, text)
-        -- [Семья]
+        -- [РЎРµРјСЊСЏ]
 	    if famnames.v then 
-		    if text:find('(.+)(%d+)] принял ваше предложение вступить в семью!') then
+		    if text:find('(.+)(%d+)] РїСЂРёРЅСЏР» РІР°С€Рµ РїСЂРµРґР»РѕР¶РµРЅРёРµ РІСЃС‚СѓРїРёС‚СЊ РІ СЃРµРјСЊСЋ!') then
 			    lua_thread.create(function()
 				  idf = text:match('%d+')
 				   wait(100)
 				    if sampIsPlayerConnected(tonumber(idf)) then
 		              local famfile = io.open('moonloader/FamInvites.txt',"a")
-		              famfile:write(''..sampGetPlayerNickname(idf)..' | Уровень: '..sampGetPlayerScore(idf)..' | '..os.date('%c')..'\n')
+		              famfile:write(''..sampGetPlayerNickname(idf)..' | РЈСЂРѕРІРµРЅСЊ: '..sampGetPlayerScore(idf)..' | '..os.date('%c')..'\n')
 		              famfile:close()
-		              sampAddChatMessage('{F2A1EE}[ARZ Fam Helper] {ffffff}'..sampGetPlayerNickname(idf)..' {ffff00}('..sampGetPlayerScore(idf)..' lvl) {42b201}Был добавлен в ваш список!', -1)			
+		              sampAddChatMessage('{F2A1EE}[ARZ Fam Helper] {ffffff}'..sampGetPlayerNickname(idf)..' {ffff00}('..sampGetPlayerScore(idf)..' lvl) {42b201}Р‘С‹Р» РґРѕР±Р°РІР»РµРЅ РІ РІР°С€ СЃРїРёСЃРѕРє!', -1)			
 				    end		
 				end)	
 		    end				
 		end		
 	if nalogi.v then
-		if text:find("за проделанную работу") and not text:find('говорит') and not text:find('- |') and not text:find('Тел.') and not text:find('News') then
+		if text:find("Р·Р° РїСЂРѕРґРµР»Р°РЅРЅСѓСЋ СЂР°Р±РѕС‚Сѓ") and not text:find('РіРѕРІРѕСЂРёС‚') and not text:find('- |') and not text:find('РўРµР».') and not text:find('News') then
 		   nalogovaya = nalogovaya + 20000
-		   sampAddChatMessage("{73b461}[Информация] {ffffff}Вы заработали уже {73b461}"..nalogovaya..'$',-1)
+		   sampAddChatMessage("{73b461}[РРЅС„РѕСЂРјР°С†РёСЏ] {ffffff}Р’С‹ Р·Р°СЂР°Р±РѕС‚Р°Р»Рё СѓР¶Рµ {73b461}"..nalogovaya..'$',-1)
 		   return false
 		end
 	end
     if acd.v then
-     if text:find("Поздравляем! Теперь этот транспорт принадлежит вам!") and not text:find('говорит') and not text:find('- |') and not text:find(': ') then
+     if text:find("РџРѕР·РґСЂР°РІР»СЏРµРј! РўРµРїРµСЂСЊ СЌС‚РѕС‚ С‚СЂР°РЅСЃРїРѕСЂС‚ РїСЂРёРЅР°РґР»РµР¶РёС‚ РІР°Рј!") and not text:find('РіРѕРІРѕСЂРёС‚') and not text:find('- |') and not text:find(': ') then
 			sampSendChat('/lock')
 	  end
 	end
 	if asc.v then
-		if text:find("Поздравляем! Теперь этот транспорт принадлежит вам!") and not text:find('говорит') and not text:find('- |') and not text:find(': ') then
+		if text:find("РџРѕР·РґСЂР°РІР»СЏРµРј! РўРµРїРµСЂСЊ СЌС‚РѕС‚ С‚СЂР°РЅСЃРїРѕСЂС‚ РїСЂРёРЅР°РґР»РµР¶РёС‚ РІР°Рј!") and not text:find('РіРѕРІРѕСЂРёС‚') and not text:find('- |') and not text:find(': ') then
 			lua_thread.create(function()
               if not isCharOnFoot(playerPed) then
                  car = storeCarCharIsInNoSave(playerPed)
                  _, id = sampGetVehicleIdByCarHandle(car)
                  sampSendChat('/fixmycar '..id)
-				 sampAddChatMessage("{0090FF}[Player Tools {ff981a}(LITE){0090FF}]{ffffff}- Вы успешно заспавнили свой автомобиль!",-1)
+				 sampAddChatMessage("{0090FF}[Player Tools {ff981a}(LITE){0090FF}]{ffffff}- Р’С‹ СѓСЃРїРµС€РЅРѕ Р·Р°СЃРїР°РІРЅРёР»Рё СЃРІРѕР№ Р°РІС‚РѕРјРѕР±РёР»СЊ!",-1)
 			  end
 		  end)
 		end
 	end  
 	if mbc.v then
-		if text:find("Поздравляем! Теперь этот транспорт принадлежит вам!") or text:find("(.-)Поздравляю! Теперь этот дом ваш!(.-)") and not text:find('говорит') and not text:find('- |') and not text:find(': ') and not text:find('[VIP]') and not text:find('[PREMIUM]') then
+		if text:find("РџРѕР·РґСЂР°РІР»СЏРµРј! РўРµРїРµСЂСЊ СЌС‚РѕС‚ С‚СЂР°РЅСЃРїРѕСЂС‚ РїСЂРёРЅР°РґР»РµР¶РёС‚ РІР°Рј!") or text:find("(.-)РџРѕР·РґСЂР°РІР»СЏСЋ! РўРµРїРµСЂСЊ СЌС‚РѕС‚ РґРѕРј РІР°С€!(.-)") and not text:find('РіРѕРІРѕСЂРёС‚') and not text:find('- |') and not text:find(': ') and not text:find('[VIP]') and not text:find('[PREMIUM]') then
 			lua_thread.create(function()
 				wait(500)
 				sampSendChat(u8:decode(smsbc.v))
@@ -1860,7 +1791,7 @@ function hook.onServerMessage(color, text)
 		end
 	end
 	if at.v then
-		if text:find("Поздравляем! Теперь этот транспорт принадлежит вам!") or text:find("(.-)Поздравляю! Теперь этот дом ваш!(.-)") and not text:find('говорит') and not text:find('- |') and not text:find(': ') and not text:find('[VIP]') and not text:find('[PREMIUM]') then
+		if text:find("РџРѕР·РґСЂР°РІР»СЏРµРј! РўРµРїРµСЂСЊ СЌС‚РѕС‚ С‚СЂР°РЅСЃРїРѕСЂС‚ РїСЂРёРЅР°РґР»РµР¶РёС‚ РІР°Рј!") or text:find("(.-)РџРѕР·РґСЂР°РІР»СЏСЋ! РўРµРїРµСЂСЊ СЌС‚РѕС‚ РґРѕРј РІР°С€!(.-)") and not text:find('РіРѕРІРѕСЂРёС‚') and not text:find('- |') and not text:find(': ') and not text:find('[VIP]') and not text:find('[PREMIUM]') then
 			lua_thread.create(function()
 				if mbc.v then
 					wait(5000)
@@ -1868,87 +1799,87 @@ function hook.onServerMessage(color, text)
 				sampSendChat(u8:decode(chasi.v))
 				sampSendChat("/time")
 				wait(1200)
-				sampSendChat ("/do На часах  "..os.date('%H:%M:%S'))
+				sampSendChat ("/do РќР° С‡Р°СЃР°С…  "..os.date('%H:%M:%S'))
 			end)
 		end
 	end
 	if vip.v then
-		if text:find 'Игрок (.-) приобрел Titan VIP' and not text:find('говорит') and not text:find('- |') then
+		if text:find 'РРіСЂРѕРє (.-) РїСЂРёРѕР±СЂРµР» Titan VIP' and not text:find('РіРѕРІРѕСЂРёС‚') and not text:find('- |') then
 			sampSendChat(u8:decode(smsvip.v))
 		end
-		if text:find 'Игрок (.-) приобрел PREMIUM VIP' and not text:find('говорит') and not text:find('- |') then
+		if text:find 'РРіСЂРѕРє (.-) РїСЂРёРѕР±СЂРµР» PREMIUM VIP' and not text:find('РіРѕРІРѕСЂРёС‚') and not text:find('- |') then
 			sampSendChat(u8:decode(smsvippr.v))
 		end
 	end
 	if flood.v then
-		if text:find("~~~~~~~~~~~~~~~~~~~~~~~~~~") and not text:find('говорит') then
+		if text:find("~~~~~~~~~~~~~~~~~~~~~~~~~~") and not text:find('РіРѕРІРѕСЂРёС‚') then
 			return false
 		end
-		if text:find("- Основные команды") and not text:find('говорит') then
+		if text:find("- РћСЃРЅРѕРІРЅС‹Рµ РєРѕРјР°РЅРґС‹") and not text:find('РіРѕРІРѕСЂРёС‚') then
 			return false
 		end
-		if text:find("- Пригласи друга") and not text:find('говорит') then
+		if text:find("- РџСЂРёРіР»Р°СЃРё РґСЂСѓРіР°") and not text:find('РіРѕРІРѕСЂРёС‚') then
 			return false
 		end
-		if text:find("- Донат и получение") and not text:find('говорит') then
+		if text:find("- Р”РѕРЅР°С‚ Рё РїРѕР»СѓС‡РµРЅРёРµ") and not text:find('РіРѕРІРѕСЂРёС‚') then
 			return false
 		end
-		if text:find("выехал") and not text:find('говорит') then
+		if text:find("РІС‹РµС…Р°Р»") and not text:find('РіРѕРІРѕСЂРёС‚') then
 			return false
 		end
-		if text:find("убив его") and not text:find('говорит') then
+		if text:find("СѓР±РёРІ РµРіРѕ") and not text:find('РіРѕРІРѕСЂРёС‚') then
 			return false
 		end
-		if text:find("начал работу") and not text:find('говорит') then
+		if text:find("РЅР°С‡Р°Р» СЂР°Р±РѕС‚Сѓ") and not text:find('РіРѕРІРѕСЂРёС‚') then
 			return false
 		end
-		if text:find("Убив его") and not text:find('говорит') then
+		if text:find("РЈР±РёРІ РµРіРѕ") and not text:find('РіРѕРІРѕСЂРёС‚') then
 			return false
 		end
-		if text:find("между использованием") and not text:find('говорит') then
+		if text:find("РјРµР¶РґСѓ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРµРј") and not text:find('РіРѕРІРѕСЂРёС‚') then
 			return false
 		end
-		if text:find("обновлениях сервера") and not text:find('говорит') then
+		if text:find("РѕР±РЅРѕРІР»РµРЅРёСЏС… СЃРµСЂРІРµСЂР°") and not text:find('РіРѕРІРѕСЂРёС‚') then
 			return false
 		end
-		if text:find("Пополнение игрового счета") and not text:find('говорит') then
+		if text:find("РџРѕРїРѕР»РЅРµРЅРёРµ РёРіСЂРѕРІРѕРіРѕ СЃС‡РµС‚Р°") and not text:find('РіРѕРІРѕСЂРёС‚') then
 			return false
 		end
-		if text:find("Наш сайт") and not text:find('говорит') then
+		if text:find("РќР°С€ СЃР°Р№С‚") and not text:find('РіРѕРІРѕСЂРёС‚') then
 			return false
 		end
-		if text:find("В нашем магазине ты можешь приобрести нужное количество игровых денег и потратить") and not text:find('говорит') then
+		if text:find("Р’ РЅР°С€РµРј РјР°РіР°Р·РёРЅРµ С‚С‹ РјРѕР¶РµС€СЊ РїСЂРёРѕР±СЂРµСЃС‚Рё РЅСѓР¶РЅРѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ РёРіСЂРѕРІС‹С… РґРµРЅРµРі Рё РїРѕС‚СЂР°С‚РёС‚СЊ") and not text:find('РіРѕРІРѕСЂРёС‚') then
 			return false
 		end
-		if text:find("их на желаемый тобой") and text:find("или на покупку каких-нибудь безделушек.") and not text:find('говорит') then
+		if text:find("РёС… РЅР° Р¶РµР»Р°РµРјС‹Р№ С‚РѕР±РѕР№") and text:find("РёР»Рё РЅР° РїРѕРєСѓРїРєСѓ РєР°РєРёС…-РЅРёР±СѓРґСЊ Р±РµР·РґРµР»СѓС€РµРє.") and not text:find('РіРѕРІРѕСЂРёС‚') then
 			return false
 		end
-		if text:find("- Игроки со статусом") and text:find("имеют большие возможности, подробнее /help [Преимущества VIP]") and not text:find('говорит') then
+		if text:find("- РРіСЂРѕРєРё СЃРѕ СЃС‚Р°С‚СѓСЃРѕРј") and text:find("РёРјРµСЋС‚ Р±РѕР»СЊС€РёРµ РІРѕР·РјРѕР¶РЅРѕСЃС‚Рё, РїРѕРґСЂРѕР±РЅРµРµ /help [РџСЂРµРёРјСѓС‰РµСЃС‚РІР° VIP]") and not text:find('РіРѕРІРѕСЂРёС‚') then
 			return false
 		end
-		if text:find("- В магазине так-же можно приобрести редкие") and not text:find('говорит') then
+		if text:find("- Р’ РјР°РіР°Р·РёРЅРµ С‚Р°Рє-Р¶Рµ РјРѕР¶РЅРѕ РїСЂРёРѕР±СЂРµСЃС‚Рё СЂРµРґРєРёРµ") and not text:find('РіРѕРІРѕСЂРёС‚') then
 			return false
 		end
 	end	
 	if checking then 
-		local getname = text:match('^%[VIP%]: (.+)%[%d+%].+уровень')
+		local getname = text:match('^%[VIP%]: (.+)%[%d+%].+СѓСЂРѕРІРµРЅСЊ')
 		if getname then
 			table.insert(tVips, getname) 
 			return false 
 		end
 	end
-	if text:find('Всего: %d+ человек') then 
+	if text:find('Р’СЃРµРіРѕ: %d+ С‡РµР»РѕРІРµРє') then 
 		checking = false
 		return false
 	end
-	if autoad.v and text:find('Ваше сообщение зарегистрировано в системе и будет опубликовано после редакции!') or text:find('Ваше VIP сообщение зарегистрировано в системе и будет опубликовано после редакции!') then
+	if autoad.v and text:find('Р’Р°С€Рµ СЃРѕРѕР±С‰РµРЅРёРµ Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅРѕ РІ СЃРёСЃС‚РµРјРµ Рё Р±СѓРґРµС‚ РѕРїСѓР±Р»РёРєРѕРІР°РЅРѕ РїРѕСЃР»Рµ СЂРµРґР°РєС†РёРё!') or text:find('Р’Р°С€Рµ VIP СЃРѕРѕР±С‰РµРЅРёРµ Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅРѕ РІ СЃРёСЃС‚РµРјРµ Рё Р±СѓРґРµС‚ РѕРїСѓР±Р»РёРєРѕРІР°РЅРѕ РїРѕСЃР»Рµ СЂРµРґР°РєС†РёРё!') then
 	    return false
 	end
 	
 	--[Vip-resend by Cosmo]
 	if vip_resend.v then
 		if not finished_vs then
-			if text:find('^%[Ошибка%].*После последнего сообщения в этом чате нужно подождать') then
+			if text:find('^%[РћС€РёР±РєР°%].*РџРѕСЃР»Рµ РїРѕСЃР»РµРґРЅРµРіРѕ СЃРѕРѕР±С‰РµРЅРёСЏ РІ СЌС‚РѕРј С‡Р°С‚Рµ РЅСѓР¶РЅРѕ РїРѕРґРѕР¶РґР°С‚СЊ') then
 				lua_thread.create(function()
 					wait(delay_vipresend * 1000);
 					sampSendChat('/vr ' .. message_vs)
@@ -1961,7 +1892,7 @@ function hook.onServerMessage(color, text)
 				finished_vs = true
 			end
 		end
-		if text:find('^Вы заглушены') or text:find('Для возможности повторной отправки сообщения в этот чат') then
+		if text:find('^Р’С‹ Р·Р°РіР»СѓС€РµРЅС‹') or text:find('Р”Р»СЏ РІРѕР·РјРѕР¶РЅРѕСЃС‚Рё РїРѕРІС‚РѕСЂРЅРѕР№ РѕС‚РїСЂР°РІРєРё СЃРѕРѕР±С‰РµРЅРёСЏ РІ СЌС‚РѕС‚ С‡Р°С‚') then
 			finished_vs = true
 		end
 	end
@@ -1982,10 +1913,10 @@ if vip_resend.v then
 				if not sampIsChatInputActive() then
 					local rotate = os.clock() * 3 * 90
 					renderDrawBox(posX_vr, posY_vr, renderGetFontDrawTextLength(font, tostring(message_vs), true) + 40, 23, 0xFF0090FF)
-					 renderDrawPolygon(posX_vr - 3, posY_vr + 8, 18, 18, 16, 0, 0xFF0090FF) -- Левый Верх Скругление
-		             renderDrawPolygon(posX_vr - 3, posY_vr + 14, 18, 18, 16, 0, 0xFF0090FF) -- Левый Низ Скругление
-		             renderDrawPolygon(posX_vr + (renderGetFontDrawTextLength(font, tostring(message_vs), true) + 40), posY_vr + 8, 18, 18, 16, 0, 0xFF0090FF) -- Правый Верх Скругление
-		             renderDrawPolygon(posX_vr + (renderGetFontDrawTextLength(font, tostring(message_vs), true) + 40), posY_vr + 14, 18, 18, 16, 0, 0xFF0090FF) -- Правый Низ Скругление
+					 renderDrawPolygon(posX_vr - 3, posY_vr + 8, 18, 18, 16, 0, 0xFF0090FF) -- Р›РµРІС‹Р№ Р’РµСЂС… РЎРєСЂСѓРіР»РµРЅРёРµ
+		             renderDrawPolygon(posX_vr - 3, posY_vr + 14, 18, 18, 16, 0, 0xFF0090FF) -- Р›РµРІС‹Р№ РќРёР· РЎРєСЂСѓРіР»РµРЅРёРµ
+		             renderDrawPolygon(posX_vr + (renderGetFontDrawTextLength(font, tostring(message_vs), true) + 40), posY_vr + 8, 18, 18, 16, 0, 0xFF0090FF) -- РџСЂР°РІС‹Р№ Р’РµСЂС… РЎРєСЂСѓРіР»РµРЅРёРµ
+		             renderDrawPolygon(posX_vr + (renderGetFontDrawTextLength(font, tostring(message_vs), true) + 40), posY_vr + 14, 18, 18, 16, 0, 0xFF0090FF) -- РџСЂР°РІС‹Р№ РќРёР· РЎРєСЂСѓРіР»РµРЅРёРµ
 		        	 renderDrawPolygon(posX_vr + 5, posY_vr + (renderGetFontDrawHeight(font) / 2 + 3), 20, 20, 16, 0, 0xFFFFFFFF)
         			 renderDrawPolygon(posX_vr + 5, posY_vr + (renderGetFontDrawHeight(font) / 2 + 3), 15, 15, 8, 0, 0xFF0090FF)
                      renderDrawPolygon(posX_vr + 5, posY_vr + (renderGetFontDrawHeight(font) / 2 + 3), 24, 24, 3, -1*rotate, 0xFF0090FF)					 
@@ -1998,7 +1929,7 @@ if vip_resend.v then
 end
 end
 
--- [Автошар]
+-- [РђРІС‚РѕС€Р°СЂ]
 function autoshar()
     if ashar.v and sampTextdrawIsExists(2066) or sampTextdrawIsExists(2069) and not sampIsCursorActive() then
       wait(0)
@@ -2011,7 +1942,7 @@ function gkey.player(keyid)
     setGameKeyState(keyid, 2550)
 end
 
--- [Интерфейс: Автозаточка]
+-- [РРЅС‚РµСЂС„РµР№СЃ: РђРІС‚РѕР·Р°С‚РѕС‡РєР°]
 function interface_tochnew()
 	if interface_tochnew_window.v and not main_window_state.v then
 	    pos_tochX1, pos_tochY1 = sampTextdrawGetPos(2077)
@@ -2022,42 +1953,42 @@ function interface_tochnew()
 			imgui.PushStyleColor(imgui.Col.TitleBgCollapsed, imgui.ImVec4(0.08, 0.08, 0.08, 1.00))	
 			imgui.PushStyleColor(imgui.Col.TitleBgActive, imgui.ImVec4(0.08, 0.08, 0.08, 1.00))
 			imgui.PushStyleColor(imgui.Col.WindowBg, imgui.ImVec4(0.08, 0.08, 0.08, 1.00))
-			imgui.Begin(u8'                                                       АВТОЗАТОЧКА', nil, imgui.WindowFlags.NoResize + imgui.WindowFlags.NoScrollbar + imgui.WindowFlags.NoBringToFrontOnFocus)
+			imgui.Begin(u8'                                                       РђР’РўРћР—РђРўРћР§РљРђ', nil, imgui.WindowFlags.NoResize + imgui.WindowFlags.NoScrollbar + imgui.WindowFlags.NoBringToFrontOnFocus)
 				imgui.SetCursorPos(imgui.ImVec2(15, 24))
-					imgui.BeginChild("##Автозаточка_интерфейс_1", imgui.ImVec2(240, 75), true, imgui.WindowFlags.NoScrollbar)
+					imgui.BeginChild("##РђРІС‚РѕР·Р°С‚РѕС‡РєР°_РёРЅС‚РµСЂС„РµР№СЃ_1", imgui.ImVec2(240, 75), true, imgui.WindowFlags.NoScrollbar)
 						imgui.SetCursorPos(imgui.ImVec2(25, 10))
-						imgui.Text(u8'Выберите требуемую заточку:')
+						imgui.Text(u8'Р’С‹Р±РµСЂРёС‚Рµ С‚СЂРµР±СѓРµРјСѓСЋ Р·Р°С‚РѕС‡РєСѓ:')
 						imgui.SetCursorPos(imgui.ImVec2(40, 37))
 						imgui.SliderInt(u8"", checked_radio, 1, 12, "+%.0f")
 						mainIni.config.checked_radio = checked_radio.v
 					imgui.EndChild()
 				imgui.SetCursorPos(imgui.ImVec2(270, 24))
-					imgui.BeginChild("##Автозаточка_интерфейс_2", imgui.ImVec2(240, 75), true, imgui.WindowFlags.NoScrollbar)
+					imgui.BeginChild("##РђРІС‚РѕР·Р°С‚РѕС‡РєР°_РёРЅС‚РµСЂС„РµР№СЃ_2", imgui.ImVec2(240, 75), true, imgui.WindowFlags.NoScrollbar)
 						imgui.SetCursorPos(imgui.ImVec2(51, 10))
-						imgui.Text(u8'Выберите, чем точить:')
+						imgui.Text(u8'Р’С‹Р±РµСЂРёС‚Рµ, С‡РµРј С‚РѕС‡РёС‚СЊ:')
 						imgui.SetCursorPos(imgui.ImVec2(15, 35))
 							imgui.SetCursorPos(imgui.ImVec2(15, 35))
-								if imgui.ButtonActivated(setmodelID==1615, u8"Амулеты## InfoToch 1", imgui.ImVec2(100, 25)) then setmodelID = 1615 end imgui.SameLine()
+								if imgui.ButtonActivated(setmodelID==1615, u8"РђРјСѓР»РµС‚С‹## InfoToch 1", imgui.ImVec2(100, 25)) then setmodelID = 1615 end imgui.SameLine()
 							imgui.SetCursorPos(imgui.ImVec2(125, 35))
-								if imgui.ButtonActivated(setmodelID==16112, u8"Камни## InfoToch 2", imgui.ImVec2(100, 25)) then setmodelID = 16112 end							
+								if imgui.ButtonActivated(setmodelID==16112, u8"РљР°РјРЅРё## InfoToch 2", imgui.ImVec2(100, 25)) then setmodelID = 16112 end							
 					imgui.EndChild()
 				imgui.SetCursorPos(imgui.ImVec2(15, 110))
-					imgui.BeginChild("##Автозаточка_интерфейс_статус", imgui.ImVec2(435, 39), true, imgui.WindowFlags.NoScrollbar)
+					imgui.BeginChild("##РђРІС‚РѕР·Р°С‚РѕС‡РєР°_РёРЅС‚РµСЂС„РµР№СЃ_СЃС‚Р°С‚СѓСЃ", imgui.ImVec2(435, 39), true, imgui.WindowFlags.NoScrollbar)
 					    imgui.SetCursorPos(imgui.ImVec2(15, 12))
-					    imgui.Text(u8'СТАТУС: '..atoch_status)
+					    imgui.Text(u8'РЎРўРђРўРЈРЎ: '..atoch_status)
 					imgui.EndChild()
 				if checked_box then
 				    checked_box_text = "ON"
 				    imgui.PushStyleColor(imgui.Col.Button, imgui.ImVec4(0.00, 1.00, 0.00, 0.50))
 				else
-				    atoch_status = u8'Включите автозаточку...'
+				    atoch_status = u8'Р’РєР»СЋС‡РёС‚Рµ Р°РІС‚РѕР·Р°С‚РѕС‡РєСѓ...'
 				    checked_box_text = "OFF"
 				    imgui.PushStyleColor(imgui.Col.Button, imgui.ImVec4(1.00, 0.00, 0.00, 0.50))
 				end
 				imgui.SetCursorPos(imgui.ImVec2(460, 110))
                 if imgui.Button(u8''..checked_box_text, imgui.ImVec2(50, 39)) then
                     checked_box = not checked_box
-					atoch_status = u8'Начните заточку, а скрипт её продолжит...' or u8'Включите автозаточку...' 
+					atoch_status = u8'РќР°С‡РЅРёС‚Рµ Р·Р°С‚РѕС‡РєСѓ, Р° СЃРєСЂРёРїС‚ РµС‘ РїСЂРѕРґРѕР»Р¶РёС‚...' or u8'Р’РєР»СЋС‡РёС‚Рµ Р°РІС‚РѕР·Р°С‚РѕС‡РєСѓ...' 
 				end
 				imgui.PopStyleColor()
 		imgui.End()
@@ -2068,17 +1999,17 @@ function interface_tochnew()
 	end
 end
 
--- [Инфо о текущем бинд пресете]		
+-- [РРЅС„Рѕ Рѕ С‚РµРєСѓС‰РµРј Р±РёРЅРґ РїСЂРµСЃРµС‚Рµ]		
 function infotext()	
-	if infotextb.v and binder.v and not sampGetGamestate() ~= 3 then -- [Биндер ON]
-		renderDrawBox(posX, posY, 140, 20, 0xFF0090FF) -- Прямоугольник
-         renderDrawPolygon(posX, posY + 7, 15, 15, 16, 0, 0xFF0090FF) -- Левый Верх Скругление
-		 renderDrawPolygon(posX, posY + 12, 15, 15, 16, 0, 0xFF0090FF) -- Левый Низ Скругление
-		 renderDrawPolygon(posX + 140, posY + 7, 15, 15, 16, 0, 0xFF0090FF) -- Правый Верх Скругление
-		 renderDrawPolygon(posX + 140, posY + 12, 15, 15, 16, 0, 0xFF0090FF) -- Правый Низ Скругление
-		renderFontDrawText(font, "Пресет биндера №"..bindtab.v, posX + 5, posY + 1, -1)
+	if infotextb.v and binder.v and not sampGetGamestate() ~= 3 then -- [Р‘РёРЅРґРµСЂ ON]
+		renderDrawBox(posX, posY, 140, 20, 0xFF0090FF) -- РџСЂСЏРјРѕСѓРіРѕР»СЊРЅРёРє
+         renderDrawPolygon(posX, posY + 7, 15, 15, 16, 0, 0xFF0090FF) -- Р›РµРІС‹Р№ Р’РµСЂС… РЎРєСЂСѓРіР»РµРЅРёРµ
+		 renderDrawPolygon(posX, posY + 12, 15, 15, 16, 0, 0xFF0090FF) -- Р›РµРІС‹Р№ РќРёР· РЎРєСЂСѓРіР»РµРЅРёРµ
+		 renderDrawPolygon(posX + 140, posY + 7, 15, 15, 16, 0, 0xFF0090FF) -- РџСЂР°РІС‹Р№ Р’РµСЂС… РЎРєСЂСѓРіР»РµРЅРёРµ
+		 renderDrawPolygon(posX + 140, posY + 12, 15, 15, 16, 0, 0xFF0090FF) -- РџСЂР°РІС‹Р№ РќРёР· РЎРєСЂСѓРіР»РµРЅРёРµ
+		renderFontDrawText(font, "РџСЂРµСЃРµС‚ Р±РёРЅРґРµСЂР° в„–"..bindtab.v, posX + 5, posY + 1, -1)
 	end
-	if infotextp.v and piarcheck.v and aut.v and not sampGetGamestate() ~= 3 then -- [Пиар ON]
+	if infotextp.v and piarcheck.v and aut.v and not sampGetGamestate() ~= 3 then -- [РџРёР°СЂ ON]
 		renderDrawPolygon(posX + 163, posY + 10, 21, 21, 20, 0, actinfo)
 			if piar_delay_start and infotextpdelay.v and act then
 				piar_delay_info = string.format("%.0f", piar_delay_timer - os.clock())
@@ -2093,13 +2024,13 @@ function infotext()
 	end
 end
 
--- [Время]
+-- [Р’СЂРµРјСЏ]
 function sctime()
 	currenttime = os.time() + currenttime_shift
 	renderFontDrawText(newfont, os.date("%H:%M:%S", currenttime), scX + 5, scY + 1, FColorTable[newfont_color.v])
 end
 
--- [Автоеда]
+-- [РђРІС‚РѕРµРґР°]
 function hook.onDisplayGameText(style, time, text)
 	if dmg.v then
 	    if style == 3 and time == 1000 and text:find("~n~~n~~n~~n~~n~~n~~n~~n~~n~~n~~g~Jailed %d+ Sec%.") then
@@ -2114,15 +2045,15 @@ function hook.onDisplayGameText(style, time, text)
 	end
 end
 
--- [Скип диалогов]
+-- [РЎРєРёРї РґРёР°Р»РѕРіРѕРІ]
 function hook.onShowDialog(dialogId, dialogStyle, dialogTitle, okButtonText, cancelButtonText, dialogText)
     if zz.v then
-	    if dialogText:find("В этом месте запрещено") then
+	    if dialogText:find("Р’ СЌС‚РѕРј РјРµСЃС‚Рµ Р·Р°РїСЂРµС‰РµРЅРѕ") then
 			return false
 		end
 	end
 	if pizza.v then	
-	    if dialogText:find("Вы успешно положили") then
+	    if dialogText:find("Р’С‹ СѓСЃРїРµС€РЅРѕ РїРѕР»РѕР¶РёР»Рё") then
 			return false
 		end
 	end
@@ -2133,35 +2064,35 @@ function hook.onShowDialog(dialogId, dialogStyle, dialogTitle, okButtonText, can
 		end
 	end
 	if nalogi.v then
-		if dialogText:find("чек на оплату") then
-			sampAddChatMessage("{01A0E9}Вы оставили чек на оплату налогов",-1)
+		if dialogText:find("С‡РµРє РЅР° РѕРїР»Р°С‚Сѓ") then
+			sampAddChatMessage("{01A0E9}Р’С‹ РѕСЃС‚Р°РІРёР»Рё С‡РµРє РЅР° РѕРїР»Р°С‚Сѓ РЅР°Р»РѕРіРѕРІ",-1)
 			return false
 		end
-		if dialogText:find("для выдачи счета") then
+		if dialogText:find("РґР»СЏ РІС‹РґР°С‡Рё СЃС‡РµС‚Р°") then
 			return false
 		end
 	end
 	
-	--[АutoAD]--
+	--[РђutoAD]--
 	if autoad.v then
 	    if dialogId == 15346 then
 		    sampSendDialogResponse(15346,1,autoad_id_type.v,nil)
 			return false
 	    end
         if dialogId == 15347 then
-			local adtext_parced, adtextr_parced, adtexttype_parced = dialogText:match('Текст объявления:\n(.*)\n{ffff00}Радиостанция:(.*)\n{ffff00}Тип объявления: (.*)\n{ffff00}Итоговая')
-			local adtextc_parced = dialogText:match('стоимость объявления: (.*) {cccccc}')
-			sampAddChatMessage('{ffff00}Ваше '..adtexttype_parced..'{ffff00} объявление <<'..adtext_parced..'{ffff00}>> ', 0xffff00)
-			sampAddChatMessage('Зарегистрировано в'..adtextr_parced..'{ffffff} NEWS {ffff00}за '..adtextc_parced..'', 0xffff00)
+			local adtext_parced, adtextr_parced, adtexttype_parced = dialogText:match('РўРµРєСЃС‚ РѕР±СЉСЏРІР»РµРЅРёСЏ:\n(.*)\n{ffff00}Р Р°РґРёРѕСЃС‚Р°РЅС†РёСЏ:(.*)\n{ffff00}РўРёРї РѕР±СЉСЏРІР»РµРЅРёСЏ: (.*)\n{ffff00}РС‚РѕРіРѕРІР°СЏ')
+			local adtextc_parced = dialogText:match('СЃС‚РѕРёРјРѕСЃС‚СЊ РѕР±СЉСЏРІР»РµРЅРёСЏ: (.*) {cccccc}')
+			sampAddChatMessage('{ffff00}Р’Р°С€Рµ '..adtexttype_parced..'{ffff00} РѕР±СЉСЏРІР»РµРЅРёРµ <<'..adtext_parced..'{ffff00}>> ', 0xffff00)
+			sampAddChatMessage('Р—Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅРѕ РІ'..adtextr_parced..'{ffffff} NEWS {ffff00}Р·Р° '..adtextc_parced..'', 0xffff00)
 			sampSendDialogResponse(15347,1,-1,nil)
 			return false
 	    end
 	end
 	
 	if sctime_toggle then	
-		if string.match(dialogText, "Текущее время") then
-			chislo, mesyac, god = string.match(dialogText, "Сегодняшняя дата: 	{2EA42E}(%d+):(%d+):(%d+)")
-			chas, minuti, sekundi = string.match(dialogText, "Текущее время: 	{345690}(%d+):(%d+):(%d+)")
+		if string.match(dialogText, "РўРµРєСѓС‰РµРµ РІСЂРµРјСЏ") then
+			chislo, mesyac, god = string.match(dialogText, "РЎРµРіРѕРґРЅСЏС€РЅСЏСЏ РґР°С‚Р°: 	{2EA42E}(%d+):(%d+):(%d+)")
+			chas, minuti, sekundi = string.match(dialogText, "РўРµРєСѓС‰РµРµ РІСЂРµРјСЏ: 	{345690}(%d+):(%d+):(%d+)")
 			datetime = {year = god,month = mesyac,day = chislo,hour = chas,min = minuti,sec = sekundi}
 			currenttime_shift = tostring(os.time(datetime)) - os.time()
 		end
@@ -2175,7 +2106,7 @@ function hook.onShowDialog(dialogId, dialogStyle, dialogTitle, okButtonText, can
 	
 end
 
--- [Автопиар]
+-- [РђРІС‚РѕРїРёР°СЂ]
 function piar()
 math.randomseed(os.clock())
 	lua_thread.create(function()
@@ -2224,21 +2155,21 @@ lua_thread.create(function()
 end)
 end
 
--- [Калькулятор]
+-- [РљР°Р»СЊРєСѓР»СЏС‚РѕСЂ]
 function calc(m) 
     local func = load('return '..tostring(m)) 
     local a = select(2, pcall(func)) 
     return type(a) == 'number' and a
 end
 
--- [Автозаточка: код by Vadyao. Дополнил KitGov4e]
+-- [РђРІС‚РѕР·Р°С‚РѕС‡РєР°: РєРѕРґ by Vadyao. Р”РѕРїРѕР»РЅРёР» KitGov4e]
 function hook.onShowTextDraw(textdrawId, data)
 	if checked_box then
-	 if sampTextdrawGetString(2078) == "OЏMEH…Џ’" or sampTextdrawGetString(2078) == "CANCEL" then
-	  atoch_status = u8'Идет заточка...'
+	 if sampTextdrawGetString(2078) == "OРЏMEHвЂ¦РЏвЂ™" or sampTextdrawGetString(2078) == "CANCEL" then
+	  atoch_status = u8'РРґРµС‚ Р·Р°С‚РѕС‡РєР°...'
 	 end
 		if checktochilki and data.modelId == setmodelID then
-		   atoch_status = u8'Вставка точилок...'
+		   atoch_status = u8'Р’СЃС‚Р°РІРєР° С‚РѕС‡РёР»РѕРє...'
 			worktread:terminate()
 			checktochilki = false
 			sampSendClickTextdraw(textdrawId)
@@ -2246,13 +2177,13 @@ function hook.onShowTextDraw(textdrawId, data)
 				wait(wait_*1000)
 				sampSendClickTextdraw(2077)
 			end)
-			atoch_status = u8'Идет заточка...'
+			atoch_status = u8'РРґРµС‚ Р·Р°С‚РѕС‡РєР°...'
 		end
 		if textdrawId == 2067 and not checktochilki then
-		 if sampTextdrawGetString(2078) == "OЏMEH…Џ’" or sampTextdrawGetString(2078) == "CANCEL" then
-		   atoch_status = u8'Идет заточка...'
+		 if sampTextdrawGetString(2078) == "OРЏMEHвЂ¦РЏвЂ™" or sampTextdrawGetString(2078) == "CANCEL" then
+		   atoch_status = u8'РРґРµС‚ Р·Р°С‚РѕС‡РєР°...'
 		 else		    
-		   atoch_status = u8'Начните заточку, а скрипт её продолжит...'
+		   atoch_status = u8'РќР°С‡РЅРёС‚Рµ Р·Р°С‚РѕС‡РєСѓ, Р° СЃРєСЂРёРїС‚ РµС‘ РїСЂРѕРґРѕР»Р¶РёС‚...'
 		 end
 			if data.boxColor == 1515015679 then
 				if sampTextdrawGetString(2082) == '_' then
@@ -2262,7 +2193,7 @@ function hook.onShowTextDraw(textdrawId, data)
 					sampSendClickTextdraw(2077)
 				end
 			elseif data.boxColor == 1515913037 then
-			    atoch_status = u8'Идет заточка...'
+			    atoch_status = u8'РРґРµС‚ Р·Р°С‚РѕС‡РєР°...'
 				if tonumber(sampTextdrawGetString(2084):match('(%d+)')) < checked_radio.v then
 					if sampTextdrawGetString(2082) == '_' then
 						checktochilki = true
@@ -2271,22 +2202,22 @@ function hook.onShowTextDraw(textdrawId, data)
 						sampSendClickTextdraw(2077)
 					end
 				else
-				    atoch_status = u8'Заточка завершена, достигнут требуемый уровень...'
+				    atoch_status = u8'Р—Р°С‚РѕС‡РєР° Р·Р°РІРµСЂС€РµРЅР°, РґРѕСЃС‚РёРіРЅСѓС‚ С‚СЂРµР±СѓРµРјС‹Р№ СѓСЂРѕРІРµРЅСЊ...'
 				end
 			end
 		end
 	end
 end
 
--- [Автозаточка: выбор инвентаря]
+-- [РђРІС‚РѕР·Р°С‚РѕС‡РєР°: РІС‹Р±РѕСЂ РёРЅРІРµРЅС‚Р°СЂСЏ]
 function inventory()
 	time = os.time()
 	repeat wait(0)
-	    atoch_status = u8'Поиск точилок в инвентаре...'
+	    atoch_status = u8'РџРѕРёСЃРє С‚РѕС‡РёР»РѕРє РІ РёРЅРІРµРЅС‚Р°СЂРµ...'
 		if os.time() >= time+15 then
 			checktochilki = false
-			sampAddChatMessage("{01A0E9}[{ff981a}(Заточка){01A0E9}] {56d93f} У вас закончились камни/амулеты!", -1)
-			atoch_status = u8'Точилки не найдены, заточка остановлена...'
+			sampAddChatMessage("{01A0E9}[{ff981a}(Р—Р°С‚РѕС‡РєР°){01A0E9}] {56d93f} РЈ РІР°СЃ Р·Р°РєРѕРЅС‡РёР»РёСЃСЊ РєР°РјРЅРё/Р°РјСѓР»РµС‚С‹!", -1)
+			atoch_status = u8'РўРѕС‡РёР»РєРё РЅРµ РЅР°Р№РґРµРЅС‹, Р·Р°С‚РѕС‡РєР° РѕСЃС‚Р°РЅРѕРІР»РµРЅР°...'
 			break
 		end
 		sampSendClickTextdraw(2092)
@@ -2298,11 +2229,11 @@ function inventory()
 	until not checktochilki 
 end
 
--- [Быстрый репорт]
+-- [Р‘С‹СЃС‚СЂС‹Р№ СЂРµРїРѕСЂС‚]
 function fastreport(text)
 	if fastrep.v then
 		if #text == 0 then
-			sampAddChatMessage('{ff6347}[ARZ Быстрый репорт]:{ffffff} Введите ваш репорт', 0xff6347)
+			sampAddChatMessage('{ff6347}[ARZ Р‘С‹СЃС‚СЂС‹Р№ СЂРµРїРѕСЂС‚]:{ffffff} Р’РІРµРґРёС‚Рµ РІР°С€ СЂРµРїРѕСЂС‚', 0xff6347)
 		else
 			sampSendChat('/rep')
 			sampSendDialogResponse(32, 1, 0, text)
@@ -2314,7 +2245,7 @@ end
 
 
 
--- [Цвета имгуи]
+-- [Р¦РІРµС‚Р° РёРјРіСѓРё]
 function apply_custom_style()
 	if not state then
   	imgui.SwitchContext()
@@ -2502,7 +2433,7 @@ function imgui.NewInputText(lable, val, width, hint, hintpos)
     return result
 end
 
-function imgui.LockedParam(...) -- [ Пример: imgui.LockedParam(u8"Заблокировано## Блок1", imgui.ImVec2(65, 23)) ]
+function imgui.LockedParam(...) -- [ РџСЂРёРјРµСЂ: imgui.LockedParam(u8"Р—Р°Р±Р»РѕРєРёСЂРѕРІР°РЅРѕ## Р‘Р»РѕРє1", imgui.ImVec2(65, 23)) ]
         local r, g, b, a = imgui.ImColor(imgui.GetStyle().Colors[imgui.Col.Button]):GetFloat4()
         imgui.PushStyleColor(imgui.Col.Button, imgui.ImVec4(r, g, b, a/2) )
         imgui.PushStyleColor(imgui.Col.ButtonHovered, imgui.ImVec4(r, g, b, a/2))
@@ -2583,6 +2514,71 @@ function imgui.ToggleButton(str_id, bool)
 end
 
 function update()
-	sampAddChatMessage("Версия "..version.." ",-1)
-	sampAddChatMessage("Дата выхода: 09.01.2022",-1)
+	sampAddChatMessage("Р’РµСЂСЃРёСЏ 1.0",-1)
+	sampAddChatMessage("Р”Р°С‚Р° РІС‹С…РѕРґР°: 08.01.2022",-1)
 end
+
+--
+--     _   _   _ _____ ___  _   _ ____  ____    _  _____ _____   ______   __   ___  ____  _     _  __
+--    / \ | | | |_   _/ _ \| | | |  _ \|  _ \  / \|_   _| ____| | __ ) \ / /  / _ \|  _ \| |   | |/ /
+--   / _ \| | | | | || | | | | | | |_) | | | |/ _ \ | | |  _|   |  _ \\ V /  | | | | |_) | |   | ' /
+--  / ___ \ |_| | | || |_| | |_| |  __/| |_| / ___ \| | | |___  | |_) || |   | |_| |  _ <| |___| . \
+-- /_/   \_\___/  |_| \___/ \___/|_|   |____/_/   \_\_| |_____| |____/ |_|    \__\_\_| \_\_____|_|\_\                                                                                                                                                                                                                  
+--
+-- Author: http://qrlk.me/samp
+--
+function autoupdate(json_url, prefix, url)
+	local dlstatus = require('moonloader').download_status
+	local json = getWorkingDirectory() .. '\\'..thisScript().name..'-version.json'
+	if doesFileExist(json) then os.remove(json) end
+	downloadUrlToFile(json_url, json,
+	  function(id, status, p1, p2)
+		if status == dlstatus.STATUSEX_ENDDOWNLOAD then
+		  if doesFileExist(json) then
+			local f = io.open(json, 'r')
+			if f then
+			  local info = decodeJson(f:read('*a'))
+			  updatelink = info.updateurl
+			  updateversion = info.latest
+			  f:close()
+			  os.remove(json)
+			  if updateversion ~= thisScript().version then
+				lua_thread.create(function(prefix)
+				  local dlstatus = require('moonloader').download_status
+				  local color = -1
+				  sampAddChatMessage((prefix..'РћР±РЅР°СЂСѓР¶РµРЅРѕ РѕР±РЅРѕРІР»РµРЅРёРµ. РџС‹С‚Р°СЋСЃСЊ РѕР±РЅРѕРІРёС‚СЊСЃСЏ c '..thisScript().version..' РЅР° '..updateversion), color)
+				  wait(250)
+				  downloadUrlToFile(updatelink, thisScript().path,
+					function(id3, status1, p13, p23)
+					  if status1 == dlstatus.STATUS_DOWNLOADINGDATA then
+						print(string.format('Р—Р°РіСЂСѓР¶РµРЅРѕ %d РёР· %d.', p13, p23))
+					  elseif status1 == dlstatus.STATUS_ENDDOWNLOADDATA then
+						print('Р—Р°РіСЂСѓР·РєР° РѕР±РЅРѕРІР»РµРЅРёСЏ Р·Р°РІРµСЂС€РµРЅР°.')
+						sampAddChatMessage((prefix..'РћР±РЅРѕРІР»РµРЅРёРµ Р·Р°РІРµСЂС€РµРЅРѕ!'), color)
+						goupdatestatus = true
+						lua_thread.create(function() wait(500) thisScript():reload() end)
+					  end
+					  if status1 == dlstatus.STATUSEX_ENDDOWNLOAD then
+						if goupdatestatus == nil then
+						  sampAddChatMessage((prefix..'РћР±РЅРѕРІР»РµРЅРёРµ РїСЂРѕС€Р»Рѕ РЅРµСѓРґР°С‡РЅРѕ. Р—Р°РїСѓСЃРєР°СЋ СѓСЃС‚Р°СЂРµРІС€СѓСЋ РІРµСЂСЃРёСЋ..'), color)
+						  update = false
+						end
+					  end
+					end
+				  )
+				  end, prefix
+				)
+			  else
+				update = false
+				print('v'..thisScript().version..': РћР±РЅРѕРІР»РµРЅРёРµ РЅРµ С‚СЂРµР±СѓРµС‚СЃСЏ.')
+			  end
+			end
+		  else
+			print('v'..thisScript().version..': РќРµ РјРѕРіСѓ РїСЂРѕРІРµСЂРёС‚СЊ РѕР±РЅРѕРІР»РµРЅРёРµ. РЎРјРёСЂРёС‚РµСЃСЊ РёР»Рё РїСЂРѕРІРµСЂСЊС‚Рµ СЃР°РјРѕСЃС‚РѕСЏС‚РµР»СЊРЅРѕ РЅР° '..url)
+			update = false
+		  end
+		end
+	  end
+	)
+	while update ~= false do wait(100) end
+  end
