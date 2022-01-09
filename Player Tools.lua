@@ -1,4 +1,4 @@
-script_version('1.0')
+script_version('2.0')
 script_author("Tinkoff Bank")
 
 local nalogovaya = 0
@@ -383,7 +383,7 @@ imgui.ShowCursor = main_window_state.v
 			ScreenX, ScreenY = getScreenResolution()
 			imgui.SetNextWindowPos(imgui.ImVec2(ScreenX / 2 , ScreenY / 2), imgui.Cond.FirsUseEver, imgui.ImVec2(0.5, 0.5))
 		end
-	  imgui.Begin('Player Tools 1.0 | by Tinkoff Bank', main_window_state, imgui.WindowFlags.NoResize + imgui.WindowFlags.NoCollapse + imgui.WindowFlags.NoScrollbar + blocker)		  	
+	  imgui.Begin('Player Tools 2.0 | by Tinkoff Bank', main_window_state, imgui.WindowFlags.NoResize + imgui.WindowFlags.NoCollapse + imgui.WindowFlags.NoScrollbar + blocker)		  	
 		imgui.BeginChild("##�������", imgui.ImVec2(1050, 35), true, imgui.WindowFlags.NoScrollbar)
 			imgui.SetCursorPos(imgui.ImVec2(109, 10))
 				imgui.Text(u8"����������� �������: /findihouse - /fh, /findibiz - /fbiz, /house - /h, /fammenu - /fmn |")
@@ -2514,7 +2514,7 @@ function imgui.ToggleButton(str_id, bool)
 end
 
 function update()
-	sampAddChatMessage("������ 1.0",-1)
+	sampAddChatMessage("������ 2.0",-1)
 	sampAddChatMessage("���� ������: 08.01.2022",-1)
 end
 
