@@ -510,7 +510,7 @@ imgui.ShowCursor = main_window_state.v
 				imgui.CheckboxPlus(u8"Закрытие аренды", jlock)
                 imgui.SameLine()
 				imgui.TextQuestion(u8"При комбинации клавиш JL вы закроете/откроете свой арендванный транспорт")
-				imgui.CheckboxPlus(u8"Смена стиля (ТТ)", scar)
+				imgui.CheckboxPlus(u8"Смена стиля езды (ТТ)", scar)
                 imgui.SameLine()
 				imgui.TextQuestion(u8"При двойном нажатии клавиши O вы смените стиль езды вашего автомобиля")
 				imgui.CheckboxPlus(u8"Установка шара",shar)
