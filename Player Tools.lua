@@ -85,6 +85,8 @@ autoad = false,
 vip_resend = false,
 fastrep = false,
 sctime_toggle = false,
+carskill_speed = false,
+anticarskill = true,
 chatsms = "",
 rtsms = "",
 famsms = "",
@@ -149,6 +151,7 @@ newfont_fonttypeini = "5",
 newfont_colorini = "1"
 }
 }, "Player ToolsE")
+
 
 local bf = imgui.ImBuffer
 local darktheme = imgui.ImBool(mainIni.config.darktheme)
@@ -383,11 +386,11 @@ imgui.ShowCursor = main_window_state.v
 			ScreenX, ScreenY = getScreenResolution()
 			imgui.SetNextWindowPos(imgui.ImVec2(ScreenX / 2 , ScreenY / 2), imgui.Cond.FirsUseEver, imgui.ImVec2(0.5, 0.5))
 		end
-	  imgui.Begin('Player Tools 2.0 | by Tinkoff Bank', main_window_state, imgui.WindowFlags.NoResize + imgui.WindowFlags.NoCollapse + imgui.WindowFlags.NoScrollbar + blocker)		  	
+	  imgui.Begin('Player Tools 1.0 | by Tinkoff Bank', main_window_state, imgui.WindowFlags.NoResize + imgui.WindowFlags.NoCollapse + imgui.WindowFlags.NoScrollbar + blocker)		  	
 		imgui.BeginChild("##�������", imgui.ImVec2(1050, 35), true, imgui.WindowFlags.NoScrollbar)
 			imgui.SetCursorPos(imgui.ImVec2(109, 10))
-				imgui.Text(u8"����������� �������: /findihouse - /fh, /findibiz - /fbiz, /house - /h, /fammenu - /fmn |")
-				imgui.TextWithQuestionColored(u8'�������: \n/calc 2*2 - ���������\n/calc 2/2 - �������\n/calc 2-2 - ���������\n/calc 2+2 - �������� ', imgui.ImVec4(0.0, 0.5, 1.0, 1.0), u8'�����������: /calc *������*', imgui.SameLine())
+				imgui.Text(u8"������� �������: /pmenu | /update | /cmds | /calc |")
+				imgui.TextWithQuestionColored(u8'�����: \n������� ����� ��� �����\n1. �������\n2. ������ ', imgui.ImVec4(0.0, 0.5, 1.0, 1.0), u8'������� �� ������, ����� �������� ����� >>', imgui.SameLine())
 			imgui.SetCursorPos(imgui.ImVec2(880, 10))
 			    imgui.TextColored(imgui.ImVec4(0.43, 0.43, 0.50, 0.50), u8'������:')
 				imgui.SameLine()
@@ -506,11 +509,11 @@ imgui.ShowCursor = main_window_state.v
 				end
 				imgui.CheckboxPlus(u8"�������� ����������", lock)
 				imgui.SameLine()
-				imgui.TextQuestion(u8"��� ������� �� ������� L �� ��������/�������� ���� ���������")
+				imgui.TextQuestion(u8"��� ������� �� ������� LK �� ��������/�������� ���� ���������")
 				imgui.CheckboxPlus(u8"�������� ������", jlock)
                 imgui.SameLine()
 				imgui.TextQuestion(u8"��� ���������� ������ JL �� ��������/�������� ���� ����������� ���������")
-				imgui.CheckboxPlus(u8"����� ����� ���� (��)", scar)
+				imgui.CheckboxPlus(u8"����� ����� (��)", scar)
                 imgui.SameLine()
 				imgui.TextQuestion(u8"��� ������� ������� ������� O �� ������� ����� ���� ������ ����������")
 				imgui.CheckboxPlus(u8"��������� ����",shar)
@@ -536,7 +539,7 @@ imgui.ShowCursor = main_window_state.v
 				 imgui.TextColored(imgui.ImVec4(1.0, 0.5, 0.0, 1.0), u8'���������� ����', imgui.SameLine())
 				 imgui.SameLine()
 				 imgui.TextQuestion(u8"���������� �/� ��������� ��� (��� ����� ������ ������ ALT �� ����)")
-				 imgui.CheckboxPlus("", cure)
+				 imgui.CheckboxPlus(" ", cure)
 				 imgui.TextColored(imgui.ImVec4(1.0, 0.5, 0.0, 1.0), u8'��������� (�����������)', imgui.SameLine())
 				 imgui.SameLine()
 				 imgui.TextQuestion(u8"��� ������� ������ ALT + 4 �� ��������� ���������� ������ � ������ ������\n(����� ��������� � ���������)")
@@ -796,7 +799,42 @@ function newinterface()
 						end
 					end
 				   
-				   --[Toch Info]
+					--[AntiCarSkill: �������]
+					function onSendRpc(id, bs)
+						if id == 50 then
+							local cmd_len = raknetBitStreamReadInt32(bs)
+							local cmd_text = raknetBitStreamReadString(bs, cmd_len)
+							if cmd_text == '/anticarskill' then
+								callDialog()
+								return false
+							end
+						elseif id == 106 and acssettings.anticarskill then
+							return false
+						end
+					end
+
+					function callDialog()
+						ini.main.carskill_speed = acssettings.carskill_speed
+						ini.main.anticarskill = acssettings.anticarskill
+						inicfg.save(ini, directIni)
+						sampShowDialog(812, 'AntiCarSkill by {ff004d}chapo', '����������� ��������� ��������: '..(acssettings.carskill_speed and '{64bf43}��������' or '{ff004d}���������')..'\n����������� ������� ���������: '..(settings.anticarskill and '{64bf43}��������' or '{ff004d}���������'), '�������', '�������', 4)
+					end
+
+					function onReceiveRpc(id, bs)
+						--INCOMING_RPCS[RPC.SETVEHICLEVELOCITY]         = {'onSetVehicleVelocity', {turn = 'bool8'}, {velocity = 'vector3d'}}
+						if id == 91 and acssettings.carskill_speed then
+							local MINIMUM_VALUE = 0.05
+							local turn = raknetBitStreamReadBool(bs)
+							local x = raknetBitStreamReadFloat(bs)
+							local y = raknetBitStreamReadFloat(bs)
+							local z = raknetBitStreamReadFloat(bs)
+							--if x < MINIMUM_VALUE or y < MINIMUM_VALUE or z < MINIMUM_VALUE then 
+								return false 
+							--end
+						end
+					end
+
+					--[Toch Info]
 					if toch.v == "active" and aut.v then
 						imgui.Checkbox(u8"��������� �����������",infotexttoch)
 						imgui.SameLine()
@@ -1213,7 +1251,7 @@ function saverconfig() -- ����������� Upvalues!!!
 				mainIni.config.scar = scar.v
 				mainIni.config.lafk = lafk.v
 				mainIni.config.cskill = cskill.v
-				mainIni.config.test = test.v
+				mainIni.config.cheeps = cheeps.v
 				mainIni.config.key = key.v
 				mainIni.config.aut = aut.v
 				mainIni.config.abc = abc.v
@@ -1262,7 +1300,9 @@ end
 			
 function main()
 	autoupdate("https://raw.githubusercontent.com/LucasRozov/scripts/main/upd.json", '['..string.upper(thisScript().name)..']: ', "vk.com/scam.haha")
-	while not isSampAvailable() do wait(0) end
+	if not isSampLoaded() or not isSampfuncsLoaded() then return end
+	sampAddChatMessage("{008000}Player Tools (BETA) {ffffff}| {00ff00}��������! {008000}������: " ..version.. " ", 0x1e90ff)
+	sampAddChatMessage("{008000}�������: {ffffff}/pmenu{008000}, {ffffff}/cmds{008000}, {ffffff}/update", 0x1e90ff)
 	sampRegisterChatCommand("piar", function()
         if piarcheck.v then	
 	        act = not act; sampAddChatMessage(act and '{01A0E9}������� ��������!' or '{01A0E9}������� ���������!', -1)
@@ -1281,7 +1321,6 @@ function main()
             sampAddChatMessage(checked_box and '{01A0E9}����������� ��������!' or '{01A0E9}����������� ���������!', -1)
 		end			
 	end)
-	
 	sampRegisterChatCommand("pmenu", function()
         main_window_state.v = not main_window_state.v
     end)
@@ -1302,8 +1341,39 @@ function main()
 		sampSendChat('/findibiz '..num) 
 	end)
 
+	sampRegisterChatCommand('cc', function(num) 
+		sampAddChatMessage(" ", -1)
+					sampAddChatMessage(" ", -1)
+					sampAddChatMessage(" ", -1)
+					sampAddChatMessage(" ", -1)
+					sampAddChatMessage(" ", -1)
+					sampAddChatMessage(" ", -1)
+					sampAddChatMessage(" ", -1)
+					sampAddChatMessage(" ", -1)
+					sampAddChatMessage(" ", -1)
+					sampAddChatMessage(" ", -1)
+					sampAddChatMessage(" ", -1)
+					sampAddChatMessage(" ", -1)
+					sampAddChatMessage(" ", -1)
+					sampAddChatMessage(" ", -1)
+					sampAddChatMessage(" ", -1)
+	end)
+	sampRegisterChatCommand('cskill', function(num) 
+		sampAddChatMessage("{ff0000}������� ��������� �� ����������!", -1)
+	end)
 	
-	sampAddChatMessage("{ff0000}Player Tools (BETA) {00ff00}��������! {ff0000}������: " ..version.. " ", 0xff0000ff)
+	sampRegisterChatCommand('lafk', function(num) 
+		sampAddChatMessage("{ff0000}������� ��������� �� ����������!", -1)
+	end)
+
+	sampRegisterChatCommand('cmds', function(num) 
+		sampShowDialog(10,"������� ��� ������������� Player Helper","{1E90FF}/pmenu {FFFFFF}- ������� ���� ���� �������\n{1e90ff}/piar {ffffff}- �������� {ff0000}(�� ��������� �������� ��������!){ffffff}\n{1e90ff}/vip {ffffff}- ��������� ������ �� �������� VIP\n{1E90FF}/atooch {ffffff}- �����������\n{1E90FF}/fh {ffffff}- ���������� {ff0000}/findihouse{ffffff}\n{1E90FF}/fbiz {ffffff}- ���������� {ff0000}/findibiz{ffffff}\n{1E90FF}/fmn {ffffff}- ���������� {ff0000}/fammenu{ffffff}\n{1E90FF}/h {ffffff}- ���������� {ff0000}/house{ffffff}\n{1E90FF}/cc {ffffff}- �������� ���{ff0000} (���������){ffffff}\n{1E90FF}/lafk {ffffff}- AntiAFK {ff0000} (�� C������� ������� ��������!){ffffff}\n{1E90FF}/cskill {ffffff}- AntiCarSkill{ff0000} (�� �������� ������� ��������!){ffffff}","�������")
+	end)
+
+	sampRegisterChatCommand('update', function(num) 
+		sampShowDialog(10,"������ ���������� Player Helper","{1e90ff}1.0 {008000}[06.01.2022] {ffffff}- ������ ���� ������������.\n{1e90ff}1.1 {008000}[07.01.2022] {ffffff}- ���� ��������� ����� �������: {1e90ff}/piar, /vip.\n{1e90ff}2.0 {008000}[08.01.2022] {ffffff}- ��� �������� ����� �������� �������� {1e90ff}������{ffffff}, �������� ���������� {1e90ff}AntiCarSkill{ffffff}, {1e90ff}AntiAFK.","�������")
+	end)
+	
 	
 	sampRegisterChatCommand('vip', function(id)
 	if vipcheck.v then
@@ -1463,7 +1533,7 @@ function main()
 			end
 		end
 		if lock.v and not sampIsChatInputActive() then
-			if testCheat("l") then
+			if testCheat("lk") then
 				sampSendChat("/lock")
 			end
 		end
@@ -1500,12 +1570,12 @@ function main()
 		end
 		if lafk.v and not sampIsCursorActive() then
 			if testCheat("la") then
-				sampSendChat("������ ������ ���������� � ����������")
+				sampAddChatMessage('������� �� ����������!', 0xFF0000)
 			end
 		end
 		if cskill.v and not sampIsCursorActive() then
 			if testCheat("ck") then
-				sampSendChat("/cskill")
+				sampAddChatMessage('������� �� ����������!', 0xFF0000)
 			end
 		end
 		if cheeps.v and not sampIsCursorActive() then
@@ -2514,8 +2584,8 @@ function imgui.ToggleButton(str_id, bool)
 end
 
 function update()
-	sampAddChatMessage("������ 2.0",-1)
-	sampAddChatMessage("���� ������: 08.01.2022",-1)
+	sampAddChatMessage("������ "..version.." ",-1)
+	sampAddChatMessage("���� ������: 09.01.2022",-1)
 end
 
 --
