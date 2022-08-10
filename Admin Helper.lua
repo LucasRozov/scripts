@@ -2,7 +2,7 @@ script_name('ROZOVHELPER') -- название скрипта
 script_author('HAYDEN') -- автор скрипта
 script_description('ADMIN TUCSON') -- описание скрипта
 script_name("ADMIN HELPER")
-script_version("1.2")
+script_version("1.1")
 
 -- https://github.com/qrlk/moonloader-script-updater
 local enable_autoupdate = true -- false to disable auto-update + disable sending initial telemetry (server, moonloader version, script version, samp nickname, virtual volume serial number)
