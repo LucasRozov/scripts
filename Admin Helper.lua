@@ -13,7 +13,7 @@ if enable_autoupdate then
     if updater_loaded then
         autoupdate_loaded, Update = pcall(Updater)
         if autoupdate_loaded then
-            Update.json_url = "https://raw.githubusercontent.com/LucasRozov/scripts/main/ahelper" .. tostring(os.clock())
+            Update.json_url = "https://raw.githubusercontent.com/LucasRozov/scripts/main/ahelper.json" .. tostring(os.clock())
             Update.prefix = "[" .. string.upper(thisScript().name) .. "]: "
             Update.url = "https://github.com/LucasRozov/scripts/tree/main"
         end
@@ -33,8 +33,9 @@ function main()
  if not isSampLoaded() or not isSampfuncsLoaded() then return end
  while not isSampAvailable() do wait(100) end
  sampAddChatMessage('{7FFF00}[RozovHelper]{ffffff} Скрипт успешно загружен.', -1)
- sampAddChatMessage('{7FFF00}[RozovHelper]{ffffff} Регламент был обновлен 5.08.2022.', -1)
- sampAddChatMessage('{7FFF00}[RozovHelper]{ffffff} Версия: 2.0.', -1)
+ sampAddChatMessage('{7FFF00}[RozovHelper]{ffffff} Регламент был обновлен 9.08.2022.', -1)
+ sampAddChatMessage('{7FFF00}[RozovHelper]{ffffff} Версия: 1.2', -1)
+ sampAddChatMessage('{7FFF00}[RozovHelper]{ffffff} 2281337', -1)
 
 sampRegisterChatCommand("zz", cmd_zz)
 sampRegisterChatCommand('cheat', cmd_cheat)
@@ -306,5 +307,15 @@ sampRegisterChatCommand("cmd1", function(arg)
 		sampSendChat(string.format("/spplayer %d", id))
 		sampSendChat(string.format("/gethere %d", id))
 		sampAddChatMessage(string.format('{7FFF00}[Rozov Тилипёрт]{ffffff} Вы успешно заспавнили и вернули игрока.', id),-1)
+	end
+end)
+
+sampRegisterChatCommand("test", function(arg)
+    local id = string.match(arg, "(.+)")
+	if id == nil then
+		sampAddChatMessage('{7FFF00}[RozovHelper]{ffffff} ТЕСТ!', -1)
+	else
+		sampSendChat(string.format("ТЕСТ %d", id))
+		sampAddChatMessage(string.format('{7FFF00}[Rozov Тилипёрт]{ffffff} ВТЕСТ.', id),-1)
 	end
 end)
