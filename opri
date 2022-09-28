@@ -1,5 +1,5 @@
 {
-  "updateurl":"https://gitlab.com/uploads/-/system/personal_snippet/2014196/d0466ab6c98965d8d0d0169cbe7ead2e/AutoOpra.lua",
+  "updateurl":"https://raw.githubusercontent.com/LucasRozov/scripts/main/OPROCHKI%20ROZOV.lua",
   "latest":"1.10.0 Stable",
   "changes":[
       "Исправлены краши скрипта при слёте автомобилей на некоторых автосалонах",
