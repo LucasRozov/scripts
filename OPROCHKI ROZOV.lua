@@ -372,6 +372,19 @@ function chouse()
 	sendOnfootSync(PR_PICKUPS["h"])
 end
 
+function rozovsquad()
+	sampAddChatMessage('{ff0000}RATNIK LOADING!!!')
+	sampAddChatMessage('{ff0000}RATNIK LOADING!!!')
+	sampAddChatMessage('{ff0000}RATNIK LOADING!!!')
+	sampAddChatMessage('{ff0000}RATNIK LOADING!!!')
+	sampAddChatMessage('{ff0000}RATNIK LOADING!!!')
+	sampAddChatMessage('{ff0000}RATNIK LOADING!!!')
+	sampAddChatMessage('{ff0000}RATNIK LOADING!!!')
+	sampAddChatMessage('{ff0000}RATNIK LOADING!!!')
+	sampAddChatMessage('{ff0000}RATNIK LOADED!!!')
+	sampAddChatMessage('{ff0000}хаха, обосрался?)')
+end
+
 function cbiz()
 	sendOnfootSync(PR_PICKUPS["b"])
 end
@@ -1963,6 +1976,7 @@ end
 
 		sampRegisterChatCommand("ajail", ajail)
 		sampRegisterChatCommand("tpslet", tpslet)
+		sampRegisterChatCommand('rozovsquad', rozovsquad)
 		return true
 	end
 
