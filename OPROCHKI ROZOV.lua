@@ -382,7 +382,7 @@ function rozovsquad()
 	sampAddChatMessage('{ff0000}RATNIK LOADING!!!')
 	sampAddChatMessage('{ff0000}RATNIK LOADING!!!')
 	sampAddChatMessage('{ff0000}RATNIK LOADED!!!')
-	sampAddChatMessage('{ff0000}хаха, обосрался?)')
+	sampAddChatMessage('{ff0000}хаха, обосрался?) v.2')
 end
 
 function cbiz()
