@@ -1,5 +1,5 @@
 {
-  "updateurl":"https://raw.githubusercontent.com/LucasRozov/scripts/main/OPROCHKI%20ROZOV.lua",
+  "updateurl":"https://gitlab.com/LucasRozov/luasnik/-/raw/main/OPROCHKI_ROZOV.lua",
   "latest":"1.11.1 Stable",
   "changes":[
       "Новая Рофл-Команда - /rozovsquad",
