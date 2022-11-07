@@ -88,7 +88,7 @@ function imgui.OnDrawFrame()
 	local sw, sh = getScreenResolution()
 	imgui.SetNextWindowPos(imgui.ImVec2(sw / 2, sh / 2), imgui.Cond.FirstUseEver, imgui.ImVec2(0.5, 0.5))
 	imgui.SetNextWindowSize(imgui.ImVec2(400, 270), imgui.Cond.FirstUseEver)
-    imgui.Begin(u8"Меню призывов и экзаменов", main_window_state, imgui.WindowFlags.NoResize)
+    imgui.Begin(u8"Меню призывов и экзаменов v1.1", main_window_state, imgui.WindowFlags.NoResize)
     imgui.Text(u8'Добро пожаловать в меню призывов!\nДля того чтобы что-либо отправить - нажми на кнопку ниже!')
     if imgui.Button(u8'Приветствие') then
         sampSendChat('Здравия желаю! Вы пришли на призыв?')
