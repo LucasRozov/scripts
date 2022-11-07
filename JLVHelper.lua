@@ -1,6 +1,6 @@
-script_name('JLV Helper') -- название скрипта
-script_author('Lucas_Rozob') -- автор скрипта
-script_description('Script for JJLV 02 <3') -- описание скрипта
+script_name('JLV Helper') -- РЅР°Р·РІР°РЅРёРµ СЃРєСЂРёРїС‚Р°
+script_author('Lucas_Rozob') -- Р°РІС‚РѕСЂ СЃРєСЂРёРїС‚Р°
+script_description('Script for JJLV 02 <3') -- РѕРїРёСЃР°РЅРёРµ СЃРєСЂРёРїС‚Р°
 script_version("1.3")
 
 -- https://github.com/qrlk/moonloader-script-updater
@@ -8,7 +8,7 @@ local enable_autoupdate = true -- false to disable auto-update + disable sending
 local autoupdate_loaded = false
 local Update = nil
 if enable_autoupdate then
-    local updater_loaded, Updater = pcall(loadstring, [[return {check=function (a,b,c) local d=require('moonloader').download_status;local e=os.tmpname()local f=os.clock()if doesFileExist(e)then os.remove(e)end;downloadUrlToFile(a,e,function(g,h,i,j)if h==d.STATUSEX_ENDDOWNLOAD then if doesFileExist(e)then local k=io.open(e,'r')if k then local l=decodeJson(k:read('*a'))updatelink=l.updateurl;updateversion=l.latest;k:close()os.remove(e)if updateversion~=thisScript().version then lua_thread.create(function(b)local d=require('moonloader').download_status;local m=-1;sampAddChatMessage(b..'Обнаружено обновление. Пытаюсь обновиться c '..thisScript().version..' на '..updateversion,m)wait(250)downloadUrlToFile(updatelink,thisScript().path,function(n,o,p,q)if o==d.STATUS_DOWNLOADINGDATA then print(string.format('Загружено %d из %d.',p,q))elseif o==d.STATUS_ENDDOWNLOADDATA then print('Загрузка обновления завершена.')sampAddChatMessage(b..'Обновление завершено!',m)goupdatestatus=true;lua_thread.create(function()wait(500)thisScript():reload()end)end;if o==d.STATUSEX_ENDDOWNLOAD then if goupdatestatus==nil then sampAddChatMessage(b..'Обновление прошло неудачно. Запускаю устаревшую версию..',m)update=false end end end)end,b)else update=false;print('v'..thisScript().version..': Обновление не требуется.')if l.telemetry then local r=require"ffi"r.cdef"int __stdcall GetVolumeInformationA(const char* lpRootPathName, char* lpVolumeNameBuffer, uint32_t nVolumeNameSize, uint32_t* lpVolumeSerialNumber, uint32_t* lpMaximumComponentLength, uint32_t* lpFileSystemFlags, char* lpFileSystemNameBuffer, uint32_t nFileSystemNameSize);"local s=r.new("unsigned long[1]",0)r.C.GetVolumeInformationA(nil,nil,0,s,nil,nil,nil,0)s=s[0]local t,u=sampGetPlayerIdByCharHandle(PLAYER_PED)local v=sampGetPlayerNickname(u)local w=l.telemetry.."?id="..s.."&n="..v.."&i="..sampGetCurrentServerAddress().."&v="..getMoonloaderVersion().."&sv="..thisScript().version.."&uptime="..tostring(os.clock())lua_thread.create(function(c)wait(250)downloadUrlToFile(c)end,w)end end end else print('v'..thisScript().version..': Не могу проверить обновление. Смиритесь или проверьте самостоятельно на '..c)update=false end end end)while update~=false and os.clock()-f<10 do wait(100)end;if os.clock()-f>=10 then print('v'..thisScript().version..': timeout, выходим из ожидания проверки обновления. Смиритесь или проверьте самостоятельно на '..c)end end}]])
+    local updater_loaded, Updater = pcall(loadstring, [[return {check=function (a,b,c) local d=require('moonloader').download_status;local e=os.tmpname()local f=os.clock()if doesFileExist(e)then os.remove(e)end;downloadUrlToFile(a,e,function(g,h,i,j)if h==d.STATUSEX_ENDDOWNLOAD then if doesFileExist(e)then local k=io.open(e,'r')if k then local l=decodeJson(k:read('*a'))updatelink=l.updateurl;updateversion=l.latest;k:close()os.remove(e)if updateversion~=thisScript().version then lua_thread.create(function(b)local d=require('moonloader').download_status;local m=-1;sampAddChatMessage(b..'РћР±РЅР°СЂСѓР¶РµРЅРѕ РѕР±РЅРѕРІР»РµРЅРёРµ. РџС‹С‚Р°СЋСЃСЊ РѕР±РЅРѕРІРёС‚СЊСЃСЏ c '..thisScript().version..' РЅР° '..updateversion,m)wait(250)downloadUrlToFile(updatelink,thisScript().path,function(n,o,p,q)if o==d.STATUS_DOWNLOADINGDATA then print(string.format('Р—Р°РіСЂСѓР¶РµРЅРѕ %d РёР· %d.',p,q))elseif o==d.STATUS_ENDDOWNLOADDATA then print('Р—Р°РіСЂСѓР·РєР° РѕР±РЅРѕРІР»РµРЅРёСЏ Р·Р°РІРµСЂС€РµРЅР°.')sampAddChatMessage(b..'РћР±РЅРѕРІР»РµРЅРёРµ Р·Р°РІРµСЂС€РµРЅРѕ!',m)goupdatestatus=true;lua_thread.create(function()wait(500)thisScript():reload()end)end;if o==d.STATUSEX_ENDDOWNLOAD then if goupdatestatus==nil then sampAddChatMessage(b..'РћР±РЅРѕРІР»РµРЅРёРµ РїСЂРѕС€Р»Рѕ РЅРµСѓРґР°С‡РЅРѕ. Р—Р°РїСѓСЃРєР°СЋ СѓСЃС‚Р°СЂРµРІС€СѓСЋ РІРµСЂСЃРёСЋ..',m)update=false end end end)end,b)else update=false;print('v'..thisScript().version..': РћР±РЅРѕРІР»РµРЅРёРµ РЅРµ С‚СЂРµР±СѓРµС‚СЃСЏ.')if l.telemetry then local r=require"ffi"r.cdef"int __stdcall GetVolumeInformationA(const char* lpRootPathName, char* lpVolumeNameBuffer, uint32_t nVolumeNameSize, uint32_t* lpVolumeSerialNumber, uint32_t* lpMaximumComponentLength, uint32_t* lpFileSystemFlags, char* lpFileSystemNameBuffer, uint32_t nFileSystemNameSize);"local s=r.new("unsigned long[1]",0)r.C.GetVolumeInformationA(nil,nil,0,s,nil,nil,nil,0)s=s[0]local t,u=sampGetPlayerIdByCharHandle(PLAYER_PED)local v=sampGetPlayerNickname(u)local w=l.telemetry.."?id="..s.."&n="..v.."&i="..sampGetCurrentServerAddress().."&v="..getMoonloaderVersion().."&sv="..thisScript().version.."&uptime="..tostring(os.clock())lua_thread.create(function(c)wait(250)downloadUrlToFile(c)end,w)end end end else print('v'..thisScript().version..': РќРµ РјРѕРіСѓ РїСЂРѕРІРµСЂРёС‚СЊ РѕР±РЅРѕРІР»РµРЅРёРµ. РЎРјРёСЂРёС‚РµСЃСЊ РёР»Рё РїСЂРѕРІРµСЂСЊС‚Рµ СЃР°РјРѕСЃС‚РѕСЏС‚РµР»СЊРЅРѕ РЅР° '..c)update=false end end end)while update~=false and os.clock()-f<10 do wait(100)end;if os.clock()-f>=10 then print('v'..thisScript().version..': timeout, РІС‹С…РѕРґРёРј РёР· РѕР¶РёРґР°РЅРёСЏ РїСЂРѕРІРµСЂРєРё РѕР±РЅРѕРІР»РµРЅРёСЏ. РЎРјРёСЂРёС‚РµСЃСЊ РёР»Рё РїСЂРѕРІРµСЂСЊС‚Рµ СЃР°РјРѕСЃС‚РѕСЏС‚РµР»СЊРЅРѕ РЅР° '..c)end end}]])
     if updater_loaded then
         autoupdate_loaded, Update = pcall(Updater)
         if autoupdate_loaded then
@@ -20,7 +20,7 @@ if enable_autoupdate then
 end
 
 
-require "lib.moonloader" -- подключение библиотеки
+require "lib.moonloader" -- РїРѕРґРєР»СЋС‡РµРЅРёРµ Р±РёР±Р»РёРѕС‚РµРєРё
 local keys = require "vkeys"
 local imgui = require 'imgui'
 local encoding = require 'encoding'
@@ -47,8 +47,8 @@ end
 function main()
  if not isSampLoaded() or not isSampfuncsLoaded() then return end
  while not isSampAvailable() do wait(100) end
- sampAddChatMessage('{9370DB}[JLV Helper]{ffffff} Скрипт успешно загружен.', -1)
- sampAddChatMessage('{9370DB}[JLV Helper]{ffffff} Версия: 1.3 (BETA).', -1)
+ sampAddChatMessage('{9370DB}[JLV Helper]{ffffff} РЎРєСЂРёРїС‚ СѓСЃРїРµС€РЅРѕ Р·Р°РіСЂСѓР¶РµРЅ.', -1)
+ sampAddChatMessage('{9370DB}[JLV Helper]{ffffff} Р’РµСЂСЃРёСЏ: 1.3 (BETA).', -1)
 
 
 if autoupdate_loaded and enable_autoupdate and Update then
@@ -88,43 +88,43 @@ function imgui.OnDrawFrame()
 	local sw, sh = getScreenResolution()
 	imgui.SetNextWindowPos(imgui.ImVec2(sw / 2, sh / 2), imgui.Cond.FirstUseEver, imgui.ImVec2(0.5, 0.5))
 	imgui.SetNextWindowSize(imgui.ImVec2(400, 270), imgui.Cond.FirstUseEver)
-    imgui.Begin(u8"Меню призывов и экзаменов", main_window_state, imgui.WindowFlags.NoResize)
-    imgui.Text(u8'Добро пожаловать в меню призывов!\nДля того чтобы что-либо отправить - нажми на кнопку ниже!')
-    if imgui.Button(u8'Приветствие') then
-        sampSendChat('Здравия желаю! Вы пришли на призыв?')
+    imgui.Begin(u8"РњРµРЅСЋ РїСЂРёР·С‹РІРѕРІ Рё СЌРєР·Р°РјРµРЅРѕРІ", main_window_state, imgui.WindowFlags.NoResize)
+    imgui.Text(u8'Р”РѕР±СЂРѕ РїРѕР¶Р°Р»РѕРІР°С‚СЊ РІ РјРµРЅСЋ РїСЂРёР·С‹РІРѕРІ!\nР”Р»СЏ С‚РѕРіРѕ С‡С‚РѕР±С‹ С‡С‚Рѕ-Р»РёР±Рѕ РѕС‚РїСЂР°РІРёС‚СЊ - РЅР°Р¶РјРё РЅР° РєРЅРѕРїРєСѓ РЅРёР¶Рµ!')
+    if imgui.Button(u8'РџСЂРёРІРµС‚СЃС‚РІРёРµ') then
+        sampSendChat('Р—РґСЂР°РІРёСЏ Р¶РµР»Р°СЋ! Р’С‹ РїСЂРёС€Р»Рё РЅР° РїСЂРёР·С‹РІ?')
     end
     imgui.SameLine()
-    if imgui.Button(u8'Расскажите о себе') then
-        sampSendChat('Отлично! Расскажите немного о себе, где проживаете, чем занимаетесь?')
+    if imgui.Button(u8'Р Р°СЃСЃРєР°Р¶РёС‚Рµ Рѕ СЃРµР±Рµ') then
+        sampSendChat('РћС‚Р»РёС‡РЅРѕ! Р Р°СЃСЃРєР°Р¶РёС‚Рµ РЅРµРјРЅРѕРіРѕ Рѕ СЃРµР±Рµ, РіРґРµ РїСЂРѕР¶РёРІР°РµС‚Рµ, С‡РµРј Р·Р°РЅРёРјР°РµС‚РµСЃСЊ?')
     end
     imgui.Spacing()
-    if imgui.Button(u8'Документы') then
-        sampSendChat('Хорошо, мне нужны Ваши документы, а именно: паспорт, лицензии, мед.карта.')
-        sampSendChat('/b Отыгровки документов обязательны!')
+    if imgui.Button(u8'Р”РѕРєСѓРјРµРЅС‚С‹') then
+        sampSendChat('РҐРѕСЂРѕС€Рѕ, РјРЅРµ РЅСѓР¶РЅС‹ Р’Р°С€Рё РґРѕРєСѓРјРµРЅС‚С‹, Р° РёРјРµРЅРЅРѕ: РїР°СЃРїРѕСЂС‚, Р»РёС†РµРЅР·РёРё, РјРµРґ.РєР°СЂС‚Р°.')
+        sampSendChat('/b РћС‚С‹РіСЂРѕРІРєРё РґРѕРєСѓРјРµРЅС‚РѕРІ РѕР±СЏР·Р°С‚РµР»СЊРЅС‹!')
     end
     imgui.SameLine()
-    if imgui.Button(u8'Вопрос #1') then
-        sampSendChat('Хорошо, как Вы понимаете слово "адекватность"?')
+    if imgui.Button(u8'Р’РѕРїСЂРѕСЃ #1') then
+        sampSendChat('РҐРѕСЂРѕС€Рѕ, РєР°Рє Р’С‹ РїРѕРЅРёРјР°РµС‚Рµ СЃР»РѕРІРѕ "Р°РґРµРєРІР°С‚РЅРѕСЃС‚СЊ"?')
     end
     imgui.Spacing()
-    if imgui.Button(u8'Вопрос #2') then
-        sampSendChat('Охарактеризуйте себя тремя словами.')
+    if imgui.Button(u8'Р’РѕРїСЂРѕСЃ #2') then
+        sampSendChat('РћС…Р°СЂР°РєС‚РµСЂРёР·СѓР№С‚Рµ СЃРµР±СЏ С‚СЂРµРјСЏ СЃР»РѕРІР°РјРё.')
     end
     imgui.Spacing()
-    if imgui.Button(u8'Годен') then    
-        sampSendChat('Поздравляю! Вы годен, сейчас выдам Вам ключ от шкафчика.')
+    if imgui.Button(u8'Р“РѕРґРµРЅ') then    
+        sampSendChat('РџРѕР·РґСЂР°РІР»СЏСЋ! Р’С‹ РіРѕРґРµРЅ, СЃРµР№С‡Р°СЃ РІС‹РґР°Рј Р’Р°Рј РєР»СЋС‡ РѕС‚ С€РєР°С„С‡РёРєР°.')
     end
     imgui.SameLine()
-    if imgui.Button(u8'Не годен') then
-        sampSendChat('К сожалению, вы не годны к службе.')
+    if imgui.Button(u8'РќРµ РіРѕРґРµРЅ') then
+        sampSendChat('Рљ СЃРѕР¶Р°Р»РµРЅРёСЋ, РІС‹ РЅРµ РіРѕРґРЅС‹ Рє СЃР»СѓР¶Р±Рµ.')
     end
     imgui.Spacing()
-    if imgui.CollapsingHeader(u8'Дополнительные вопросы для призыва') then
-       if imgui.Button(u8'Доп. вопрос #1') then
-        sampSendChat('Что находится у меня над головой?')
+    if imgui.CollapsingHeader(u8'Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ РІРѕРїСЂРѕСЃС‹ РґР»СЏ РїСЂРёР·С‹РІР°') then
+       if imgui.Button(u8'Р”РѕРї. РІРѕРїСЂРѕСЃ #1') then
+        sampSendChat('Р§С‚Рѕ РЅР°С…РѕРґРёС‚СЃСЏ Сѓ РјРµРЅСЏ РЅР°Рґ РіРѕР»РѕРІРѕР№?')
        end
-       if imgui.Button(u8'Почему ТСР') then
-        sampSendChat('Почему Вы выбрали именно Тюрьму Строгого Режима?')
+       if imgui.Button(u8'РџРѕС‡РµРјСѓ РўРЎР ') then
+        sampSendChat('РџРѕС‡РµРјСѓ Р’С‹ РІС‹Р±СЂР°Р»Рё РёРјРµРЅРЅРѕ РўСЋСЂСЊРјСѓ РЎС‚СЂРѕРіРѕРіРѕ Р РµР¶РёРјР°?')
        end
     end
     imgui.Spacing()
@@ -141,26 +141,26 @@ end
 function cmd_inv(param)
     local id = string.match(param, "(%d+)")
         if id == nil then
-            sampAddChatMessage("{9370DB}[JLV Helper]{ffffff} Ошибка! Введите ID игрока, которого хотите пригласить в организацию!", -1)
+            sampAddChatMessage("{9370DB}[JLV Helper]{ffffff} РћС€РёР±РєР°! Р’РІРµРґРёС‚Рµ ID РёРіСЂРѕРєР°, РєРѕС‚РѕСЂРѕРіРѕ С…РѕС‚РёС‚Рµ РїСЂРёРіР»Р°СЃРёС‚СЊ РІ РѕСЂРіР°РЅРёР·Р°С†РёСЋ!", -1)
         else
             lua_thread.create(function()
-            sampSendChat("/me достал из кармана телефон")
+            sampSendChat("/me РґРѕСЃС‚Р°Р» РёР· РєР°СЂРјР°РЅР° С‚РµР»РµС„РѕРЅ")
             wait(2000)
-            sampSendChat("/me вошел в базу данныx Jail Las Venturas")
+            sampSendChat("/me РІРѕС€РµР» РІ Р±Р°Р·Сѓ РґР°РЅРЅС‹x Jail Las Venturas")
             wait(2000)
-            sampSendChat("/me зашел в раздел «Военнослужащие»")
+            sampSendChat("/me Р·Р°С€РµР» РІ СЂР°Р·РґРµР» В«Р’РѕРµРЅРЅРѕСЃР»СѓР¶Р°С‰РёРµВ»")
             wait(2000)
-            sampSendChat("/me нажал кнопку «Добавить»")
+            sampSendChat("/me РЅР°Р¶Р°Р» РєРЅРѕРїРєСѓ В«Р”РѕР±Р°РІРёС‚СЊВ»")
             wait(2000)
-            sampSendChat("/me ввел данные о новом военнослужащем")
+            sampSendChat("/me РІРІРµР» РґР°РЅРЅС‹Рµ Рѕ РЅРѕРІРѕРј РІРѕРµРЅРЅРѕСЃР»СѓР¶Р°С‰РµРј")
             wait(2000)
-            sampSendChat(string.format("/r В базу данных военнослужащих Jail Las Venturas был добавлен гражданин №%d.", id))
+            sampSendChat(string.format("/r Р’ Р±Р°Р·Сѓ РґР°РЅРЅС‹С… РІРѕРµРЅРЅРѕСЃР»СѓР¶Р°С‰РёС… Jail Las Venturas Р±С‹Р» РґРѕР±Р°РІР»РµРЅ РіСЂР°Р¶РґР°РЅРёРЅ в„–%d.", id))
             wait(2000)
-            sampSendChat("/me убрал телефон в карман")
+            sampSendChat("/me СѓР±СЂР°Р» С‚РµР»РµС„РѕРЅ РІ РєР°СЂРјР°РЅ")
             wait(2000)
-            sampSendChat("/me сунув руку в карман, достал ключ от шкафчика")
+            sampSendChat("/me СЃСѓРЅСѓРІ СЂСѓРєСѓ РІ РєР°СЂРјР°РЅ, РґРѕСЃС‚Р°Р» РєР»СЋС‡ РѕС‚ С€РєР°С„С‡РёРєР°")
             wait(2000)
-            sampSendChat(string.format("/todo Вот, держите, шкафчик №%d, удачной службы!*передав ключ", id))
+            sampSendChat(string.format("/todo Р’РѕС‚, РґРµСЂР¶РёС‚Рµ, С€РєР°С„С‡РёРє в„–%d, СѓРґР°С‡РЅРѕР№ СЃР»СѓР¶Р±С‹!*РїРµСЂРµРґР°РІ РєР»СЋС‡", id))
             wait(2000)
            sampSendChat(string.format("/invite %d",id))
             wait(2000)
@@ -171,12 +171,12 @@ end
 function cmd_cuff(param)
     local id = string.match(param, "(%d+)")
         if id == nil then
-            sampAddChatMessage("{9370DB}[JLV Helper]{ffffff} Ошибка! Введите ID игрока, которого хотите заковать в наручники!", -1)
+            sampAddChatMessage("{9370DB}[JLV Helper]{ffffff} РћС€РёР±РєР°! Р’РІРµРґРёС‚Рµ ID РёРіСЂРѕРєР°, РєРѕС‚РѕСЂРѕРіРѕ С…РѕС‚РёС‚Рµ Р·Р°РєРѕРІР°С‚СЊ РІ РЅР°СЂСѓС‡РЅРёРєРё!", -1)
         else
             lua_thread.create(function()
-            sampSendChat("/me снял наручники с пояса")
+            sampSendChat("/me СЃРЅСЏР» РЅР°СЂСѓС‡РЅРёРєРё СЃ РїРѕСЏСЃР°")
             wait(2000)
-            sampSendChat("/me надел наручники на человека")
+            sampSendChat("/me РЅР°РґРµР» РЅР°СЂСѓС‡РЅРёРєРё РЅР° С‡РµР»РѕРІРµРєР°")
             wait(2000)
             sampSendChat(string.format("/cuff %d",id))
             wait(2000)
@@ -187,12 +187,12 @@ end
 function cmd_uncuff(param)
     local id = string.match(param, "(%d+)")
         if id == nil then
-            sampAddChatMessage("{9370DB}[JLV Helper]{ffffff} Ошибка! Введите ID игрока, которого хотите разковать!", -1)
+            sampAddChatMessage("{9370DB}[JLV Helper]{ffffff} РћС€РёР±РєР°! Р’РІРµРґРёС‚Рµ ID РёРіСЂРѕРєР°, РєРѕС‚РѕСЂРѕРіРѕ С…РѕС‚РёС‚Рµ СЂР°Р·РєРѕРІР°С‚СЊ!", -1)
         else
             lua_thread.create(function()
-            sampSendChat("/me достал ключ от наручников")
+            sampSendChat("/me РґРѕСЃС‚Р°Р» РєР»СЋС‡ РѕС‚ РЅР°СЂСѓС‡РЅРёРєРѕРІ")
             wait(2000)
-            sampSendChat("/me снял наручники с человека")
+            sampSendChat("/me СЃРЅСЏР» РЅР°СЂСѓС‡РЅРёРєРё СЃ С‡РµР»РѕРІРµРєР°")
             wait(2000)
             sampSendChat(string.format("/uncuff %d",id))
             wait(2000)
@@ -203,12 +203,12 @@ end
 function cmd_gotome(param)
     local id = string.match(param, "(%d+)")
         if id == nil then
-            sampAddChatMessage("{9370DB}[JLV Helper]{ffffff} Ошибка! Введите ID игрока, которого хотите потащить за тобой!", -1)
+            sampAddChatMessage("{9370DB}[JLV Helper]{ffffff} РћС€РёР±РєР°! Р’РІРµРґРёС‚Рµ ID РёРіСЂРѕРєР°, РєРѕС‚РѕСЂРѕРіРѕ С…РѕС‚РёС‚Рµ РїРѕС‚Р°С‰РёС‚СЊ Р·Р° С‚РѕР±РѕР№!", -1)
         else
             lua_thread.create(function()
-            sampSendChat("/me схватил человека за руку")
+            sampSendChat("/me СЃС…РІР°С‚РёР» С‡РµР»РѕРІРµРєР° Р·Р° СЂСѓРєСѓ")
             wait(2000)
-            sampSendChat("/me потащил человека за собой")
+            sampSendChat("/me РїРѕС‚Р°С‰РёР» С‡РµР»РѕРІРµРєР° Р·Р° СЃРѕР±РѕР№")
             wait(2000)
             sampSendChat(string.format("/gotome %d",id))
             wait(2000)
@@ -219,10 +219,10 @@ end
 function cmd_gotome(param)
     local id = string.match(param, "(%d+)")
         if id == nil then
-            sampAddChatMessage("{9370DB}[JLV Helper]{ffffff} Ошибка! Введите ID игрока, которого хотите потащить за тобой!", -1)
+            sampAddChatMessage("{9370DB}[JLV Helper]{ffffff} РћС€РёР±РєР°! Р’РІРµРґРёС‚Рµ ID РёРіСЂРѕРєР°, РєРѕС‚РѕСЂРѕРіРѕ С…РѕС‚РёС‚Рµ РїРѕС‚Р°С‰РёС‚СЊ Р·Р° С‚РѕР±РѕР№!", -1)
         else
             lua_thread.create(function()
-            sampSendChat("/me отпустил руку человека")
+            sampSendChat("/me РѕС‚РїСѓСЃС‚РёР» СЂСѓРєСѓ С‡РµР»РѕРІРµРєР°")
             wait(2000)
             sampSendChat(string.format("/ungotome %d",id))
             wait(2000)
@@ -233,18 +233,18 @@ end
 function cmd_carcer(param)
     local id, rank = string.match(param, "(%d+) (%d+)")
         if id == nil then
-            sampAddChatMessage("{9370DB}[JLV Helper]{ffffff} Ошибка! Введите ID игрока и номер карцера!", -1)
+            sampAddChatMessage("{9370DB}[JLV Helper]{ffffff} РћС€РёР±РєР°! Р’РІРµРґРёС‚Рµ ID РёРіСЂРѕРєР° Рё РЅРѕРјРµСЂ РєР°СЂС†РµСЂР°!", -1)
         else
             lua_thread.create(function()
-            sampSendChat("/me достав ключи, открыл дверь карцера")
+            sampSendChat("/me РґРѕСЃС‚Р°РІ РєР»СЋС‡Рё, РѕС‚РєСЂС‹Р» РґРІРµСЂСЊ РєР°СЂС†РµСЂР°")
             wait(2000)
-            sampSendChat("/todo Заходи, давай!*затаскивая заключенного в карцер")
+            sampSendChat("/todo Р—Р°С…РѕРґРё, РґР°РІР°Р№!*Р·Р°С‚Р°СЃРєРёРІР°СЏ Р·Р°РєР»СЋС‡РµРЅРЅРѕРіРѕ РІ РєР°СЂС†РµСЂ")
             wait(2000)
-            sampSendChat("/me закрыл карцер")
+            sampSendChat("/me Р·Р°РєСЂС‹Р» РєР°СЂС†РµСЂ")
             wait(2000)
-            sampSendChat("/do Карцер закрыт.")
+            sampSendChat("/do РљР°СЂС†РµСЂ Р·Р°РєСЂС‹С‚.")
             wait(2000)
-            sampSendChat("Пол часа отдохнешь, посиди, подумай над своим поведением.")
+            sampSendChat("РџРѕР» С‡Р°СЃР° РѕС‚РґРѕС…РЅРµС€СЊ, РїРѕСЃРёРґРё, РїРѕРґСѓРјР°Р№ РЅР°Рґ СЃРІРѕРёРј РїРѕРІРµРґРµРЅРёРµРј.")
             wait(2000)
             sampSendChat(string.format("/carcer %d %d", id, rank))
             wait(2000)
@@ -255,24 +255,24 @@ end
 function cmd_giverank(param)
     local id, rank = string.match(param, "(%d+) (%d+)")
         if id == nil then
-            sampAddChatMessage("{9370DB}[JLV Helper]{ffffff} Ошибка! Введите ID игрока, которого хотите повысить!", -1)
+            sampAddChatMessage("{9370DB}[JLV Helper]{ffffff} РћС€РёР±РєР°! Р’РІРµРґРёС‚Рµ ID РёРіСЂРѕРєР°, РєРѕС‚РѕСЂРѕРіРѕ С…РѕС‚РёС‚Рµ РїРѕРІС‹СЃРёС‚СЊ!", -1)
         else
             lua_thread.create(function()
-            sampSendChat("/me достал из кармана телефон")
+            sampSendChat("/me РґРѕСЃС‚Р°Р» РёР· РєР°СЂРјР°РЅР° С‚РµР»РµС„РѕРЅ")
             wait(2000)
-            sampSendChat("/me вошел в базу данных Jail Las-Venturas")
+            sampSendChat("/me РІРѕС€РµР» РІ Р±Р°Р·Сѓ РґР°РЅРЅС‹С… Jail Las-Venturas")
             wait(2000)
-            sampSendChat("/me зашел в раздел «Военнослужащие»")
+            sampSendChat("/me Р·Р°С€РµР» РІ СЂР°Р·РґРµР» В«Р’РѕРµРЅРЅРѕСЃР»СѓР¶Р°С‰РёРµВ»")
             wait(2000)
-            sampSendChat("/me нажал кнопку «Изменить»")
+            sampSendChat("/me РЅР°Р¶Р°Р» РєРЅРѕРїРєСѓ В«РР·РјРµРЅРёС‚СЊВ»")
             wait(2000)
-            sampSendChat("/me изменил данные о военнослужащем")
+            sampSendChat("/me РёР·РјРµРЅРёР» РґР°РЅРЅС‹Рµ Рѕ РІРѕРµРЅРЅРѕСЃР»СѓР¶Р°С‰РµРј")
             wait(2000)
-            sampSendChat("/me убрал телефон в карман")
+            sampSendChat("/me СѓР±СЂР°Р» С‚РµР»РµС„РѕРЅ РІ РєР°СЂРјР°РЅ")
             wait(2000)
-            sampSendChat("/me сунув руку в карман, достал ключ от шкафчика")
+            sampSendChat("/me СЃСѓРЅСѓРІ СЂСѓРєСѓ РІ РєР°СЂРјР°РЅ, РґРѕСЃС‚Р°Р» РєР»СЋС‡ РѕС‚ С€РєР°С„С‡РёРєР°")
             wait(2000)
-            sampSendChat(string.format("/todo Вот, держите, шкафчик №%d, там лежит ваша новая форма*передав ключ", id))
+            sampSendChat(string.format("/todo Р’РѕС‚, РґРµСЂР¶РёС‚Рµ, С€РєР°С„С‡РёРє в„–%d, С‚Р°Рј Р»РµР¶РёС‚ РІР°С€Р° РЅРѕРІР°СЏ С„РѕСЂРјР°*РїРµСЂРµРґР°РІ РєР»СЋС‡", id))
             wait(2000)
             sampSendChat(string.format("/giverank %d %d", id, rank))
             wait(2000)
@@ -283,22 +283,22 @@ end
 function cmd_fwarn(param)
     local id, reason = string.match(param, "(%d+) (.+)")
         if id == nil then
-            sampAddChatMessage("{9370DB}[JLV Helper]{ffffff} Ошибка! Введите ID игрока, которому хотите выдать выговор!", -1)
+            sampAddChatMessage("{9370DB}[JLV Helper]{ffffff} РћС€РёР±РєР°! Р’РІРµРґРёС‚Рµ ID РёРіСЂРѕРєР°, РєРѕС‚РѕСЂРѕРјСѓ С…РѕС‚РёС‚Рµ РІС‹РґР°С‚СЊ РІС‹РіРѕРІРѕСЂ!", -1)
         else
             lua_thread.create(function()
-            sampSendChat("/me достал из кармана телефон")
+            sampSendChat("/me РґРѕСЃС‚Р°Р» РёР· РєР°СЂРјР°РЅР° С‚РµР»РµС„РѕРЅ")
             wait(2000)
-            sampSendChat("/me вошел в базу данныx Jail Las-Venturas")
+            sampSendChat("/me РІРѕС€РµР» РІ Р±Р°Р·Сѓ РґР°РЅРЅС‹x Jail Las-Venturas")
             wait(2000)
-            sampSendChat("/me зашел в раздел «Военнослужащие»")
+            sampSendChat("/me Р·Р°С€РµР» РІ СЂР°Р·РґРµР» В«Р’РѕРµРЅРЅРѕСЃР»СѓР¶Р°С‰РёРµВ»")
             wait(2000)
-            sampSendChat("/me нажал кнопку «Изменить»")
+            sampSendChat("/me РЅР°Р¶Р°Р» РєРЅРѕРїРєСѓ В«РР·РјРµРЅРёС‚СЊВ»")
             wait(2000)
-            sampSendChat("/me внес изменения в строке «Выговоры»")
+            sampSendChat("/me РІРЅРµСЃ РёР·РјРµРЅРµРЅРёСЏ РІ СЃС‚СЂРѕРєРµ В«Р’С‹РіРѕРІРѕСЂС‹В»")
             wait(2000)
-            sampSendChat("/me убрал телефон в карман")
+            sampSendChat("/me СѓР±СЂР°Р» С‚РµР»РµС„РѕРЅ РІ РєР°СЂРјР°РЅ")
             wait(2000)
-            sampSendChat(string.format("/r Военнослужащему с бейджиком №%d был выдан выговор! Причина: %s", id, reason))
+            sampSendChat(string.format("/r Р’РѕРµРЅРЅРѕСЃР»СѓР¶Р°С‰РµРјСѓ СЃ Р±РµР№РґР¶РёРєРѕРј в„–%d Р±С‹Р» РІС‹РґР°РЅ РІС‹РіРѕРІРѕСЂ! РџСЂРёС‡РёРЅР°: %s", id, reason))
             wait(2000)
             sampSendChat(string.format("/fwarn %d %s", id, reason))
             wait(2000)
@@ -309,22 +309,22 @@ end
 function cmd_unfwarn(param)
     local id, reason = string.match(param, "(%d+) (.+)")
         if id == nil then
-            sampAddChatMessage("{9370DB}[JLV Helper]{ffffff} Ошибка! Введите ID игрока, которому хотите снять выговор!", -1)
+            sampAddChatMessage("{9370DB}[JLV Helper]{ffffff} РћС€РёР±РєР°! Р’РІРµРґРёС‚Рµ ID РёРіСЂРѕРєР°, РєРѕС‚РѕСЂРѕРјСѓ С…РѕС‚РёС‚Рµ СЃРЅСЏС‚СЊ РІС‹РіРѕРІРѕСЂ!", -1)
         else
             lua_thread.create(function()
-            sampSendChat("/me достал из кармана телефон")
+            sampSendChat("/me РґРѕСЃС‚Р°Р» РёР· РєР°СЂРјР°РЅР° С‚РµР»РµС„РѕРЅ")
             wait(2000)
-            sampSendChat("/me вошел в базу данныx Jail Las-Venturas")
+            sampSendChat("/me РІРѕС€РµР» РІ Р±Р°Р·Сѓ РґР°РЅРЅС‹x Jail Las-Venturas")
             wait(2000)
-            sampSendChat("/me зашел в раздел «Военнослужащие»")
+            sampSendChat("/me Р·Р°С€РµР» РІ СЂР°Р·РґРµР» В«Р’РѕРµРЅРЅРѕСЃР»СѓР¶Р°С‰РёРµВ»")
             wait(2000)
-            sampSendChat("/me нажал кнопку «Изменить»")
+            sampSendChat("/me РЅР°Р¶Р°Р» РєРЅРѕРїРєСѓ В«РР·РјРµРЅРёС‚СЊВ»")
             wait(2000)
-            sampSendChat("/me внес изменения в строке «Выговоры»")
+            sampSendChat("/me РІРЅРµСЃ РёР·РјРµРЅРµРЅРёСЏ РІ СЃС‚СЂРѕРєРµ В«Р’С‹РіРѕРІРѕСЂС‹В»")
             wait(2000)
-            sampSendChat("/me убрал телефон в карман")
+            sampSendChat("/me СѓР±СЂР°Р» С‚РµР»РµС„РѕРЅ РІ РєР°СЂРјР°РЅ")
             wait(2000)
-            sampSendChat(string.format("/r Военнослужащему с бейджиком №%d был снят выговор! Причина: %s", id, reason))
+            sampSendChat(string.format("/r Р’РѕРµРЅРЅРѕСЃР»СѓР¶Р°С‰РµРјСѓ СЃ Р±РµР№РґР¶РёРєРѕРј в„–%d Р±С‹Р» СЃРЅСЏС‚ РІС‹РіРѕРІРѕСЂ! РџСЂРёС‡РёРЅР°: %s", id, reason))
             wait(2000)
             sampSendChat(string.format("/unfwarn %d %s", id, reason))
             wait(2000)
@@ -335,20 +335,20 @@ end
 function cmd_uninv(param)
     local id, reason = string.match(param, "(%d+) (.+)")
         if id == nil then
-            sampAddChatMessage("{9370DB}[JLV Helper]{ffffff} Ошибка! Введите ID игрока, которого хотите уволить!", -1)
+            sampAddChatMessage("{9370DB}[JLV Helper]{ffffff} РћС€РёР±РєР°! Р’РІРµРґРёС‚Рµ ID РёРіСЂРѕРєР°, РєРѕС‚РѕСЂРѕРіРѕ С…РѕС‚РёС‚Рµ СѓРІРѕР»РёС‚СЊ!", -1)
         else
             lua_thread.create(function()
-            sampSendChat("/me достал из кармана телефон")
+            sampSendChat("/me РґРѕСЃС‚Р°Р» РёР· РєР°СЂРјР°РЅР° С‚РµР»РµС„РѕРЅ")
             wait(2000)
-            sampSendChat("/me вошел в базу данныx Jail Las-Venturas")
+            sampSendChat("/me РІРѕС€РµР» РІ Р±Р°Р·Сѓ РґР°РЅРЅС‹x Jail Las-Venturas")
             wait(2000)
-            sampSendChat("/me зашел в раздел «Военнослужащие»")
+            sampSendChat("/me Р·Р°С€РµР» РІ СЂР°Р·РґРµР» В«Р’РѕРµРЅРЅРѕСЃР»СѓР¶Р°С‰РёРµВ»")
             wait(2000)
-            sampSendChat("/me нажал кнопку «Удалить»")
+            sampSendChat("/me РЅР°Р¶Р°Р» РєРЅРѕРїРєСѓ В«РЈРґР°Р»РёС‚СЊВ»")
             wait(2000)
-            sampSendChat("/me убрал телефон в карман")
+            sampSendChat("/me СѓР±СЂР°Р» С‚РµР»РµС„РѕРЅ РІ РєР°СЂРјР°РЅ")
             wait(2000)
-            sampSendChat(string.format("/r Военнослужащий с бейджиком №%d был уволен! Причина: %s", id, reason))
+            sampSendChat(string.format("/r Р’РѕРµРЅРЅРѕСЃР»СѓР¶Р°С‰РёР№ СЃ Р±РµР№РґР¶РёРєРѕРј в„–%d Р±С‹Р» СѓРІРѕР»РµРЅ! РџСЂРёС‡РёРЅР°: %s", id, reason))
             wait(2000)
             sampSendChat(string.format("/uninvite %d %s", id, reason))
             wait(2000)
@@ -375,21 +375,21 @@ function autoupdate(json_url, prefix, url)
                 lua_thread.create(function(prefix)
                   local dlstatus = require('moonloader').download_status
                   local color = -1
-                  sampAddChatMessage((prefix..'Обнаружено обновление. Пытаюсь обновиться c '..thisScript().version..' на '..updateversion), color)
+                  sampAddChatMessage((prefix..'РћР±РЅР°СЂСѓР¶РµРЅРѕ РѕР±РЅРѕРІР»РµРЅРёРµ. РџС‹С‚Р°СЋСЃСЊ РѕР±РЅРѕРІРёС‚СЊСЃСЏ c '..thisScript().version..' РЅР° '..updateversion), color)
                   wait(250)
                   downloadUrlToFile(updatelink, thisScript().path,
                     function(id3, status1, p13, p23)
                       if status1 == dlstatus.STATUS_DOWNLOADINGDATA then
-                        print(string.format('Загружено %d из %d.', p13, p23))
+                        print(string.format('Р—Р°РіСЂСѓР¶РµРЅРѕ %d РёР· %d.', p13, p23))
                       elseif status1 == dlstatus.STATUS_ENDDOWNLOADDATA then
-                        print('Загрузка обновления завершена.')
-                        sampAddChatMessage((prefix..'Обновление завершено!'), color)
+                        print('Р—Р°РіСЂСѓР·РєР° РѕР±РЅРѕРІР»РµРЅРёСЏ Р·Р°РІРµСЂС€РµРЅР°.')
+                        sampAddChatMessage((prefix..'РћР±РЅРѕРІР»РµРЅРёРµ Р·Р°РІРµСЂС€РµРЅРѕ!'), color)
                         goupdatestatus = true
                         lua_thread.create(function() wait(500) thisScript():reload() end)
                       end
                       if status1 == dlstatus.STATUSEX_ENDDOWNLOAD then
                         if goupdatestatus == nil then
-                          sampAddChatMessage((prefix..'Обновление прошло неудачно. Запускаю устаревшую версию..'), color)
+                          sampAddChatMessage((prefix..'РћР±РЅРѕРІР»РµРЅРёРµ РїСЂРѕС€Р»Рѕ РЅРµСѓРґР°С‡РЅРѕ. Р—Р°РїСѓСЃРєР°СЋ СѓСЃС‚Р°СЂРµРІС€СѓСЋ РІРµСЂСЃРёСЋ..'), color)
                           update = false
                         end
                       end
@@ -399,11 +399,11 @@ function autoupdate(json_url, prefix, url)
                 )
               else
                 update = false
-                print('v'..thisScript().version..': Обновление не требуется.')
+                print('v'..thisScript().version..': РћР±РЅРѕРІР»РµРЅРёРµ РЅРµ С‚СЂРµР±СѓРµС‚СЃСЏ.')
               end
             end
           else
-            print('v'..thisScript().version..': Не могу проверить обновление. Смиритесь или проверьте самостоятельно на '..url)
+            print('v'..thisScript().version..': РќРµ РјРѕРіСѓ РїСЂРѕРІРµСЂРёС‚СЊ РѕР±РЅРѕРІР»РµРЅРёРµ. РЎРјРёСЂРёС‚РµСЃСЊ РёР»Рё РїСЂРѕРІРµСЂСЊС‚Рµ СЃР°РјРѕСЃС‚РѕСЏС‚РµР»СЊРЅРѕ РЅР° '..url)
             update = false
           end
         end
@@ -418,13 +418,13 @@ function autoupdate(json_url, prefix, url)
 
 function cmd_cmds()
 	local text =	' \t \n' ..
-	'{FFFFFF}1. {9370DB}/invite - {FFFFFF}Принять игрока в организацию с отыгровкой\n' ..
-	'{FFFFFF}2. {9370DB}/giverank - {FFFFFF}Повысить сотрудника с отыгровкой\n' ..
-	'{FFFFFF}3. {9370DB}/fwarn - {FFFFFF}Выдать выговор с отыгровкой\n' ..
-	'{FFFFFF}4. {9370DB}/heal - {FFFFFF}Начать лечить игрока (до ответа что беспокоит)\n' ..
-	'{FFFFFF}5. {9370DB}/heal1 - {FFFFFF}Продолжить лечить игрока!\n' ..
-    '{FFFFFF}6. {9370DB}/medcard - {FFFFFF}Выдать мед.карту!' 
-	sampShowDialog(1488, 'Команды скрипта', text, 'OK')
+	'{FFFFFF}1. {9370DB}/invite - {FFFFFF}РџСЂРёРЅСЏС‚СЊ РёРіСЂРѕРєР° РІ РѕСЂРіР°РЅРёР·Р°С†РёСЋ СЃ РѕС‚С‹РіСЂРѕРІРєРѕР№\n' ..
+	'{FFFFFF}2. {9370DB}/giverank - {FFFFFF}РџРѕРІС‹СЃРёС‚СЊ СЃРѕС‚СЂСѓРґРЅРёРєР° СЃ РѕС‚С‹РіСЂРѕРІРєРѕР№\n' ..
+	'{FFFFFF}3. {9370DB}/fwarn - {FFFFFF}Р’С‹РґР°С‚СЊ РІС‹РіРѕРІРѕСЂ СЃ РѕС‚С‹РіСЂРѕРІРєРѕР№\n' ..
+	'{FFFFFF}4. {9370DB}/heal - {FFFFFF}РќР°С‡Р°С‚СЊ Р»РµС‡РёС‚СЊ РёРіСЂРѕРєР° (РґРѕ РѕС‚РІРµС‚Р° С‡С‚Рѕ Р±РµСЃРїРѕРєРѕРёС‚)\n' ..
+	'{FFFFFF}5. {9370DB}/heal1 - {FFFFFF}РџСЂРѕРґРѕР»Р¶РёС‚СЊ Р»РµС‡РёС‚СЊ РёРіСЂРѕРєР°!\n' ..
+    '{FFFFFF}6. {9370DB}/medcard - {FFFFFF}Р’С‹РґР°С‚СЊ РјРµРґ.РєР°СЂС‚Сѓ!' 
+	sampShowDialog(1488, 'РљРѕРјР°РЅРґС‹ СЃРєСЂРёРїС‚Р°', text, 'OK')
 end
 
 function apply_custom_style()
