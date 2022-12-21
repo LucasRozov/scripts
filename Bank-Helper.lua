@@ -1,6 +1,6 @@
 script_name("Bank-Helper")
 script_author("Cosmo")
-script_version("2.1")
+script_version("2.2")
 
 require "moonloader"
 local ffi = require "ffi"
